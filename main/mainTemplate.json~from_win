@@ -1,0 +1,268 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "authenticationType": {
+            "type": "string",
+            "metadata": {
+                "description": "Type of authentication"
+            }
+        },
+        "password": {
+            "type": "securestring",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Admin password"
+            }
+        },
+        "sshKey": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "SSH rsa public key file as a string."
+            }
+        },
+        "vmSize": {
+            "type": "string",
+            "defaultValue": "Standard_DS2",
+            "metadata": {
+                "description": "Size of the VM"
+            }
+        },
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Storage Account. Created or existing."
+            },
+            "defaultValue": "Standard_LRS"
+        },
+        "storageAccountType": {
+            "type": "string",
+            "metadata": {
+                "description": "The type of the Storage Account created"
+            },
+            "defaultValue": "Premium_LRS"
+        },
+        "storageAccountNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new",
+            "allowedValues": [
+                "new",
+                "existing"
+            ],
+            "metadata": {
+                "Description": "Indicates whether the Storage Account is new or existing"
+            }
+        },
+        "existingStorageAccountRG": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource Group of the Existing VM."
+            },
+            "defaultValue": ""
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "existingIPRGName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "publicIPAddressName": {
+            "type": "string"
+        },
+        "publicIPNewOrExisting": {
+            "type": "string",
+            "defaultValue": "new",
+            "allowedValues": [
+                "new",
+                "existing"
+            ],
+            "metadata": {
+                "Description": "Indicates whether the public IP is new or existing"
+            },
+        "baseUrl": {
+            "type": "string",
+            "metadata": {
+                "artifactsBaseUrl": ""
+            },
+            "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/marketplace-samples/simple-windows-vm"
+        }
+    },
+    "variables": {
+        "storageAccountType": "Premium_LRS",
+        "addressPrefix": "10.0.0.0/16",
+        "subnetName1": "Subnet-1",
+        "subnetPrefix1": "10.0.1.0/24",
+        "subnetName2": "Subnet-2",
+        "subnetPrefix2": "10.0.2.0/24",
+        "nic1NamePrefix": "nic1",
+        "nic2NamePrefix": "nic2",
+        "imagePublisher": "MicrosoftWindowsServer",
+        "imageOffer": "WindowsServer",
+        "imageSKU": "2012-R2-Datacenter",
+        "vnetName": "myVNET",
+        "vmNamePrefix": "myVM",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
+        "subnetRef1": "[concat(variables('vnetID'),'/subnets/',variables('subnetName1'))]",
+        "subnetRef2": "[concat(variables('vnetID'),'/subnets/',variables('subnetName2'))]"
+    },
+    "resources": [
+        {
+            "name": "SettingUpStorageAccount",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2015-01-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[variables('storageAccountSetupURL')]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "storageAccountType": {
+                        "value": "[parameters('storageAccountType')]"
+                    },
+                    "storageAccountName": {
+                        "value": "[parameters('newStorageAccountName')]"
+                    },
+                    "storageAccountExistingRG": {
+                        "value": "[parameters('storageAccountExistingRG')]"
+                    }
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "myVNET",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('addressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName1')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetPrefix1')]"
+                        }
+                    },
+                    {
+                        "name": "[variables('subnetName2')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetPrefix2')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "nic1",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnetName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[variables('subnetRef1')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "nic2",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnetName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig2",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "subnet": {
+                                "id": "[variables('subnetRef2')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "myVM",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
+                "[concat('Microsoft.Network/networkInterfaces/', variables('nic1NamePrefix'))]",
+                "[concat('Microsoft.Network/networkInterfaces/', variables('nic2NamePrefix'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[parameters('vmSize')]"
+                },
+                "osProfile": {
+                    "computername": "[variables('vmNamePrefix')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[variables('imagePublisher')]",
+                        "offer": "[variables('imageOffer')]",
+                        "sku": "[variables('imageSKU')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "osdisk",
+                        "vhd": {
+                            "uri": "[concat('http://',parameters('storageAccountName'),'.blob.core.windows.net/vhds/','osdisk', '.vhd')]"
+                        },
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "properties": {
+                                "primary": true
+                            },
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nic1NamePrefix'))]"
+                        },
+                        {
+                            "properties": {
+                                "primary": false
+                            },
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nic2NamePrefix'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": "true",
+                        "storageUri": "[concat('http://',parameters('storageAccountName'),'.blob.core.windows.net')]"
+                    }
+                }
+            }
+        }
+    ]
+}

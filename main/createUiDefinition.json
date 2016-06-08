@@ -1,0 +1,182 @@
+{
+	"handler": "Microsoft.Compute.MultiVm",
+	"version": "0.0.1-preview",
+	"parameters": {
+		"basics": [
+		{
+			"name": "SSHCredntials",
+			"type": "Microsoft.Compute.CredentialsCombo",
+			"label": {
+				"authenticationType": "Authentication type",
+				"password": "Password",
+				"confirmPassword": "Confirm password",
+				"sshPublicKey": "SSH public key"
+			},
+			"toolTip": {
+				"authenticationType": "",
+				"password": "",
+				"sshPublicKey": ""
+			},
+			"constraints": {
+				"required": true
+			},
+			"options": {
+				"hideConfirmation": false
+			},
+			"osPlatform": "Linux"
+		}],
+		"steps": [{
+			"name": "vmSettings",
+			"label": "VM Settings",
+			"bladeTitle": "NIOS VM settings",
+			"subLabel": {
+				"preValidation": "Configure VM Settings",
+				"postValidation": "Done"
+			},
+			"elements": [{
+					"name": "vmSize",
+					"type": "Microsoft.Compute.SizeSelector",
+					"label": "Virtual machine size",
+					"toolTip": "The size of virtual machine to provision.",
+					"recommendedSizes": [
+						"Standard_DS2",
+						"Standard_DS3"
+					],
+					"constraints": {
+						"allowedSizes": [
+							"Standard_DS2",
+							"Standard_DS3"
+						]
+					},
+					"osPlatform": "Linux",
+					"imageReference": {
+						"publisher": "Infoblox",
+						"offer": "NIOS",
+						"sku": "7.4.0"
+					}
+				},
+				{
+					"name": "storageAccount",
+					"type": "Microsoft.Storage.StorageAccountSelector",
+					"label": "Storage account",
+					"toolTip": "Storage account VM Disk",
+					"defaultValue": {
+						"name": "storageaccount01",
+						"type": "Premium_LRS"
+					},
+					"constraints": {
+						"allowedTypes": ["Premium_LRS"]
+					},
+					"options": {
+						"hideExisting": false
+					},
+					"visible": true
+				},
+				{
+					"name": "niosNetwork",
+					"type": "Microsoft.Network.VirtualNetworkCombo",
+					"label": {
+						"virtualNetwork": "Virtual network",
+						"subnets": "Subnets"
+					},
+					"toolTip": {
+						"virtualNetwork": "",
+						"subnets": ""
+					},
+					"defaultValue": {
+						"name": "vnet01",
+						"addressPrefixSize": "/16"
+					},
+					"constraints": {
+						"minAddressPrefixSize": "/16"
+					},
+					"options": {
+						"hideExisting": false
+					},
+					"subnets": {
+						"subnetLan1": {
+							"label": "Subnet for LAN1 port",
+							"defaultValue": {
+								"name": "subnet1",
+								"addressPrefixSize": "/24"
+							},
+							"constraints": {
+								"minAddressPrefixSize": "/30"
+							}
+						},
+						"subnetMgmt": {
+							"label": "Subnet for MGMT port",
+							"defaultValue": {
+								"name": "subnet2",
+								"addressPrefixSize": "/24"
+							},
+							"constraints": {
+								"minAddressPrefixSize": "/30"
+							}
+						}
+					},
+					"visible": true
+				},
+				{
+					"name": "dnsAndPublicIP",
+					"type": "Microsoft.Network.PublicIpAddressCombo",
+					"label": {
+						"publicIpAddress": "Public IP address",
+						"domainNameLabel": "Domain name label"
+					},
+					"toolTip": {
+						"publicIpAddress": "",
+						"domainNameLabel": ""
+					},
+					"defaultValue": {
+						"publicIpAddressName": ""
+					},
+					"constraints": {
+						"required": {
+							"domainNameLabel": true
+						}
+					},
+					"options": {
+						"hideNone": false,
+						"hideDomainNameLabel": false,
+						"hideExisting": false
+					},
+					"visible": true
+				}
+			]
+		}],
+		"outputs": {
+			"vmName": "niosdefname",
+			"vmSize": "[steps('vmSettings').vmSize]",
+
+			"adminPassword": "[basics('SSHCredntials').password]",
+			"sshPublicKey": "[basics('SSHCredntials').sshPublicKey]",
+			"authenticationType": "[basics('SSHCredntials').authenticationType]",
+
+			"virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
+			"virtualNetworkExistingRGName": "[steps('vmSettings').niosNetwork.resourceGroup]",
+			"virtualNetworkAddressPrefix": "[steps('vmSettings').niosNetwork.addressPrefix]",
+			"vnetNewOrExisting": "[steps('vmSettings').niosNetwork.newOrExisting]",
+
+			"Subnet1Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.addressPrefix]",
+			"Subnet1Name": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.name]",
+			"subnet1StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.startAddress]",
+
+			"Subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
+			"Subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
+			"subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
+			
+			"newStorageAccountName": "[steps('vmSettings').storageAccount.name]",
+			"storageAccountType": "[steps('vmSettings').storageAccount.type]",
+			"storageAccountNewOrExisting": "[steps('vmSettings').storageAccount.newOrExisting]",
+			"storageAccountExistingRG": "[steps('vmSettings').storageAccount.resourceGroup]",
+
+			"publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
+			"publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
+			"publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
+			"publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
+
+			"baseUrl": "https://raw.githubusercontent.com/Azure/niosazure/"
+		}
+	}
+}

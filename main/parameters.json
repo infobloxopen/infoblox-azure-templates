@@ -1,0 +1,69 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "value": "niosdefname"
+    },
+    "vmSize": {
+      "value": "Standard_DS2"
+    },
+    "adminPassword": {
+      "value": "Infoblox=111111"
+    },
+    "authenticationType": {
+      "value": "password"
+    },
+    "virtualNetworkName": {
+      "value": "infobloxvnet"
+    },
+    "virtualNetworkExistingRGName": {
+      "value": "infoblox"
+    },
+    "vnetNewOrExisting": {
+      "value": "existing"
+    },
+    "Subnet1Prefix": {
+      "value": "10.1.1.0/24"
+    },
+    "Subnet1Name": {
+      "value": "subnet1"
+    },
+    "subnet1StartAddress": {
+      "value": "10.1.1.4"
+    },
+    "Subnet2Prefix": {
+      "value": "10.1.2.0/24"
+    },
+    "Subnet2Name": {
+      "value": "subnet2"
+    },
+    "subnet2StartAddress": {
+      "value": "10.1.2.4"
+    },
+    "newStorageAccountName": {
+      "value": "infobloxstorage"
+    },
+    "storageAccountType": {
+      "value": "Premium_LRS"
+    },
+    "storageAccountNewOrExisting": {
+      "value": "existing"
+    },
+    "storageAccountExistingRG": {
+      "value": "infoblox"
+    },
+    "publicIPAddressName": {
+      "value": ""
+    },
+    "publicIPNewOrExistingOrNone": {
+      "value": "none"
+    },
+    "publicIPExistingRGName": {
+      "value": "infobloxresgroup"
+    },
+    "baseUrl": {
+      "value": "https://raw.githubusercontent.com/Azure/niosazure/"
+    }
+  }
+}
