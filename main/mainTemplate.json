@@ -393,11 +393,6 @@
             "type":"Microsoft.Compute/virtualMachines",
             "name":"[parameters('vmName')]",
             "location":"[resourceGroup().location]",
-            "plan":{
-                "name":"csr-azure-byol",
-                "publisher":"cisco",
-                "product":"cisco-csr-1000v"
-            },
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
                 "[concat('Microsoft.Network/networkInterfaces/',parameters('vmName'),'-Nic0')]",
