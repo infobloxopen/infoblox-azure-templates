@@ -13,9 +13,6 @@
     },
     "publicIpRGName": {
       "type": "string"
-    },
-    "publicIPNewOrExistingOrNone" : {
-      "type" : "string"
     }
   },
   "resources": [
