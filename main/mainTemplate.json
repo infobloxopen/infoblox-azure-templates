@@ -434,6 +434,11 @@
                             "id":"[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'),'-Nic1'))]"
                         }
                     ]
+                },
+                "diagnosticsProfile":{
+                    "bootDiagnostics":{
+                        "enabled":"false"
+                    }
                 }
             }
         }
