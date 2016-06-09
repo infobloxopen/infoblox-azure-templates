@@ -60,7 +60,7 @@
       "value": "none"
     },
     "publicIPExistingRGName": {
-      "value": "infobloxresgroup"
+      "value": "infoblox"
     },
     "baseUrl": {
       "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
