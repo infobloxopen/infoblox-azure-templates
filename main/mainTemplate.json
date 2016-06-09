@@ -1,468 +1,446 @@
 ﻿{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "type": "string",
-            "defaultValue": "CSR",
-            "metadata": {
-                "description": "Name for the Virtual Machine."
+    "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{
+        "vmName":{
+            "type":"string",
+            "defaultValue":"CSR",
+            "metadata":{
+                "description":"Name for the Virtual Machine."
             }
         },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_DS2",
-            "metadata": {
-                "description": "Size of the VM"
+        "vmSize":{
+            "type":"string",
+            "defaultValue":"Standard_DS2",
+            "metadata":{
+                "description":"Size of the VM"
             }
         },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
+        "adminPassword":{
+            "type":"securestring",
+            "metadata":{
+                "description":"Password for the Virtual Machine."
             }
         },
-        "sshPublicKey": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "SSH Key for the virtual machines"
+        "sshPublicKey":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"SSH Key for the virtual machines"
             }
         },
-        "authenticationType": {
-            "type": "string",
-            "defaultValue": "password",
-            "allowedValues": [
+        "authenticationType":{
+            "type":"string",
+            "defaultValue":"password",
+            "allowedValues":[
                 "password",
                 "sshPublicKey"
             ],
-            "metadata": {
-                "description": "Authentication Type to chose for the Virtual Machines"
+            "metadata":{
+                "description":"Authentication Type to chose for the Virtual Machines"
             }
         },
-        "virtualNetworkName": {
-            "type": "string",
-            "defaultValue": "CSR_Network",
-            "metadata": {
-                "description": "VNet name"
+        "virtualNetworkName":{
+            "type":"string",
+            "defaultValue":"CSR_Network",
+            "metadata":{
+                "description":"VNet name"
             }
         },
-        "virtualNetworkExistingRGName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Identifies whether to use new or existing Storage Account"
+        "virtualNetworkExistingRGName":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Identifies whether to use new or existing Storage Account"
             }
         },
-        "virtualNetworkAddressPrefix": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Virtual Network Address prefix"
+        "virtualNetworkAddressPrefix":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Virtual Network Address prefix"
             }
         },
-        "vnetNewOrExisting" : {
-            "type" : "string",
-            "defaultValue" : "",
-            "metadata": {
-                "description": "Identifies whether to use new or existing Virtual Network"
+        "vnetNewOrExisting":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Identifies whether to use new or existing Virtual Network"
             }
         },
-        "Subnet1Prefix": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Subnet 1 Prefix"
+        "Subnet1Prefix":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Subnet 1 Prefix"
             }
         },
-        "Subnet1Name": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Subnet 1 Name"
+        "Subnet1Name":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Subnet 1 Name"
             }
         },
-        "subnet1StartAddress" : {
-            "type" : "string",
-            "metadata" : {
-                "description" : "Subnet 1 Starting IP Address"
+        "subnet1StartAddress":{
+            "type":"string",
+            "metadata":{
+                "description":"Subnet 1 Starting IP Address"
             }
         },
-        "Subnet2Prefix": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Subnet 2 Prefix"
+        "Subnet2Prefix":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Subnet 2 Prefix"
             }
         },
-        "Subnet2Name": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Subnet 2 Name"
+        "Subnet2Name":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Subnet 2 Name"
             }
         },
-        "subnet2StartAddress" : {
-            "type" : "string",
-            "metadata" : {
-                "description" : "Subnet 2 Starting IP Address"
+        "subnet2StartAddress":{
+            "type":"string",
+            "metadata":{
+                "description":"Subnet 2 Starting IP Address"
             }
         },
-        "newStorageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Unique Name for Storage Account where the Virtual Machine's disks will be placed."
+        "newStorageAccountName":{
+            "type":"string",
+            "metadata":{
+                "description":"Unique Name for Storage Account where the Virtual Machine's disks will be placed."
             }
         },
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Premium_LRS",
-            "allowedValues": [
+        "storageAccountType":{
+            "type":"string",
+            "defaultValue":"Premium_LRS",
+            "allowedValues":[
                 "Premium_LRS"
             ],
-            "metadata": {
-                "description": "The type of storage account created."
+            "metadata":{
+                "description":"The type of storage account created."
             }
         },
-        "storageAccountNewOrExisting": {
-            "type": "string",
-            "defaultValue": "new",
-            "allowedValues": [
+        "storageAccountNewOrExisting":{
+            "type":"string",
+            "defaultValue":"new",
+            "allowedValues":[
                 "new",
                 "existing"
             ],
-            "metadata": {
-                "description": "Identifies whether to use new or existing Storage Account"
+            "metadata":{
+                "description":"Identifies whether to use new or existing Storage Account"
             }
         },
-        "storageAccountExistingRG": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Resource Group containing existing storage account"
+        "storageAccountExistingRG":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Resource Group containing existing storage account"
             }
         },
-        "publicIPAddressName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Name of the Public IP Address"
+        "publicIPAddressName":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Name of the Public IP Address"
             }
         },
-        "publicIPDnsName": {
-            "type": "string",
-            "defaultValue": "csrdns",
-            "metadata": {
-                "description": "Unique DNS Prefix for the Public IP used to access the Virtual Machine."
+        "publicIPDnsName":{
+            "type":"string",
+            "defaultValue":"csrdns",
+            "metadata":{
+                "description":"Unique DNS Prefix for the Public IP used to access the Virtual Machine."
             }
         },
-        "publicIPNewOrExistingOrNone": {
-            "type": "string",
-            "defaultValue": "new",
-            "allowedValues": [
+        "publicIPNewOrExistingOrNone":{
+            "type":"string",
+            "defaultValue":"new",
+            "allowedValues":[
                 "new",
                 "existing",
                 "none"
             ],
-            "metadata": {
-                "description": "Indicates whether the Public IP is new or existing"
+            "metadata":{
+                "description":"Indicates whether the Public IP is new or existing"
             }
         },
-        "publicIPExistingRGName": {
-            "type": "string",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Resource Group containing existing public IP"
+        "publicIPExistingRGName":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Resource Group containing existing public IP"
             }
         },
-        "baseUrl": {
-            "type": "string",
-            "metadata": {
-                "artifactsBaseUrl": "",
-                "description": "URL to acquire other templates"
+        "baseUrl":{
+            "type":"string",
+            "metadata":{
+                "artifactsBaseUrl":"",
+                "description":"URL to acquire other templates"
             },
-            "defaultValue": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
+            "defaultValue":"https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
         }
     },
-    "variables": {
-        "imagePublisher": "Canonical",
-        "imageOffer": "UbuntuServer",
-        "imageSKU": "14.04.3-LTS",
-        "OSDiskName": "niosimage",
-        "vmStorageAccountContainerName": "vhds",
-        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-        "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
-        "subnet2Ref": "[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
-        "nsgname": "[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
-        "apiVer": "2015-06-15",
-        "publicIPAddressType": "Dynamic",
-        "adminUsername": "admin",
-        "sshKeyPath": "[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
-        "storageAccountSetupURL": "[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-        "publicIPSetupURL": "[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
-        "virtualNetworkSetupURL": "[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
-        
-        "osProfile": "[variables(concat('osprofile',parameters('authenticationType')))]",
-        "osProfilesshPublicKey": {
-            "computerName": "[parameters('vmName')]",
-            "adminUsername": "[variables('adminUsername')]",
-            "linuxConfiguration": {
-                "disablePasswordAuthentication": "true",
-                "ssh": {
-                    "publicKeys": [
+    "variables":{
+        "imagePublisher":"Canonical",
+        "imageOffer":"UbuntuServer",
+        "imageSKU":"14.04.3-LTS",
+        "OSDiskName":"niosimage",
+        "vmStorageAccountContainerName":"vhds",
+        "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
+        "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
+        "nsgname":"[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
+        "apiVer":"2015-06-15",
+        "publicIPAddressType":"Dynamic",
+        "adminUsername":"admin",
+        "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
+        "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+        "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
+        "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+        "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
+        "osProfilesshPublicKey":{
+            "computerName":"[parameters('vmName')]",
+            "adminUsername":"[variables('adminUsername')]",
+            "linuxConfiguration":{
+                "disablePasswordAuthentication":"true",
+                "ssh":{
+                    "publicKeys":[
                         {
-                            "path": "[variables('sshKeyPath')]",
-                            "keyData": "[parameters('sshPublicKey')]"
+                            "path":"[variables('sshKeyPath')]",
+                            "keyData":"[parameters('sshPublicKey')]"
                         }
                     ]
                 }
             }
         },
-        "osProfilepassword": {
-            "computerName": "[parameters('vmName')]",
-            "adminUsername": "[variables('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
+        "osProfilepassword":{
+            "computerName":"[parameters('vmName')]",
+            "adminUsername":"[variables('adminUsername')]",
+            "adminPassword":"[parameters('adminPassword')]"
         }
     },
-    "resources": [
+    "resources":[
         {
-            "name": "SettingUpStorageAccount",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('storageAccountSetupURL')]",
-                    "contentVersion": "1.0.0.0"
+            "name":"SettingUpStorageAccount",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"2015-01-01",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('storageAccountSetupURL')]",
+                    "contentVersion":"1.0.0.0"
                 },
-                "parameters": {
-                    "storageAccountType": {
-                        "value": "[parameters('storageAccountType')]"
+                "parameters":{
+                    "storageAccountType":{
+                        "value":"[parameters('storageAccountType')]"
                     },
-                    "storageAccountName": {
-                        "value": "[parameters('newStorageAccountName')]"
+                    "storageAccountName":{
+                        "value":"[parameters('newStorageAccountName')]"
                     },
-                    "storageAccountExistingRG": {
-                        "value": "[parameters('storageAccountExistingRG')]"
+                    "storageAccountExistingRG":{
+                        "value":"[parameters('storageAccountExistingRG')]"
                     }
                 }
             }
         },
         {
-            "name": "SettingUpPublicIP",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('publicIPSetupURL')]",
-                    "contentVersion": "1.0.0.0"
+            "name":"SettingUpPublicIP",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"2015-01-01",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('publicIPSetupURL')]",
+                    "contentVersion":"1.0.0.0"
                 },
-                "parameters": {
-                    "publicIPAddressName": {
-                        "value": "[parameters('publicIPAddressName')]"
+                "parameters":{
+                    "publicIPAddressName":{
+                        "value":"[parameters('publicIPAddressName')]"
                     },
-                    "publicIPAddressType": {
-                        "value": "[variables('publicIPAddressType')]"
+                    "publicIPAddressType":{
+                        "value":"[variables('publicIPAddressType')]"
                     },
-                    "dnsPrefix": {
-                        "value": "[parameters('publicIPDnsName')]"
+                    "dnsPrefix":{
+                        "value":"[parameters('publicIPDnsName')]"
                     },
-                    "publicIpRGName" : {
-                        "value" : "[parameters('publicIPExistingRGName')]"
+                    "publicIpRGName":{
+                        "value":"[parameters('publicIPExistingRGName')]"
                     }
                 }
             }
         },
-      {
-        "apiVersion": "[variables('apiVer')]",
-        "type": "Microsoft.Network/networkSecurityGroups",
-        "name": "[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
-        "location": "[resourceGroup().location]",
-        "properties": {
-          "securityRules": [
-            {
-              "name": "rdp_rule",
-              "properties": {
-                "description": "Allow SSH",
-                "protocol": "Tcp",
-                "sourcePortRange": "*",
-                "destinationPortRange": "22",
-                "sourceAddressPrefix": "Internet",
-                "destinationAddressPrefix": "*",
-                "access": "Allow",
-                "priority": 100,
-                "direction": "Inbound"
-              }
-            }
-          ]
-        }
-      },
         {
-            "name": "SettingUpVirtualNetwork",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2015-01-01",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('virtualNetworkSetupURL')]",
-                    "contentVersion": "1.0.0.0"
+            "apiVersion":"[variables('apiVer')]",
+            "type":"Microsoft.Network/networkSecurityGroups",
+            "name":"[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
+            "location":"[resourceGroup().location]",
+            "properties":{
+                "securityRules":[
+                    {
+                        "name":"rdp_rule",
+                        "properties":{
+                            "description":"Allow SSH",
+                            "protocol":"Tcp",
+                            "sourcePortRange":"*",
+                            "destinationPortRange":"22",
+                            "sourceAddressPrefix":"Internet",
+                            "destinationAddressPrefix":"*",
+                            "access":"Allow",
+                            "priority":100,
+                            "direction":"Inbound"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name":"SettingUpVirtualNetwork",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"2015-01-01",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('virtualNetworkSetupURL')]",
+                    "contentVersion":"1.0.0.0"
                 },
-                "parameters": {
-                    "virtualNetworkName": {
-                        "value": "[parameters('virtualNetworkName')]"
+                "parameters":{
+                    "virtualNetworkName":{
+                        "value":"[parameters('virtualNetworkName')]"
                     },
-                    "virtualNetworkAddressPrefix": {
-                        "value": "[parameters('virtualNetworkAddressPrefix')]"
+                    "virtualNetworkAddressPrefix":{
+                        "value":"[parameters('virtualNetworkAddressPrefix')]"
                     },
-                    "Subnet1Name": {
-                        "value": "[parameters('Subnet1Name')]"
+                    "Subnet1Name":{
+                        "value":"[parameters('Subnet1Name')]"
                     },
-                    "Subnet1Prefix": {
-                        "value": "[parameters('Subnet1Prefix')]"
+                    "Subnet1Prefix":{
+                        "value":"[parameters('Subnet1Prefix')]"
                     },
-                    "Subnet2Name": {
-                        "value": "[parameters('Subnet2Name')]"
+                    "Subnet2Name":{
+                        "value":"[parameters('Subnet2Name')]"
                     },
-                    "Subnet2Prefix": {
-                        "value": "[parameters('Subnet2Prefix')]"
+                    "Subnet2Prefix":{
+                        "value":"[parameters('Subnet2Prefix')]"
                     },
-                    "vnetExistingRGName": {
-                        "value": "[parameters('virtualNetworkExistingRGName')]"
+                    "vnetExistingRGName":{
+                        "value":"[parameters('virtualNetworkExistingRGName')]"
                     }
                 }
             }
         },
-      {
-        "type": "Microsoft.Network/routeTables",
-        "name": "[concat(parameters('vmName'),'-CSR-RouteTable')]",
-        "apiVersion": "[variables('apiVer')]",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-          "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
-        ],
-        "properties": {
-          "routes": [
-            {
-              "name": "VirtualApplianceRouteToCSRVM",
-              "properties": {
-                "addressPrefix": "[parameters('subnet2Prefix')]",
-                "nextHopType": "VirtualAppliance",
-                "nextHopIpAddress": "[parameters('subnet1StartAddress')]"
-              }
+        {
+            "apiVersion":"[variables('apiVer')]",
+            "type":"Microsoft.Network/networkInterfaces",
+            "name":"[concat(parameters('vmName'),'-Nic0')]",
+            "location":"[resourceGroup().location]",
+            "dependsOn":[
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
+                "[concat('Microsoft.Network/networkSecurityGroups/',concat(parameters('vmName'),'-SSH-SecurityGroup'))]"
+            ],
+            "properties":{
+                "ipConfigurations":[
+                    {
+                        "name":"ipconfig1",
+                        "properties":{
+                            "privateIPAllocationMethod":"Dynamic",
+                            "subnet":{
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet1Ref.value]"
+                            },
+                            "networkSecurityGroup":{
+                                "id":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
+                            }
+                        }
+                    }
+                ]
             }
-          ]
-        }
-      },
-      {
-        "apiVersion": "[variables('apiVer')]",
-        "type": "Microsoft.Network/networkInterfaces",
-        "name": "[concat(parameters('vmName'),'-Nic0')]",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-          "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-          "[concat('Microsoft.Network/networkSecurityGroups/',concat(parameters('vmName'),'-SSH-SecurityGroup'))]"
-        ],
-        "properties": {
-          "ipConfigurations": [
-            {
-              "name": "ipconfig1",
-              "properties": {
-                "privateIPAllocationMethod": "Dynamic",
-                "subnet": {
-                  "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet1Ref.value]"
-                },
-                "networkSecurityGroup": {
-                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "apiVersion": "[variables('apiVer')]",
-        "type": "Microsoft.Network/networkInterfaces",
-        "name": "[concat(parameters('vmName'),'-Nic1')]",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-          "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
-        ],
-        "properties": {
-          "ipConfigurations": [
-            {
-              "name": "ipconfig1",
-              "properties": {
-                "privateIPAllocationMethod": "Static",
-                "privateIPAddress": "[parameters('subnet1StartAddress')]",
-                "subnet": {
-                  "id": "[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet2Ref.value]"
-                }
-              }
-            }
-          ],
-          "enableIPForwarding": true
-        }
-      },
-      {
-        "apiVersion": "[variables('apiVer')]",
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "[parameters('vmName')]",
-        "location": "[resourceGroup().location]",
-        "plan": {
-          "name": "csr-azure-byol",
-          "publisher": "cisco",
-          "product": "cisco-csr-1000v"
         },
-        "dependsOn": [
-          "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
-          "[concat('Microsoft.Network/networkInterfaces/',parameters('vmName'),'-Nic0')]",
-          "[concat('Microsoft.Network/networkInterfaces/',parameters('vmName'),'-Nic1')]"
-        ],
-        "properties": {
-          "hardwareProfile": {
-            "vmSize": "[parameters('vmSize')]"
-          },
-          "osProfile": "[variables('osProfile')]",
-          "storageProfile": {
-            "imageReference": {
-              "publisher": "[variables('imagePublisher')]",
-              "offer": "[variables('imageOffer')]",
-              "sku": "[variables('imageSKU')]",
-              "version": "latest"
+        {
+            "apiVersion":"[variables('apiVer')]",
+            "type":"Microsoft.Network/networkInterfaces",
+            "name":"[concat(parameters('vmName'),'-Nic1')]",
+            "location":"[resourceGroup().location]",
+            "dependsOn":[
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
+            ],
+            "properties":{
+                "ipConfigurations":[
+                    {
+                        "name":"ipconfig1",
+                        "properties":{
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress":"[parameters('subnet1StartAddress')]",
+                            "subnet":{
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet2Ref.value]"
+                            }
+                        }
+                    }
+                ],
+                "enableIPForwarding":true
+            }
+        },
+        {
+            "apiVersion":"[variables('apiVer')]",
+            "type":"Microsoft.Compute/virtualMachines",
+            "name":"[parameters('vmName')]",
+            "location":"[resourceGroup().location]",
+            "plan":{
+                "name":"csr-azure-byol",
+                "publisher":"cisco",
+                "product":"cisco-csr-1000v"
             },
-            "osDisk": {
-              "name": "osdisk",
-              "vhd": {
-                "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/vhds/', 'osdisk', '.vhd')]"
-              },
-              "caching": "ReadWrite",
-              "createOption": "FromImage"
-            }
-          },
-          "networkProfile": {
-            "networkInterfaces": [
-              {
-                "properties": {
-                  "primary": true
+            "dependsOn":[
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
+                "[concat('Microsoft.Network/networkInterfaces/',parameters('vmName'),'-Nic0')]",
+                "[concat('Microsoft.Network/networkInterfaces/',parameters('vmName'),'-Nic1')]"
+            ],
+            "properties":{
+                "hardwareProfile":{
+                    "vmSize":"[parameters('vmSize')]"
                 },
-                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'),'-Nic0'))]"
-              },
-              {
-                "properties": {
-                  "primary": false
+                "osProfile":"[variables('osProfile')]",
+                "storageProfile":{
+                    "imageReference":{
+                        "publisher":"[variables('imagePublisher')]",
+                        "offer":"[variables('imageOffer')]",
+                        "sku":"[variables('imageSKU')]",
+                        "version":"latest"
+                    },
+                    "osDisk":{
+                        "name":"osdisk",
+                        "vhd":{
+                            "uri":"[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/vhds/', 'osdisk', '.vhd')]"
+                        },
+                        "caching":"ReadWrite",
+                        "createOption":"FromImage"
+                    }
                 },
-                "id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'),'-Nic1'))]"
-              }
-            ]
-          },
-          "diagnosticsProfile": {
-            "bootDiagnostics": {
-              "enabled": "true",
-              "storageUri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net')]"
+                "networkProfile":{
+                    "networkInterfaces":[
+                        {
+                            "properties":{
+                                "primary":true
+                            },
+                            "id":"[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'),'-Nic0'))]"
+                        },
+                        {
+                            "properties":{
+                                "primary":false
+                            },
+                            "id":"[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('vmName'),'-Nic1'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile":{
+                    "bootDiagnostics":{
+                        "enabled":"true",
+                        "storageUri":"[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net')]"
+                    }
+                }
             }
-          }
         }
-      }
     ]
 }
