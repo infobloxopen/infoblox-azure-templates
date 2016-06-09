@@ -185,9 +185,9 @@
         }
     },
     "variables": {
-        "imagePublisher": "infoblox",
-        "imageOffer": "1420",
-        "imageSKU": "csr-azure-byol",
+        "imagePublisher": "Canonical",
+        "imageOffer": "UbuntuServer",
+        "imageSKU": "14.04.3-LTS",
         "OSDiskName": "niosimage",
         "vmStorageAccountContainerName": "vhds",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
