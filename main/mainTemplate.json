@@ -335,7 +335,7 @@
         {
             "apiVersion":"[variables('apiVer')]",
             "type":"Microsoft.Network/networkInterfaces",
-            "name":"[concat(parameters('vmName'),'-Nic1')]",
+            "name":"[concat(parameters('vmName'),'-Nic0')]",
             "location":"[resourceGroup().location]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
@@ -363,7 +363,7 @@
         {
             "apiVersion":"[variables('apiVer')]",
             "type":"Microsoft.Network/networkInterfaces",
-            "name":"[concat(parameters('vmName'),'-Nic2')]",
+            "name":"[concat(parameters('vmName'),'-Nic1')]",
             "location":"[resourceGroup().location]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
