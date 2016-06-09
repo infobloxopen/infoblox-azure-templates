@@ -63,7 +63,7 @@
       "value": "infobloxresgroup"
     },
     "baseUrl": {
-      "value": "https://raw.githubusercontent.com/Azure/niosazure/"
+      "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
     }
   }
 }
