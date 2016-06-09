@@ -196,7 +196,7 @@
         "nsgname":"[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
         "apiVer":"2015-06-15",
         "publicIPAddressType":"Dynamic",
-        "adminUsername":"admin",
+        "adminUsername":"azureuser",
         "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
         "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
