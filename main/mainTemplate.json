@@ -265,9 +265,6 @@
                     "publicIPAddressType": {
                         "value": "[variables('publicIPAddressType')]"
                     },
-                    "publicIPNewOrExistingOrNone": {
-                        "value": "[parameters('publicIPNewOrExistingOrNone')]"
-                    },
                     "dnsPrefix": {
                         "value": "[parameters('publicIPDnsName')]"
                     },
