@@ -203,7 +203,27 @@
         "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
         "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
-        "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]"
+        "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
+        "osProfilesshPublicKey":{
+            "computerName":"[parameters('vmName')]",
+            "adminUsername":"[variables('adminUsername')]",
+            "linuxConfiguration":{
+                "disablePasswordAuthentication":"true",
+                "ssh":{
+                    "publicKeys":[
+                        {
+                            "path":"[variables('sshKeyPath')]",
+                            "keyData":"[parameters('sshPublicKey')]"
+                        }
+                    ]
+                }
+            }
+        },
+        "osProfilepassword":{
+            "computerName":"[parameters('vmName')]",
+            "adminUsername":"[variables('adminUsername')]",
+            "adminPassword":"[parameters('adminPassword')]"
+        }
     },
     "resources":[
         {
@@ -404,16 +424,12 @@
                 "networkProfile":{
                     "networkInterfaces":[
                         {
-                            "properties":{
-                                "primary":true
-                            },
-                            "id":"[resourceId('Microsoft.Network/networkInterfaces', variables('nicPrimaryName'))]"
+                            "id":"[resourceId('Microsoft.Network/networkInterfaces', variables('nicPrimaryName'))]",
+                            "properties":{ "primary":true }
                         },
                         {
-                            "properties":{
-                                "primary":false
-                            },
-                            "id":"[resourceId('Microsoft.Network/networkInterfaces', variables('nicSecondaryName'))]"
+                            "id":"[resourceId('Microsoft.Network/networkInterfaces', variables('nicSecondaryName'))]",
+                            "properties":{ "primary":false }
                         }
                     ]
                 },
