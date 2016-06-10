@@ -203,6 +203,7 @@
         "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
         "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+
         "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
         "osProfilesshPublicKey":{
             "computerName":"[parameters('vmName')]",
