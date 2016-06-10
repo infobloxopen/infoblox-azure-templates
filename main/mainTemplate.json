@@ -298,7 +298,7 @@
                     {
                         "name":"ipconfig1",
                         "properties":{
-                            "privateIPAllocationMethod":"Static",
+                            "privateIPAllocationMethod":"Dynamic",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet1Ref.value]"
                             }
@@ -321,7 +321,7 @@
                     {
                         "name":"ipconfig1",
                         "properties":{
-                            "privateIPAllocationMethod":"Static",
+                            "privateIPAllocationMethod":"Dynamic",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet2Ref.value]"
                             }
