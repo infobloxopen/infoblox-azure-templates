@@ -235,6 +235,7 @@
         "adminUsername":"azureuser",
         "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
         "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+        "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
         "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
 
@@ -280,6 +281,29 @@
                     },
                     "storageAccountExistingRG":{
                         "value":"[parameters('storageAccountExistingRG')]"
+                    }
+                }
+            }
+        },
+        {
+            "name":"SettingUpStorageAccountForLogs",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"2015-01-01",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('storageAccountForLogsSetupURL')]",
+                    "contentVersion":"1.0.0.0"
+                },
+                "parameters":{
+                    "storageAccountType":{
+                        "value":"[parameters('storageAccountForLogsType')]"
+                    },
+                    "storageAccountName":{
+                        "value":"[parameters('newStorageAccountForLogsName')]"
+                    },
+                    "storageAccountExistingRG":{
+                        "value":"[parameters('storageAccountForLogsExistingRG')]"
                     }
                 }
             }
@@ -398,6 +422,7 @@
             "location":"[resourceGroup().location]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
                 "[concat('Microsoft.Network/networkInterfaces/',variables('nicPrimaryName'))]",
                 "[concat('Microsoft.Network/networkInterfaces/',variables('nicSecondaryName'))]"
             ],

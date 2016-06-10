@@ -3,79 +3,85 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "templniosname2"
+      "value": "testnios3"
     },
     "vmSize": {
       "value": "Standard_DS2"
     },
     "adminPassword": {
-      "value": "Infoblox=111111"
+      "value": "Infoblox=1111"
     },
     "authenticationType": {
       "value": "password"
     },
     "virtualNetworkName": {
-      "value": "infobloxvnet"
+      "value": "vnet01"
     },
     "virtualNetworkExistingRGName": {
-      "value": "infoblox"
+      "value": "testresgroup"
+    },
+    "virtualNetworkAddressPrefix": {
+      "value": "10.2.0.0/16"
     },
     "vnetNewOrExisting": {
-      "value": "existing"
+      "value": "new"
     },
     "Subnet1Prefix": {
-      "value": "10.1.1.0/24"
+      "value": "10.2.0.0/24"
     },
     "Subnet1Name": {
       "value": "subnet1"
     },
     "subnet1StartAddress": {
-      "value": "10.1.1.4"
+      "value": "10.2.0.4"
     },
     "Subnet2Prefix": {
-      "value": "10.1.2.0/24"
+      "value": "10.2.1.0/24"
     },
     "Subnet2Name": {
       "value": "subnet2"
     },
     "subnet2StartAddress": {
-      "value": "10.1.2.4"
+      "value": "10.2.1.4"
     },
     "newStorageAccountName": {
-      "value": "infobloxstorage"
+      "value": "storageaccountqqqq000"
     },
     "storageAccountType": {
       "value": "Premium_LRS"
     },
     "storageAccountNewOrExisting": {
-      "value": "existing"
+      "value": "new"
     },
     "storageAccountExistingRG": {
-      "value": "infoblox"
+      "value": "testresgroup"
     },
     "newStorageAccountForLogsName": {
-      "value": "infobloxstorage"
+      "value": "storageaccountlogqqqq000"
     },
     "storageAccountForLogsType": {
-      "value": "Premium_LRS"
+      "value": "Standard_LRS"
     },
     "storageAccountForLogsNewOrExisting": {
-      "value": "existing"
+      "value": "new"
     },
     "storageAccountForLogsExistingRG": {
-      "value": "infoblox"
+      "value": "testresgroup"
     },
     "publicIPAddressName": {
-      "value": ""
+      "value": "testniospip000"
+    },
+    "publicIPDnsName": {
+      "value": "testniospipdname000"
     },
     "publicIPNewOrExistingOrNone": {
-      "value": "none"
+      "value": "new"
     },
     "publicIPExistingRGName": {
-      "value": "infoblox"
+      "value": "testresgroup"
     },
     "baseUrl": {
-      "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
+      "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/mainTemplate.json"
     }
   }
 }
