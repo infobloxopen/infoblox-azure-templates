@@ -4,6 +4,17 @@
 	"parameters": {
 		"basics": [
 		{
+			"name": "vmName",
+			"type": "Microsoft.Common.TextBox",
+			"label": "NIOS VM name",
+			"toolTip": "The name of the new NIOS vm.",
+			"constraints": {
+				"required": true,
+				"regex": "^[a-z][a-z0-9]{3,24}$",
+        		"validationMessage": "NIOS Vm name must be between 3 and 24 characters long, must start from lowercase letter and can contain only numbers and lowercase letters."
+    		}
+	    },
+		{
 			"name": "SSHCredntials",
 			"type": "Microsoft.Compute.CredentialsCombo",
 			"label": {
@@ -146,7 +157,7 @@
 			]
 		}],
 		"outputs": {
-			"vmName": "niosdefname",
+			"vmName": "[basics('vmName')]",
 			"vmSize": "[steps('vmSettings').vmSize]",
 
 			"adminPassword": "[basics('SSHCredntials').password]",
