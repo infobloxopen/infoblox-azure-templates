@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "templniosname"
+      "value": "templniosname2"
     },
     "vmSize": {
       "value": "Standard_DS2"

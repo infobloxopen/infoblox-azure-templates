@@ -414,7 +414,7 @@
                         "version":"latest"
                     },
                     "osDisk":{
-                        "name":"variables('OSDiskName')",
+                        "name":"[variables('OSDiskName')]",
                         "vhd":{
                             "uri":"[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'), '.vhd')]"
                         },
