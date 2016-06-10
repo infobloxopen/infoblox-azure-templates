@@ -53,6 +53,18 @@
     "storageAccountExistingRG": {
       "value": "infoblox"
     },
+    "newStorageAccountForLogsName": {
+      "value": "infobloxstorage"
+    },
+    "storageAccountForLogsType": {
+      "value": "Premium_LRS"
+    },
+    "storageAccountForLogsNewOrExisting": {
+      "value": "existing"
+    },
+    "storageAccountForLogsExistingRG": {
+      "value": "infoblox"
+    },
     "publicIPAddressName": {
       "value": ""
     },

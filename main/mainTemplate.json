@@ -51,7 +51,7 @@
             "type":"string",
             "defaultValue":"",
             "metadata":{
-                "description":"Identifies whether to use new or existing Storage Account"
+                "description":"Resource Group containing existing network"
             }
         },
         "virtualNetworkAddressPrefix":{
@@ -142,6 +142,40 @@
                 "description":"Resource Group containing existing storage account"
             }
         },
+        "newStorageAccountForLogsName":{
+            "type":"string",
+            "metadata":{
+                "description":"Unique Name for Storage Account where the Virtual Machine's disks will be placed."
+            }
+        },
+        "storageAccountForLogsType":{
+            "type":"string",
+            "defaultValue":"Premium_LRS",
+            "allowedValues":[
+                "Premium_LRS"
+            ],
+            "metadata":{
+                "description":"The type of storage account created."
+            }
+        },
+        "storageAccountForLogsNewOrExisting":{
+            "type":"string",
+            "defaultValue":"new",
+            "allowedValues":[
+                "new",
+                "existing"
+            ],
+            "metadata":{
+                "description":"Identifies whether to use new or existing Storage Account"
+            }
+        },
+        "storageAccountForLogsExistingRG":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Resource Group containing existing storage account"
+            }
+        },
         "publicIPAddressName":{
             "type":"string",
             "defaultValue":"",
@@ -188,8 +222,8 @@
         "imagePublisher":"Canonical",
         "imageOffer":"UbuntuServer",
         "imageSKU":"14.04.3-LTS",
-        "OSDiskName":"niosimage",
-        "vmStorageAccountContainerName":"vhds",
+        "OSDiskName":"[parameters('vmName')]",
+        "vmStorageAccountContainerName":"disks",
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
         "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",

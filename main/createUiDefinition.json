@@ -84,6 +84,23 @@
 					"visible": true
 				},
 				{
+					"name": "storageAccountForLogs",
+					"type": "Microsoft.Storage.StorageAccountSelector",
+					"label": "Storage account for BootDiagnostics.",
+					"toolTip": "Storage account for BootDiagnostics. Must be not preium.",
+					"defaultValue": {
+						"name": "storageaccountlog01",
+						"type": "Standard_LRS"
+					},
+					"constraints": {
+						"allowedTypes": ["Standard_LRS"]
+					},
+					"options": {
+						"hideExisting": false
+					},
+					"visible": true
+				},
+				{
 					"name": "niosNetwork",
 					"type": "Microsoft.Network.VirtualNetworkCombo",
 					"label": {
@@ -183,6 +200,11 @@
 			"storageAccountType": "[steps('vmSettings').storageAccount.type]",
 			"storageAccountNewOrExisting": "[steps('vmSettings').storageAccount.newOrExisting]",
 			"storageAccountExistingRG": "[steps('vmSettings').storageAccount.resourceGroup]",
+
+			"newStorageAccountForLogsName": "[steps('vmSettings').storageAccountForLogs.name]",
+			"storageAccountForLogsType": "[steps('vmSettings').storageAccountForLogs.type]",
+			"storageAccountForLogsNewOrExisting": "[steps('vmSettings').storageAccountForLogs.newOrExisting]",
+			"storageAccountForLogsExistingRG": "[steps('vmSettings').storageAccountForLogs.resourceGroup]",
 
 			"publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
 			"publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
