@@ -112,7 +112,8 @@
 								"addressPrefixSize": "/24"
 							},
 							"constraints": {
-								"minAddressPrefixSize": "/30"
+								"minAddressPrefixSize": "/30",
+								"minAddressCount": 1
 							}
 						},
 						"subnetMgmt": {
@@ -122,7 +123,8 @@
 								"addressPrefixSize": "/24"
 							},
 							"constraints": {
-								"minAddressPrefixSize": "/30"
+								"minAddressPrefixSize": "/30",
+								"minAddressCount": 1
 							}
 						}
 					},
