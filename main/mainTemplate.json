@@ -251,56 +251,6 @@
             }
         },
         {
-            "name":"SettingUpPublicIP",
-            "type":"Microsoft.Resources/deployments",
-            "apiVersion":"2015-01-01",
-            "properties":{
-                "mode":"Incremental",
-                "templateLink":{
-                    "uri":"[variables('publicIPSetupURL')]",
-                    "contentVersion":"1.0.0.0"
-                },
-                "parameters":{
-                    "publicIPAddressName":{
-                        "value":"[parameters('publicIPAddressName')]"
-                    },
-                    "publicIPAddressType":{
-                        "value":"[variables('publicIPAddressType')]"
-                    },
-                    "dnsPrefix":{
-                        "value":"[parameters('publicIPDnsName')]"
-                    },
-                    "publicIpRGName":{
-                        "value":"[parameters('publicIPExistingRGName')]"
-                    }
-                }
-            }
-        },
-        {
-            "apiVersion":"[variables('apiVer')]",
-            "type":"Microsoft.Network/networkSecurityGroups",
-            "name":"[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
-            "location":"[resourceGroup().location]",
-            "properties":{
-                "securityRules":[
-                    {
-                        "name":"rdp_rule",
-                        "properties":{
-                            "description":"Allow SSH",
-                            "protocol":"Tcp",
-                            "sourcePortRange":"*",
-                            "destinationPortRange":"22",
-                            "sourceAddressPrefix":"Internet",
-                            "destinationAddressPrefix":"*",
-                            "access":"Allow",
-                            "priority":100,
-                            "direction":"Inbound"
-                        }
-                    }
-                ]
-            }
-        },
-        {
             "name":"SettingUpVirtualNetwork",
             "type":"Microsoft.Resources/deployments",
             "apiVersion":"2015-01-01",
@@ -341,8 +291,7 @@
             "name":"[variables('nicPrimaryName')]",
             "location":"[resourceGroup().location]",
             "dependsOn":[
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-                "[concat('Microsoft.Network/networkSecurityGroups/',concat(parameters('vmName'),'-SSH-SecurityGroup'))]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
             ],
             "properties":{
                 "ipConfigurations":[
@@ -353,9 +302,6 @@
                             "privateIPAddress":"[parameters('subnet1StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet1Ref.value]"
-                            },
-                            "networkSecurityGroup":{
-                                "id":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
                             }
                         }
                     }
@@ -369,8 +315,7 @@
             "name":"variables('nicSecondaryName')",
             "location":"[resourceGroup().location]",
             "dependsOn":[
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-                "[concat('Microsoft.Network/networkSecurityGroups/',concat(parameters('vmName'),'-SSH-SecurityGroup'))]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
             ],
             "properties":{
                 "ipConfigurations":[
@@ -381,14 +326,37 @@
                             "privateIPAddress":"[parameters('subnet2StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet2Ref.value]"
-                            },
-                            "networkSecurityGroup":{
-                                "id":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
                             }
                         }
                     }
                 ],
                 "enableIPForwarding":true
+            }
+        },
+        {
+            "name":"SettingUpPublicIP",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"2015-01-01",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('publicIPSetupURL')]",
+                    "contentVersion":"1.0.0.0"
+                },
+                "parameters":{
+                    "publicIPAddressName":{
+                        "value":"[parameters('publicIPAddressName')]"
+                    },
+                    "publicIPAddressType":{
+                        "value":"[variables('publicIPAddressType')]"
+                    },
+                    "dnsPrefix":{
+                        "value":"[parameters('publicIPDnsName')]"
+                    },
+                    "publicIpRGName":{
+                        "value":"[parameters('publicIPExistingRGName')]"
+                    }
+                }
             }
         },
         {
