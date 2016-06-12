@@ -23,15 +23,15 @@
     "Subnet2Prefix": {
       "type": "string"
     },
-    "vnetExistingRGName" : {
-      "type" : "string",
-      "defaultValue" : ""
+    "vnetExistingRGName": {
+      "type": "string",
+      "defaultValue": ""
     }
   },
-  "variables" : {
-    "vnetID" : "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "subnet1" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
-    "subnet2" : "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]"
+  "variables": {
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+    "subnet1": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
+    "subnet2": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]"
   },
   "resources": [
         {
