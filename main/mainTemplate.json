@@ -145,7 +145,7 @@
         "newStorageAccountForLogsName":{
             "type":"string",
             "metadata":{
-                "description":"Unique Name for Storage Account where the Virtual Machine's disks will be placed."
+                "description":"Unique Name for Storage Account where the Virtual Machine's boot diagnostics will be placed."
             }
         },
         "storageAccountForLogsType":{
@@ -155,7 +155,7 @@
                 "Standard_LRS"
             ],
             "metadata":{
-                "description":"The type of storage account created."
+                "description":"The type of storage account created for boot diagnostics."
             }
         },
         "storageAccountForLogsNewOrExisting":{
@@ -166,14 +166,14 @@
                 "existing"
             ],
             "metadata":{
-                "description":"Identifies whether to use new or existing Storage Account"
+                "description":"Identifies whether to use new or existing Storage Account for boot diagnostics"
             }
         },
         "storageAccountForLogsExistingRG":{
             "type":"string",
             "defaultValue":"",
             "metadata":{
-                "description":"Resource Group containing existing storage account"
+                "description":"Resource Group containing existing storage account for boot diagnostics"
             }
         },
         "publicIPAddressName":{
