@@ -81,7 +81,7 @@
       "value": "testresgroup"
     },
     "baseUrl": {
-      "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/mainTemplate.json"
+      "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
     }
   }
 }
