@@ -5,6 +5,9 @@
     "virtualNetworkName": {
       "type": "string"
     },
+    "location": {
+      "type": "string"
+    },
     "virtualNetworkAddressPrefix": {
       "type": "string"
     },
