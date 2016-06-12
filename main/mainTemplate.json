@@ -150,9 +150,9 @@
         },
         "storageAccountForLogsType":{
             "type":"string",
-            "defaultValue":"Premium_LRS",
+            "defaultValue":"Standard_LRS",
             "allowedValues":[
-                "Premium_LRS"
+                "Standard_LRS"
             ],
             "metadata":{
                 "description":"The type of storage account created."
