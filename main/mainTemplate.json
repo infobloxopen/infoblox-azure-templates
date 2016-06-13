@@ -209,17 +209,10 @@
             "metadata":{
                 "description":"Resource Group containing existing public IP"
             }
-        },
-        "baseUrl":{
-            "type":"string",
-            "metadata":{
-                "artifactsBaseUrl":"",
-                "description":"URL to acquire other templates"
-            },
-            "defaultValue":"https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
         }
     },
     "variables":{
+        "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
         "imagePublisher":"Canonical",
         "imageOffer":"UbuntuServer",
         "imageSKU":"14.04.3-LTS",
@@ -230,14 +223,14 @@
         "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
         "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
         "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
-        "apiVer":"2015-06-15",
+        "apiVer":"2016-06-01",
         "publicIPAddressType":"Dynamic",
         "adminUsername":"azureuser",
         "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
-        "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-        "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
-        "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
-        "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+        "storageAccountSetupURL":"[concat(parameters('templateBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+        "storageAccountForLogsSetupURL":"[concat(parameters('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
+        "publicIPSetupURL":"[concat(parameters('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
+        "virtualNetworkSetupURL":"[concat(parameters('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
 
         "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
         "osProfilesshPublicKey":{
