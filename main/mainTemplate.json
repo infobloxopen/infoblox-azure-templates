@@ -18,6 +18,7 @@
         },
         "adminPassword":{
             "type":"securestring",
+            "defaultValue":"",
             "metadata":{
                 "description":"Password for the Virtual Machine."
             }
@@ -229,7 +230,6 @@
         "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
         "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
         "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
-        "nsgname":"[concat(parameters('vmName'),'-SSH-SecurityGroup')]",
         "apiVer":"2015-06-15",
         "publicIPAddressType":"Dynamic",
         "adminUsername":"azureuser",
@@ -265,7 +265,7 @@
         {
             "name":"SettingUpStorageAccount",
             "type":"Microsoft.Resources/deployments",
-            "apiVersion":"2015-01-01",
+            "apiVersion":"[variables('apiVer')]",
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
@@ -288,7 +288,7 @@
         {
             "name":"SettingUpStorageAccountForLogs",
             "type":"Microsoft.Resources/deployments",
-            "apiVersion":"2015-01-01",
+            "apiVersion":"[variables('apiVer')]",
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
@@ -311,7 +311,7 @@
         {
             "name":"SettingUpVirtualNetwork",
             "type":"Microsoft.Resources/deployments",
-            "apiVersion":"2015-01-01",
+            "apiVersion":"[variables('apiVer')]",
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
@@ -392,7 +392,7 @@
         {
             "name":"SettingUpPublicIP",
             "type":"Microsoft.Resources/deployments",
-            "apiVersion":"2015-01-01",
+            "apiVersion":"[variables('apiVer')]",
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
