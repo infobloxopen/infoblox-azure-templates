@@ -51,7 +51,7 @@
       "value": "Premium_LRS"
     },
     "storageAccountNewOrExisting": {
-      "value": "new"
+      "value": "existing"
     },
     "storageAccountExistingRG": {
       "value": "testresgroup"
@@ -63,25 +63,22 @@
       "value": "Standard_LRS"
     },
     "storageAccountForLogsNewOrExisting": {
-      "value": "new"
+      "value": "existing"
     },
     "storageAccountForLogsExistingRG": {
       "value": "testresgroup"
     },
     "publicIPAddressName": {
-      "value": "testniospip000"
+      "value": "testniospip0002"
     },
     "publicIPDnsName": {
-      "value": "testniospipdname000"
+      "value": "testniospipdname0002"
     },
     "publicIPNewOrExistingOrNone": {
       "value": "new"
     },
     "publicIPExistingRGName": {
       "value": "testresgroup"
-    },
-    "baseUrl": {
-      "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
     }
   }
 }
