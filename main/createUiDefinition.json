@@ -201,9 +201,7 @@
 			"publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
 			"publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
 			"publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
-			"publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
-
-			"baseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main"
+			"publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]"
 		}
 	}
 }
