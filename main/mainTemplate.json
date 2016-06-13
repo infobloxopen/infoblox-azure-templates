@@ -227,10 +227,10 @@
         "publicIPAddressType":"Dynamic",
         "adminUsername":"azureuser",
         "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
-        "storageAccountSetupURL":"[concat(parameters('templateBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-        "storageAccountForLogsSetupURL":"[concat(parameters('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
-        "publicIPSetupURL":"[concat(parameters('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
-        "virtualNetworkSetupURL":"[concat(parameters('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+        "storageAccountSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+        "storageAccountForLogsSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
+        "publicIPSetupURL":"[concat(variables('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
+        "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
 
         "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
         "osProfilesshPublicKey":{
