@@ -223,7 +223,7 @@
         "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
         "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
         "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
-        "apiVer":"2016-03-30",
+        "apiVer":"2016-06-01",
         "publicIPAddressType":"Dynamic",
         "adminUsername":"azureuser",
         "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
