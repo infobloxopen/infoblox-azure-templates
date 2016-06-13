@@ -69,10 +69,10 @@
       "value": "testresgroup"
     },
     "publicIPAddressName": {
-      "value": "testniospip0002"
+      "value": "testniospip0003"
     },
     "publicIPDnsName": {
-      "value": "testniospipdname0002"
+      "value": "testniospipdname0003"
     },
     "publicIPNewOrExistingOrNone": {
       "value": "new"
