@@ -1,0 +1,84 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "value": "testvm1"
+    },
+    "vmSize": {
+      "value": "Standard_DS2"
+    },
+    "adminPassword": {
+      "value": "Infoblox=111"
+    },
+    "authenticationType": {
+      "value": "password"
+    },
+    "virtualNetworkName": {
+      "value": "vnet01"
+    },
+    "virtualNetworkExistingRGName": {
+      "value": "templtestgroup"
+    },
+    "virtualNetworkAddressPrefix": {
+      "value": "10.4.0.0/16"
+    },
+    "vnetNewOrExisting": {
+      "value": "new"
+    },
+    "Subnet1Prefix": {
+      "value": "10.4.0.0/24"
+    },
+    "Subnet1Name": {
+      "value": "subnet1"
+    },
+    "subnet1StartAddress": {
+      "value": "10.4.0.4"
+    },
+    "Subnet2Prefix": {
+      "value": "10.4.1.0/24"
+    },
+    "Subnet2Name": {
+      "value": "subnet2"
+    },
+    "subnet2StartAddress": {
+      "value": "10.4.1.4"
+    },
+    "newStorageAccountName": {
+      "value": "templtestgroup"
+    },
+    "storageAccountType": {
+      "value": "Premium_LRS"
+    },
+    "storageAccountNewOrExisting": {
+      "value": "new"
+    },
+    "storageAccountExistingRG": {
+      "value": "templtestgroup"
+    },
+    "newStorageAccountForLogsName": {
+      "value": "templtestgrouplogs"
+    },
+    "storageAccountForLogsType": {
+      "value": "Standard_LRS"
+    },
+    "storageAccountForLogsNewOrExisting": {
+      "value": "new"
+    },
+    "storageAccountForLogsExistingRG": {
+      "value": "templtestgroup"
+    },
+    "publicIPAddressName": {
+      "value": "templatestestpip"
+    },
+    "publicIPDnsName": {
+      "value": "templatesttestpip"
+    },
+    "publicIPNewOrExistingOrNone": {
+      "value": "new"
+    },
+    "publicIPExistingRGName": {
+      "value": "templtestgroup"
+    }
+  }
+}

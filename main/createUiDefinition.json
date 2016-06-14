@@ -71,6 +71,9 @@
 					"type": "Microsoft.Storage.StorageAccountSelector",
 					"label": "Storage account",
 					"toolTip": "Storage account VM Disk",
+					"defaultValue": {
+						"type": "Premium_LRS"
+					},
 					"constraints": {
 						"allowedTypes": ["Premium_LRS"]
 					},
@@ -84,6 +87,9 @@
 					"type": "Microsoft.Storage.StorageAccountSelector",
 					"label": "Storage account for BootDiagnostics.",
 					"toolTip": "Storage account for BootDiagnostics. Must be not preium.",
+					"defaultValue": {
+						"type": "Standard_LRS"
+					},
 					"constraints": {
 						"allowedTypes": ["Standard_LRS"]
 					},
