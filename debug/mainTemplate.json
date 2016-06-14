@@ -351,7 +351,7 @@
                         "properties":{
                             "privateIPAllocationMethod":"Dynamic",
                             "subnet":{
-                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',[variables('apiVer')]).outputs.subnet1Ref.value]"
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
                             }
                         }
                     }
@@ -374,7 +374,7 @@
                         "properties":{
                             "privateIPAllocationMethod":"Dynamic",
                             "subnet":{
-                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',[variables('apiVer')]).outputs.subnet2Ref.value]"
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
                             }
                         }
                     }
