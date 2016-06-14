@@ -69,18 +69,18 @@
                 "description":"Identifies whether to use new or existing Virtual Network"
             }
         },
-        "Subnet1Prefix":{
-            "type":"string",
-            "defaultValue":"",
-            "metadata":{
-                "description":"Subnet 1 Prefix"
-            }
-        },
         "Subnet1Name":{
             "type":"string",
             "defaultValue":"",
             "metadata":{
                 "description":"Subnet 1 Name"
+            }
+        },
+        "Subnet1Prefix":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Subnet 1 Prefix"
             }
         },
         "subnet1StartAddress":{
@@ -89,18 +89,18 @@
                 "description":"Subnet 1 Starting IP Address"
             }
         },
-        "Subnet2Prefix":{
-            "type":"string",
-            "defaultValue":"",
-            "metadata":{
-                "description":"Subnet 2 Prefix"
-            }
-        },
         "Subnet2Name":{
             "type":"string",
             "defaultValue":"",
             "metadata":{
                 "description":"Subnet 2 Name"
+            }
+        },
+        "Subnet2Prefix":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Subnet 2 Prefix"
             }
         },
         "subnet2StartAddress":{
@@ -351,7 +351,7 @@
                         "properties":{
                             "privateIPAllocationMethod":"Dynamic",
                             "subnet":{
-                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet1Ref.value]"
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-06-15').outputs.subnet1Ref.value]"
                             }
                         }
                     }
@@ -374,7 +374,7 @@
                         "properties":{
                             "privateIPAllocationMethod":"Dynamic",
                             "subnet":{
-                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-01-01').outputs.subnet2Ref.value]"
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork','2015-06-15').outputs.subnet2Ref.value]"
                             }
                         }
                     }
