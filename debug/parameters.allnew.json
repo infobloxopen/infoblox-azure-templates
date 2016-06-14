@@ -18,7 +18,7 @@
       "value": "vnet01"
     },
     "virtualNetworkExistingRGName": {
-      "value": "templatesteststorage"
+      "value": "templatestestrgroup"
     },
     "virtualNetworkAddressPrefix": {
       "value": "10.4.0.0/16"
@@ -45,7 +45,7 @@
       "value": "10.4.1.4"
     },
     "newStorageAccountName": {
-      "value": "templatesteststorage"
+      "value": "templatestestrgroup"
     },
     "storageAccountType": {
       "value": "Premium_LRS"
@@ -54,10 +54,10 @@
       "value": "new"
     },
     "storageAccountExistingRG": {
-      "value": "templatesteststorage"
+      "value": "templatestestrgroup"
     },
     "newStorageAccountForLogsName": {
-      "value": "templatesteststoragelogs"
+      "value": "templatestestrgrouplogs"
     },
     "storageAccountForLogsType": {
       "value": "Standard_LRS"
@@ -66,7 +66,7 @@
       "value": "new"
     },
     "storageAccountForLogsExistingRG": {
-      "value": "templatesteststorage"
+      "value": "templatestestrgroup"
     },
     "publicIPAddressName": {
       "value": "templatestestpip"
@@ -78,7 +78,7 @@
       "value": "new"
     },
     "publicIPExistingRGName": {
-      "value": "templatesteststorage"
+      "value": "templatestestrgroup"
     }
   }
 }
