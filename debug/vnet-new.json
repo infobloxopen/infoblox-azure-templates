@@ -26,9 +26,7 @@
     }
   },
   "variables": {
-    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "subnet1": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
-    "subnet2": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]"
+    "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]"
   },
   "resources": [
         {
@@ -61,11 +59,11 @@
   ],
   "outputs": {
     "subnet1Ref": {
-      "value": "[variables('subnet1')]",
+      "value": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
       "type": "string"
     },
     "subnet2Ref": {
-      "value": "[variables('subnet2')]",
+      "value": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]",
       "type": "string"
     }
   }
