@@ -114,7 +114,7 @@
 						"addressPrefixSize": "/16"
 					},
 					"constraints": {
-						"minAddressPrefixSize": "/16"
+						"minAddressPrefixSize": "/28"
 					},
 					"options": {
 						"hideExisting": false

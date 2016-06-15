@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "testnios4"
+      "value": "testvmexisting"
     },
     "vmSize": {
       "value": "Standard_DS2"
     },
     "adminPassword": {
-      "value": "Infoblox=1111"
+      "value": "Infoblox=111"
     },
     "authenticationType": {
       "value": "password"
@@ -18,34 +18,31 @@
       "value": "vnet01"
     },
     "virtualNetworkExistingRGName": {
-      "value": "testresgroup"
-    },
-    "virtualNetworkAddressPrefix": {
-      "value": "10.2.0.0/16"
+      "value": "templtestgroup"
     },
     "vnetNewOrExisting": {
-      "value": "new"
+      "value": "existing"
     },
     "Subnet1Prefix": {
-      "value": "10.2.0.0/24"
+      "value": "10.4.0.0/24"
     },
     "Subnet1Name": {
       "value": "subnet1"
     },
     "subnet1StartAddress": {
-      "value": "10.2.0.4"
+      "value": "10.4.0.5"
     },
     "Subnet2Prefix": {
-      "value": "10.2.1.0/24"
+      "value": "10.4.1.0/24"
     },
     "Subnet2Name": {
       "value": "subnet2"
     },
     "subnet2StartAddress": {
-      "value": "10.2.1.4"
+      "value": "10.4.1.5"
     },
     "newStorageAccountName": {
-      "value": "storageaccountqqqq000"
+      "value": "templtestgroup"
     },
     "storageAccountType": {
       "value": "Premium_LRS"
@@ -54,10 +51,10 @@
       "value": "existing"
     },
     "storageAccountExistingRG": {
-      "value": "testresgroup"
+      "value": "templtestgroup"
     },
     "newStorageAccountForLogsName": {
-      "value": "storageaccountlogqqqq000"
+      "value": "templtestgrouplogs"
     },
     "storageAccountForLogsType": {
       "value": "Standard_LRS"
@@ -66,19 +63,19 @@
       "value": "existing"
     },
     "storageAccountForLogsExistingRG": {
-      "value": "testresgroup"
+      "value": "templtestgroup"
     },
     "publicIPAddressName": {
-      "value": "testniospip0003"
+      "value": "templatestestpipexisting"
     },
     "publicIPDnsName": {
-      "value": "testniospipdname0003"
+      "value": "templatestestpipexisting"
     },
     "publicIPNewOrExistingOrNone": {
-      "value": "new"
+      "value": "existing"
     },
     "publicIPExistingRGName": {
-      "value": "testresgroup"
+      "value": "templtestgroup"
     }
   }
 }
