@@ -1,4 +1,13 @@
 #!/bin/bash
+# Test creates Vms using templates.
+# All is done in resource group, which is created at begining and removed at the end.
+# Check steps are next:
+# 1. Creates VM with all new elements.
+# 2. Attaches VM to existing objects, created on step 1 and with existing Public Ip
+# 3. Attaches VM to existing objects, created on step 1, but with no Public Ip.
+# Script doesn't raise any errors and doesn't check, if objects are actually created.
+# It starts deployment using templates, with different input (all templates to be used).
+# Supposed to be usefull to validate templates after they are changed.
 
 RESOURCE_GROUP="templtestgroup"
 LOCATION="eastus"
@@ -42,4 +51,5 @@ azure group deployment create \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
 
+# Remove resource group
 azure group delete --quiet "${RESOURCE_GROUP}"
