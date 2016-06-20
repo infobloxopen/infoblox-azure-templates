@@ -349,7 +349,8 @@
                     {
                         "name":"ipconfig1",
                         "properties":{
-                            "privateIPAllocationMethod":"Dynamic",
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress": "[parameters('subnet1StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
                             }
@@ -372,7 +373,8 @@
                     {
                         "name":"ipconfig1",
                         "properties":{
-                            "privateIPAllocationMethod":"Dynamic",
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress": "[parameters('subnet2StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
                             }
