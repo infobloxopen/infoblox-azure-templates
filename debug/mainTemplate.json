@@ -238,6 +238,7 @@
         "storageAccountForLogsSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(variables('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
         "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+        "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
 
         "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
         "osProfilesshPublicKey":{
@@ -258,7 +259,8 @@
         "osProfilepassword":{
             "computerName":"[parameters('vmName')]",
             "adminUsername":"[variables('adminUsername')]",
-            "adminPassword":"[parameters('adminPassword')]"
+            "adminPassword":"[parameters('adminPassword')]",
+            "customData": "[variables('customData')]"
         }
     },
     "resources":[
