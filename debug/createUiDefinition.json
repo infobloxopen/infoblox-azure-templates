@@ -18,15 +18,11 @@
 			"name": "SSHCredntials",
 			"type": "Microsoft.Compute.CredentialsCombo",
 			"label": {
-				"authenticationType": "Authentication type",
 				"password": "Password",
-				"confirmPassword": "Confirm password",
-				"sshPublicKey": "SSH public key"
+				"confirmPassword": "Confirm password"
 			},
 			"toolTip": {
-				"authenticationType": "",
-				"password": "",
-				"sshPublicKey": ""
+				"password": ""
 			},
 			"constraints": {
 				"required": true
@@ -34,7 +30,8 @@
 			"options": {
 				"hideConfirmation": false
 			},
-			"osPlatform": "Linux"
+			"osPlatform": "Windows",
+			"visible": true
 		}],
 		"steps": [{
 			"name": "vmSettings",
