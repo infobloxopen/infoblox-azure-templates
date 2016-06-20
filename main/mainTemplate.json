@@ -213,9 +213,9 @@
     },
     "variables":{
         "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
-        "imagePublisher":"Canonical",
-        "imageOffer":"UbuntuServer",
-        "imageSKU":"14.04.3-LTS",
+        "imagePublisher":"infoblox",
+        "imageOffer":"infoblox",
+        "imageSKU":"vnios-te-1420-test",
         "OSDiskName":"[parameters('vmName')]",
         "vmStorageAccountContainerName":"disks",
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
