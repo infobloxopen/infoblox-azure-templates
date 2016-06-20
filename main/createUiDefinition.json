@@ -18,15 +18,11 @@
 			"name": "SSHCredntials",
 			"type": "Microsoft.Compute.CredentialsCombo",
 			"label": {
-				"authenticationType": "Authentication type",
 				"password": "Password",
-				"confirmPassword": "Confirm password",
-				"sshPublicKey": "SSH public key"
+				"confirmPassword": "Confirm password"
 			},
 			"toolTip": {
-				"authenticationType": "",
-				"password": "",
-				"sshPublicKey": ""
+				"password": ""
 			},
 			"constraints": {
 				"required": true
@@ -34,7 +30,8 @@
 			"options": {
 				"hideConfirmation": false
 			},
-			"osPlatform": "Linux"
+			"osPlatform": "Windows",
+			"visible": true
 		}],
 		"steps": [{
 			"name": "vmSettings",
@@ -44,7 +41,48 @@
 				"preValidation": "Configure VM Settings",
 				"postValidation": "Done"
 			},
-			"elements": [{
+			"elements": [
+				{
+					"name": "niosModel",
+					"type": "Microsoft.Common.DropDown",
+					"label": "NIOS model",
+					"defaultValue": "TE-1420 debug model",
+					"toolTip": "",
+					"constraints": {
+						"allowedValues": [
+							{
+								"label": "TE-1420 debug model",
+								"value": "vnios-te-1420-test"
+							},
+							{
+								"label": "TE-820",
+								"value": "te-820"
+							},
+							{
+								"label": "TE-1420",
+								"value": "te-1420"
+							},
+							{
+								"label": "TE-2220",
+								"value": "te-2220"
+							},
+							{
+								"label": "CP-V800",
+								"value": "cp-V800"
+							},
+							{
+								"label": "CP-V1400",
+								"value": "cp-V1400"
+							},
+							{
+								"label": "CP-V2200",
+								"value": "cp-V2200"
+							}
+						]
+					},
+					"visible": true
+				},
+				{
 					"name": "vmSize",
 					"type": "Microsoft.Compute.SizeSelector",
 					"label": "Virtual machine size",
@@ -176,6 +214,7 @@
 		"outputs": {
 			"vmName": "[basics('vmName')]",
 			"vmSize": "[steps('vmSettings').vmSize]",
+			"niosModel": "[steps('vmSettings').niosModel]",
 
 			"adminPassword": "[basics('SSHCredntials').password]",
 			"sshPublicKey": "[basics('SSHCredntials').sshPublicKey]",

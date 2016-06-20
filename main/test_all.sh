@@ -8,7 +8,7 @@
 # Script doesn't raise any errors and doesn't check, if objects are actually created.
 # It starts deployment using templates, with different input (all templates to be used).
 # Supposed to be usefull to validate templates after they are changed.
-# Not: To check the templates, they must be uploaded to some public place. In this example it is github.
+# Note: To check the templates, they must be uploaded to some public place. In this example it is github.
 # Don't forget to change TEMPLATE_URI and templateBaseUrl in mainTemplate.json according to the place where templates are uploaded.
 
 RESOURCE_GROUP="templtestgroup"

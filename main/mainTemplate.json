@@ -16,6 +16,13 @@
                 "description":"Size of the VM"
             }
         },
+        "niosModel":{
+            "type":"string",
+            "defaultValue":"1420",
+            "metadata":{
+                "description":"niosModel"
+            }
+        },
         "adminPassword":{
             "type":"securestring",
             "defaultValue":"",
@@ -213,9 +220,9 @@
     },
     "variables":{
         "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
-        "imagePublisher":"infoblox",
-        "imageOffer":"infoblox",
-        "imageSKU":"vnios-te-1420-test",
+        "imagePublisher":"Canonical",
+        "imageOffer":"UbuntuServer",
+        "imageSKU": "[parameters('niosModel')]",
         "OSDiskName":"[parameters('vmName')]",
         "vmStorageAccountContainerName":"disks",
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -349,7 +356,8 @@
                     {
                         "name":"ipconfig1",
                         "properties":{
-                            "privateIPAllocationMethod":"Dynamic",
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress": "[parameters('subnet1StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
                             }
@@ -372,7 +380,8 @@
                     {
                         "name":"ipconfig1",
                         "properties":{
-                            "privateIPAllocationMethod":"Dynamic",
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress": "[parameters('subnet2StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
                             }
