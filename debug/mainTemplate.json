@@ -351,7 +351,8 @@
             "name":"[variables('nicPrimaryName')]",
             "location":"[resourceGroup().location]",
             "dependsOn":[
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]"
             ],
             "properties":{
                 "ipConfigurations":[
@@ -362,6 +363,9 @@
                             "privateIPAddress": "[parameters('subnet1StartAddress')]",
                             "subnet":{
                                 "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
+                            },
+                            "publicIPAddress": {
+                                "id":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
                             }
                         }
                     }
