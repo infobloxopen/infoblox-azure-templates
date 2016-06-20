@@ -44,7 +44,44 @@
 				"preValidation": "Configure VM Settings",
 				"postValidation": "Done"
 			},
-			"elements": [{
+			"elements": [
+				{
+					"name": "niosModel",
+					"type": "Microsoft.Common.DropDown",
+					"label": "NIOS model",
+					"defaultValue": "TE-820",
+					"toolTip": "",
+					"constraints": {
+						"allowedValues": [
+							{
+								"label": "TE-820",
+								"value": "820"
+							},
+							{
+								"label": "TE-1420",
+								"value": "1420"
+							},
+							{
+								"label": "TE-2220",
+								"value": "2220"
+							},
+							{
+								"label": "CP-V800",
+								"value": "CP-V800"
+							},
+							{
+								"label": "CP-V1400",
+								"value": "CP-V1400"
+							},
+							{
+								"label": "CP-V2200",
+								"value": "CP-V2200"
+							}
+						]
+					},
+					"visible": true
+				},
+				{
 					"name": "vmSize",
 					"type": "Microsoft.Compute.SizeSelector",
 					"label": "Virtual machine size",
@@ -176,6 +213,7 @@
 		"outputs": {
 			"vmName": "[basics('vmName')]",
 			"vmSize": "[steps('vmSettings').vmSize]",
+			"niosModel": "[steps('niosModel')]",
 
 			"adminPassword": "[basics('SSHCredntials').password]",
 			"sshPublicKey": "[basics('SSHCredntials').sshPublicKey]",
