@@ -46,37 +46,37 @@
 					"name": "niosModel",
 					"type": "Microsoft.Common.DropDown",
 					"label": "NIOS model",
-					"defaultValue": "Debug model",
+					"defaultValue": "TE-1420 debug model",
 					"toolTip": "",
 					"constraints": {
 						"allowedValues": [
 							{
-								"label": "Debug model",
-								"value": "820"
+								"label": "TE-1420 debug model",
+								"value": "vnios-te-1420-test"
 							},
 							{
 								"label": "TE-820",
-								"value": "820"
+								"value": "te-820"
 							},
 							{
 								"label": "TE-1420",
-								"value": "1420"
+								"value": "te-1420"
 							},
 							{
 								"label": "TE-2220",
-								"value": "2220"
+								"value": "te-2220"
 							},
 							{
 								"label": "CP-V800",
-								"value": "CP-V800"
+								"value": "cp-V800"
 							},
 							{
 								"label": "CP-V1400",
-								"value": "CP-V1400"
+								"value": "cp-V1400"
 							},
 							{
 								"label": "CP-V2200",
-								"value": "CP-V2200"
+								"value": "cp-V2200"
 							}
 						]
 					},
