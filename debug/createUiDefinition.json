@@ -213,7 +213,7 @@
 		"outputs": {
 			"vmName": "[basics('vmName')]",
 			"vmSize": "[steps('vmSettings').vmSize]",
-			"niosModel": "[steps('niosModel')]",
+			"niosModel": "[steps('vmSettings').niosModel]",
 
 			"adminPassword": "[basics('SSHCredntials').password]",
 			"sshPublicKey": "[basics('SSHCredntials').sshPublicKey]",
