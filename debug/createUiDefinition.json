@@ -49,10 +49,14 @@
 					"name": "niosModel",
 					"type": "Microsoft.Common.DropDown",
 					"label": "NIOS model",
-					"defaultValue": "TE-820",
+					"defaultValue": "Debug model",
 					"toolTip": "",
 					"constraints": {
 						"allowedValues": [
+							{
+								"label": "Debug model",
+								"value": "820"
+							},
 							{
 								"label": "TE-820",
 								"value": "820"

@@ -16,6 +16,13 @@
                 "description":"Size of the VM"
             }
         },
+        "niosModel":{
+            "type":"string",
+            "defaultValue":"1420",
+            "metadata":{
+                "description":"niosModel"
+            }
+        },
         "adminPassword":{
             "type":"securestring",
             "defaultValue":"",
@@ -215,7 +222,7 @@
         "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/debug",
         "imagePublisher":"Canonical",
         "imageOffer":"UbuntuServer",
-        "imageSKU":"14.04.3-LTS",
+        "imageSKU": "[parameters('niosModel')]",
         "OSDiskName":"[parameters('vmName')]",
         "vmStorageAccountContainerName":"disks",
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",

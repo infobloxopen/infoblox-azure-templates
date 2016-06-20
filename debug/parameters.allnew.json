@@ -8,6 +8,9 @@
     "vmSize": {
       "value": "Standard_DS2"
     },
+    "niosModel": {
+      "value": "14.04.3-LTS"
+    },
     "adminPassword": {
       "value": "Infoblox=111"
     },
