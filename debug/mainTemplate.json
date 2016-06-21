@@ -463,7 +463,7 @@
                 "networkProfile":{
                     "networkInterfaces":[
                         {
-                            "id":"[resourceId('Microsoft.Network/networkInterfaces/', variables('nicPrimaryName'))]",
+                            "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVer')).outputs.nicRef.value]",
                             "properties":{ "primary":true }
                         },
                         {
