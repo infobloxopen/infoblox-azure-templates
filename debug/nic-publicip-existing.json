@@ -17,9 +17,9 @@
     },
     "resources": [
         {
-            "apiVersion":"[variables('apiVer')]",
+            "apiVersion":"2016-06-01",
             "type":"Microsoft.Network/networkInterfaces",
-            "name":"[variables('nicName')]",
+            "name":"[parameters('nicName')]",
             "location":"[resourceGroup().location]",
             "properties":{
                 "ipConfigurations":[
@@ -27,12 +27,12 @@
                         "name":"ipconfig1",
                         "properties":{
                             "privateIPAllocationMethod":"Static",
-                            "privateIPAddress": "[variables('IPAddress')]",
+                            "privateIPAddress": "[parameters('IPAddress')]",
                             "subnet":{
-                                "id":"[variables('subnetId')]"
+                                "id":"[parameters('subnetId')]"
                             },
                             "publicIPAddress": {
-                                "id":"[variables('publicIPAddressId')]"
+                                "id":"[parameters('publicIPAddressId')]"
                             }
                         }
                     }
