@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "nicName": {
+            "type": "string"
+        },
+        "IPAddress": {
+            "type": "string"
+        },
+        "subnetId": {
+            "type": "string"
+        },
+        "publicIPAddressId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion":"[variables('apiVer')]",
+            "type":"Microsoft.Network/networkInterfaces",
+            "name":"[variables('nicName')]",
+            "location":"[resourceGroup().location]",
+            "properties":{
+                "ipConfigurations":[
+                    {
+                        "name":"ipconfig1",
+                        "properties":{
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress": "[variables('IPAddress')]",
+                            "subnet":{
+                                "id":"[variables('subnetId')]"
+                            }
+                        }
+                    }
+                ],
+                "enableIPForwarding":true
+            }
+        }
+    ],
+    "outputs": {}
+}

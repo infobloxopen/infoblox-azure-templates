@@ -228,6 +228,9 @@
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
         "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
+        "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
+        "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
+        "publicIPExistingOrNone": "[replace(parameters('publicIPNewOrExistingOrNone'), 'new', 'existing')]",
         "apiVer":"2016-06-01",
         "publicIPAddressType":"Dynamic",
         "adminUsername":"azureuser",
@@ -236,6 +239,8 @@
         "storageAccountForLogsSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(variables('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
         "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+        "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-publicip-',parameters('publicIPExistingOrNone'),'.json')]",
+        "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-publicip-none.json')]",
         "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
 
         "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
@@ -259,37 +264,6 @@
             "adminUsername":"[variables('adminUsername')]",
             "adminPassword":"[parameters('adminPassword')]",
             "customData": "[variables('customData')]"
-        },
-
-        "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
-        "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
-
-        "publicIPExistingOrNone": "[replace(parameters('publicIPNewOrExistingOrNone'), 'new', 'existing')]",
-        "propertiesPrimaryNic":"[variables(concat('propertiesPrimaryNicPip',variables('publicIPExistingOrNone')))]",
-        "propertiesPrimaryNicPipexisting": {
-            "privateIPAllocationMethod":"Static",
-            "privateIPAddress": "[parameters('subnet1StartAddress')]",
-            "subnet":{
-                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
-            },
-            "publicIPAddress": {
-                "id":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
-            }
-        },
-        "propertiesPrimaryNicPipnone": {
-            "privateIPAllocationMethod":"Static",
-            "privateIPAddress": "[parameters('subnet1StartAddress')]",
-            "subnet":{
-                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
-            }
-        },
-
-        "propertiesSecondaryNic": {
-            "privateIPAllocationMethod":"Static",
-            "privateIPAddress": "[parameters('subnet2StartAddress')]",
-            "subnet":{
-                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
-            }
         }
     },
     "resources":[
@@ -377,20 +351,30 @@
         {
             "apiVersion":"[variables('apiVer')]",
             "type":"Microsoft.Network/networkInterfaces",
-            "name":"[variables('nicPrimaryName')]",
-            "location":"[resourceGroup().location]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]"
             ],
             "properties":{
-                "ipConfigurations":[
-                    {
-                        "name":"ipconfig1",
-                        "properties":"[variables('propertiesPrimaryNic')]"
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('virtualNetworkSetupURL')]",
+                    "contentVersion":"1.0.0.0"
+                },
+                "parameters":{
+                    "nicName":{
+                        "value":"[variables('nicPrimaryName')]"
+                    },
+                    "IPAddress":{
+                        "value":"[parameters('virtualNetworkAddressPrefix')]"
+                    },
+                    "subnetId":{
+                        "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
+                    },
+                    "publicIPAddressId":{
+                        "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
                     }
-                ],
-                "enableIPForwarding":true
+                }
             }
         },
         {
@@ -405,7 +389,13 @@
                 "ipConfigurations":[
                     {
                         "name":"ipconfig1",
-                        "properties":"[variables('propertiesSecondaryNic')]"
+                        "properties":{
+                            "privateIPAllocationMethod":"Static",
+                            "privateIPAddress": "[parameters('subnet2StartAddress')]",
+                            "subnet":{
+                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
+                            }
+                        }
                     }
                 ],
                 "enableIPForwarding":true
