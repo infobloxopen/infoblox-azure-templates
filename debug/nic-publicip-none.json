@@ -12,7 +12,8 @@
             "type": "string"
         },
         "publicIPAddressId": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": ""
         }
     },
     "resources": [

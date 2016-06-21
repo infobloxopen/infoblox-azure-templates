@@ -38,9 +38,9 @@
                     }
                 ],
                 "enableIPForwarding":true
+            }
         }
-        }   
-        ],
+    ],
     "outputs": {
         "nicRef": {
             "value": "[resourceId('Microsoft.Network/networkInterfaces/', parameters('nicName'))]",

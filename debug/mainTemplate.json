@@ -379,27 +379,29 @@
             }
         },
         {
+            "name":"SettingUpSecondaryNic",
             "apiVersion":"[variables('apiVer')]",
-            "type":"Microsoft.Network/networkInterfaces",
-            "name":"[variables('nicSecondaryName')]",
-            "location":"[resourceGroup().location]",
+            "type":"Microsoft.Resources/deployments",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
             ],
             "properties":{
-                "ipConfigurations":[
-                    {
-                        "name":"ipconfig1",
-                        "properties":{
-                            "privateIPAllocationMethod":"Static",
-                            "privateIPAddress": "[parameters('subnet2StartAddress')]",
-                            "subnet":{
-                                "id":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
-                            }
-                        }
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('nicSecondarySetupURL')]",
+                    "contentVersion":"1.0.0.0"
+                },
+                "parameters":{
+                    "nicName":{
+                        "value":"[variables('nicSecondaryName')]"
+                    },
+                    "IPAddress":{
+                        "value":"[parameters('subnet2StartAddress')]"
+                    },
+                    "subnetId":{
+                        "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
                     }
-                ],
-                "enableIPForwarding":true
+                }
             }
         },
         {
@@ -437,7 +439,7 @@
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
-                "[concat('Microsoft.Network/networkInterfaces/',variables('nicSecondaryName'))]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]"
             ],
             "properties":{
                 "hardwareProfile":{
@@ -467,7 +469,7 @@
                             "properties":{ "primary":true }
                         },
                         {
-                            "id":"[resourceId('Microsoft.Network/networkInterfaces/', variables('nicSecondaryName'))]",
+                            "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVer')).outputs.nicRef.value]",
                             "properties":{ "primary":false }
                         }
                     ]
