@@ -239,7 +239,7 @@
         "storageAccountForLogsSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
         "publicIPSetupURL":"[concat(variables('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
         "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
-        "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-publicip-',parameters('publicIPExistingOrNone'),'.json')]",
+        "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-publicip-',variables('publicIPExistingOrNone'),'.json')]",
         "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-publicip-none.json')]",
         "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
 
