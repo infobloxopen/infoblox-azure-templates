@@ -436,7 +436,7 @@
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
-                "[concat('Microsoft.Network/networkInterfaces/',variables('nicPrimaryName'))]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
                 "[concat('Microsoft.Network/networkInterfaces/',variables('nicSecondaryName'))]"
             ],
             "properties":{
