@@ -367,7 +367,7 @@
                         "value":"[variables('nicPrimaryName')]"
                     },
                     "IPAddress":{
-                        "value":"[parameters('virtualNetworkAddressPrefix')]"
+                        "value":"[parameters('subnet1StartAddress')]"
                     },
                     "subnetId":{
                         "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
