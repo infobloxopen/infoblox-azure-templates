@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "testvm1"
+      "value": "testvmallnew"
     },
     "vmSize": {
       "value": "Standard_DS2"
@@ -75,7 +75,7 @@
       "value": "templatestestpip"
     },
     "publicIPDnsName": {
-      "value": "templatesttestpip"
+      "value": "templatestestpip"
     },
     "publicIPNewOrExistingOrNone": {
       "value": "new"
