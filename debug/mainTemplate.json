@@ -359,7 +359,7 @@
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
-                    "uri":"[variables('virtualNetworkSetupURL')]",
+                    "uri":"[variables('nicPrimarySetupURL')]",
                     "contentVersion":"1.0.0.0"
                 },
                 "parameters":{
