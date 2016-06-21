@@ -20,7 +20,6 @@ PARAMETERS_DIR="."
 
 azure group create "${RESOURCE_GROUP}" "${LOCATION}"
 
-
 echo "Test creation of all new elements"
 azure group deployment create \
     --template-uri "${TEMPLATE_URI}" \
