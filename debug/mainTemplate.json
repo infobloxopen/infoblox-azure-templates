@@ -256,7 +256,7 @@
         "vmSize-cp-v1400":"Standard_DS3",
         "vmSize-cp-v2200":"Standard_DS3",
 
-        "osProfile":"[variables(concat('osprofile-',parameters('authenticationType')))]",
+        "osProfile":"[variables(concat('osProfile-',parameters('authenticationType')))]",
         "osProfile-sshPublicKey":{
             "computerName":"[parameters('vmName')]",
             "adminUsername":"[variables('adminUsername')]",
