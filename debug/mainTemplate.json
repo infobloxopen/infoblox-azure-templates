@@ -248,7 +248,7 @@
 
         "vmSize":"[variables(concat('modelSize-',parameters('niosModel')))]",
         "modelSize-vnios-te-1420-test":"Standard_DS2",
-        "modelSize-vnios-14.04.3-LTS":"Standard_DS2",
+        "modelSize-14.04.3-LTS":"Standard_DS2",
         "modelSize-te-820":"Standard_DS2",
         "modelSize-te-1420":"Standard_DS3",
         "modelSize-te-2220":"Standard_DS3",
@@ -256,8 +256,8 @@
         "modelSize-cp-v1400":"Standard_DS3",
         "modelSize-cp-v2200":"Standard_DS3",
 
-        "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
-        "osProfilesshPublicKey":{
+        "osProfile":"[variables(concat('osprofile-',parameters('authenticationType')))]",
+        "osProfile-sshPublicKey":{
             "computerName":"[parameters('vmName')]",
             "adminUsername":"[variables('adminUsername')]",
             "linuxConfiguration":{
@@ -272,7 +272,7 @@
                 }
             }
         },
-        "osProfilepassword":{
+        "osProfile-password":{
             "computerName":"[parameters('vmName')]",
             "adminUsername":"[variables('adminUsername')]",
             "adminPassword":"[parameters('adminPassword')]",
