@@ -9,19 +9,22 @@
                 "description":"Name for the Virtual Machine."
             }
         },
-        "vmSize":{
-            "type":"string",
-            "defaultValue":"Standard_DS2",
-            "metadata":{
-                "description":"Size of the VM"
-            }
-        },
         "niosModel":{
             "type":"string",
-            "defaultValue":"1420",
+            "defaultValue":"te-1420",
             "metadata":{
                 "description":"niosModel"
-            }
+            },
+            "allowedValues":[
+                "vnios-te-1420-test",
+                "14.04.3-LTS",
+                "te-820",
+                "te-1420",
+                "te-2220",
+                "cp-v800",
+                "cp-v1400",
+                "cp-v2200"
+            ]
         },
         "adminPassword":{
             "type":"securestring",
@@ -241,7 +244,17 @@
         "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
         "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
         "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
-        "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
+        "customData":"[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
+
+        "vmSize":"[variables(concat('modelSize-',parameters('niosModel')))]",
+        "modelSize-vnios-te-1420-test":"Standard_DS2",
+        "modelSize-vnios-14.04.3-LTS":"Standard_DS2",
+        "modelSize-te-820":"Standard_DS2",
+        "modelSize-te-1420":"Standard_DS3",
+        "modelSize-te-2220":"Standard_DS3",
+        "modelSize-cp-v800":"Standard_DS2",
+        "modelSize-cp-v1400":"Standard_DS3",
+        "modelSize-cp-v2200":"Standard_DS3",
 
         "osProfile":"[variables(concat('osprofile',parameters('authenticationType')))]",
         "osProfilesshPublicKey":{
@@ -443,7 +456,7 @@
             ],
             "properties":{
                 "hardwareProfile":{
-                    "vmSize":"[parameters('vmSize')]"
+                    "vmSize":"[variables('vmSize')]"
                 },
                 "osProfile":"[variables('osProfile')]",
                 "storageProfile":{
