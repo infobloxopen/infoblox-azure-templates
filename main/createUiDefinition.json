@@ -46,63 +46,41 @@
 					"name": "niosModel",
 					"type": "Microsoft.Common.DropDown",
 					"label": "NIOS model",
-					"defaultValue": "TE-1420 debug model",
+					"defaultValue": "TE-1420 debug model (Standard DS2)",
 					"toolTip": "",
 					"constraints": {
 						"allowedValues": [
 							{
-								"label": "TE-1420 debug model",
+								"label": "TE-1420 debug model (Standard DS2)",
 								"value": "vnios-te-1420-test"
 							},
 							{
-								"label": "TE-820",
+								"label": "TE-820 (Standard_DS2)",
 								"value": "te-820"
 							},
 							{
-								"label": "TE-1420",
+								"label": "TE-1420 (Standard_DS3)",
 								"value": "te-1420"
 							},
 							{
-								"label": "TE-2220",
+								"label": "TE-2220 (Standard_DS3)",
 								"value": "te-2220"
 							},
 							{
-								"label": "CP-V800",
-								"value": "cp-V800"
+								"label": "CP-V800 (Standard_DS2)",
+								"value": "cp-v800"
 							},
 							{
-								"label": "CP-V1400",
-								"value": "cp-V1400"
+								"label": "CP-V1400 (Standard_DS3)",
+								"value": "cp-v1400"
 							},
 							{
-								"label": "CP-V2200",
-								"value": "cp-V2200"
+								"label": "CP-V2200 (Standard_DS3)",
+								"value": "cp-v2200"
 							}
 						]
 					},
 					"visible": true
-				},
-				{
-					"name": "vmSize",
-					"type": "Microsoft.Compute.SizeSelector",
-					"label": "Virtual machine size",
-					"toolTip": "The size of virtual machine to provision.",
-					"recommendedSizes": [
-						"Standard_DS2",
-						"Standard_DS3"
-					],
-					"constraints": {
-						"allowedSizes": [
-							"Standard_DS2",
-							"Standard_DS3"
-						]
-					},
-					"osPlatform": "Linux",
-					"imageReference": {
-						"publisher": "Infoblox",
-						"offer": "NIOS",
-						"sku": "7.4.0"
-					}
 				},
 				{
 					"name": "storageAccount",
@@ -213,7 +191,6 @@
 		}],
 		"outputs": {
 			"vmName": "[basics('vmName')]",
-			"vmSize": "[steps('vmSettings').vmSize]",
 			"niosModel": "[steps('vmSettings').niosModel]",
 
 			"adminPassword": "[basics('SSHCredntials').password]",
