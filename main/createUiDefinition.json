@@ -52,7 +52,7 @@
 						"allowedValues": [
 							{
 								"label": "TE-1420 debug model (Standard DS2)",
-								"value": "vnios-te-1420-test"
+								"value": "vnios-te-1420-test-preview"
 							},
 							{
 								"label": "TE-820 (Standard_DS2)",
