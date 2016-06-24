@@ -6,7 +6,7 @@
       "value": "testvmnopip"
     },
     "niosModel": {
-      "value": "14.04.3-LTS"
+      "value": "vnios-te-1420-test"
     },
     "adminPassword": {
       "value": "Infoblox=111"
