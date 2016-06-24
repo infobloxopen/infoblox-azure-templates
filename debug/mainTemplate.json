@@ -4,9 +4,15 @@
     "parameters":{
         "vmName":{
             "type":"string",
-            "defaultValue":"CSR",
+            "defaultValue":"NiosVm",
             "metadata":{
                 "description":"Name for the Virtual Machine."
+            }
+        },
+        "vmSKU":{
+            "type":"string",
+            "metadata":{
+                "description":"Direct SKU for debug"
             }
         },
         "niosModel":{
@@ -223,9 +229,9 @@
     },
     "variables":{
         "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/debug",
-        "imagePublisher":"Canonical",
-        "imageOffer":"UbuntuServer",
-        "imageSKU": "[parameters('niosModel')]",
+        "imagePublisher":"infoblox",
+        "imageOffer":"infoblox",
+        "imageSKU": "[parameters('vmSKU')]",
         "OSDiskName":"[parameters('vmName')]",
         "vmStorageAccountContainerName":"disks",
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",

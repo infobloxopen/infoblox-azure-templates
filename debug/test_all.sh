@@ -28,29 +28,29 @@ azure group deployment create \
     "${DEPLOYMENT_NAME}"
 
 
-echo "Test adding one more VM to existing elements"
-# Add Public Ip, will be used as existing.
-azure network public-ip create \
-    --name "templatestestpipexisting" \
-    --allocation-method Dynamic \
-    --domain-name-label "templatestestpipexisting" \
-    --resource-group "${RESOURCE_GROUP}" \
-    --location "${LOCATION}"
+# echo "Test adding one more VM to existing elements"
+# # Add Public Ip, will be used as existing.
+# azure network public-ip create \
+#     --name "templatestestpipexisting" \
+#     --allocation-method Dynamic \
+#     --domain-name-label "templatestestpipexisting" \
+#     --resource-group "${RESOURCE_GROUP}" \
+#     --location "${LOCATION}"
 
-# Add VM
-azure group deployment create \
-    --template-uri "${TEMPLATE_URI}"\
-    --parameters-file "${PARAMETERS_DIR}/parameters.existing.json" \
-    --resource-group "${RESOURCE_GROUP}" \
-    "${DEPLOYMENT_NAME}"
+# # Add VM
+# azure group deployment create \
+#     --template-uri "${TEMPLATE_URI}"\
+#     --parameters-file "${PARAMETERS_DIR}/parameters.existing.json" \
+#     --resource-group "${RESOURCE_GROUP}" \
+#     "${DEPLOYMENT_NAME}"
 
 
-echo "Test adding one more VM to existing elements with no Publuc Ip"
-azure group deployment create \
-    --template-uri "${TEMPLATE_URI}"\
-    --parameters-file "${PARAMETERS_DIR}/parameters.nopip.json" \
-    --resource-group "${RESOURCE_GROUP}" \
-    "${DEPLOYMENT_NAME}"
+# echo "Test adding one more VM to existing elements with no Publuc Ip"
+# azure group deployment create \
+#     --template-uri "${TEMPLATE_URI}"\
+#     --parameters-file "${PARAMETERS_DIR}/parameters.nopip.json" \
+#     --resource-group "${RESOURCE_GROUP}" \
+#     "${DEPLOYMENT_NAME}"
 
 # Remove resource group
 azure group delete --quiet "${RESOURCE_GROUP}"
