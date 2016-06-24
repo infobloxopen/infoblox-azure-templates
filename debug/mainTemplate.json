@@ -4,15 +4,9 @@
     "parameters":{
         "vmName":{
             "type":"string",
-            "defaultValue":"NiosVm",
+            "defaultValue":"CSR",
             "metadata":{
                 "description":"Name for the Virtual Machine."
-            }
-        },
-        "vmSKU":{
-            "type":"string",
-            "metadata":{
-                "description":"Direct SKU for debug"
             }
         },
         "niosModel":{
@@ -23,7 +17,6 @@
             },
             "allowedValues":[
                 "vnios-te-1420-test",
-                "14.04.3-LTS",
                 "te-820",
                 "te-1420",
                 "te-2220",
@@ -230,8 +223,8 @@
     "variables":{
         "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/debug",
         "imagePublisher":"infoblox",
-        "imageOffer":"infoblox",
-        "imageSKU": "[parameters('vmSKU')]",
+        "imageOffer":"infoblox-vnios-te-v1420-preview",
+        "imageSKU": "[parameters('niosModel')]",
         "OSDiskName":"[parameters('vmName')]",
         "vmStorageAccountContainerName":"disks",
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -254,7 +247,6 @@
 
         "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
         "vmSize-vnios-te-1420-test":"Standard_DS2",
-        "vmSize-14.04.3-LTS":"Standard_DS2",
         "vmSize-te-820":"Standard_DS2",
         "vmSize-te-1420":"Standard_DS3",
         "vmSize-te-2220":"Standard_DS3",
