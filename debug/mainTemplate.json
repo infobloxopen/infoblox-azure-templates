@@ -452,6 +452,11 @@
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]"
             ],
+            "plan": {
+                "publisher": "[variables('imagePublisher')]",
+                "product": "[variables('imageOffer')]",
+                "name": "[variables('imageSKU')]"
+            },
             "properties":{
                 "hardwareProfile":{
                     "vmSize":"[variables('vmSize')]"
