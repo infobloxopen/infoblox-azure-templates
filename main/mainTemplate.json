@@ -16,8 +16,7 @@
                 "description":"niosModel"
             },
             "allowedValues":[
-                "vnios-te-1420-test-preview",
-                "14.04.3-LTS",
+                "vnios-te-1420-test",
                 "te-820",
                 "te-1420",
                 "te-2220",
@@ -223,8 +222,8 @@
     },
     "variables":{
         "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
-        "imagePublisher":"Canonical",
-        "imageOffer":"UbuntuServer",
+        "imagePublisher":"infoblox",
+        "imageOffer":"infoblox-vnios-te-v1420-preview",
         "imageSKU": "[parameters('niosModel')]",
         "OSDiskName":"[parameters('vmName')]",
         "vmStorageAccountContainerName":"disks",
@@ -248,7 +247,6 @@
 
         "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
         "vmSize-vnios-te-1420-test":"Standard_DS2",
-        "vmSize-14.04.3-LTS":"Standard_DS2",
         "vmSize-te-820":"Standard_DS2",
         "vmSize-te-1420":"Standard_DS3",
         "vmSize-te-2220":"Standard_DS3",
@@ -454,6 +452,11 @@
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]"
             ],
+            "plan": {
+                "publisher": "[variables('imagePublisher')]",
+                "product": "[variables('imageOffer')]",
+                "name": "[variables('imageSKU')]"
+            },
             "properties":{
                 "hardwareProfile":{
                     "vmSize":"[variables('vmSize')]"
