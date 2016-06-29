@@ -48,7 +48,7 @@ azure group deployment create \
 echo "Test adding one more VM to existing elements with no Publuc Ip"
 azure group deployment create \
     --template-uri "${TEMPLATE_URI}"\
-    --parameters-file "${PARAMETERS_DIR}/parameters.nopip.json" \
+    --parameters-file "${PARAMETERS_DIR}/parameters.none.json" \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
 

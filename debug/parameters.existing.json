@@ -76,6 +76,12 @@
     },
     "publicIPExistingRGName": {
       "value": "templtestgroup"
+    },
+      "avaliabilitySetNewOrExistingOrNone": {
+      "value": "existing"
+    },
+      "avaliabilitySetName": {
+      "value": "someset"
     }
   }
 }
