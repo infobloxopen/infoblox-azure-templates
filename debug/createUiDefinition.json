@@ -183,7 +183,50 @@
 						"hideExisting": false
 					},
 					"visible": true
+				},
+				{
+					"name": "availabilitySection",
+					"type": "Microsoft.Common.Section",
+				 	"label": "Avaliability set",
+				 	"elements": [
+						{
+							"name": "avaliabilityNoneNewOrExisting",
+							"type": "Microsoft.Common.OptionsGroup",
+							"label": "Avaliability Set",
+							"defaultValue": "None",
+							"toolTip": "",
+							"constraints": {
+								"allowedValues": [
+									{
+										"label": "None",
+										"value": "none"
+									},
+									{
+										"label": "New",
+										"value": "new"
+									},
+									{
+										"label": "Existing",
+										"value": "existing"
+									}
+								]
+							},
+							"visible": true
+						},
+						{
+							"name": "avaliabilitySetName",
+							"type": "Microsoft.Common.TextBox",
+							"label": "Avaliability set name",
+							"toolTip": "If avaliability set is selected as New or Existing, enter it's name",
+							"constraints": {
+								"required": false
+							},
+							"visible": true
+						}
+				  ],
+				  "visible": true
 				}
+
 			]
 		}],
 		"outputs": {
