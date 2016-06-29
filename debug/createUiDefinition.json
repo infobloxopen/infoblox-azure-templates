@@ -194,7 +194,7 @@
 							"type": "Microsoft.Common.OptionsGroup",
 							"label": "Avaliability Set",
 							"defaultValue": "None",
-							"toolTip": "Select New or Existing avaliability set if you want VM to be part of it. Don't forget to fill correctly Avaliability set name if you select New or Existing here.",
+							"toolTip": "Select availability set for the VM",
 							"constraints": {
 								"allowedValues": [
 									{
@@ -217,7 +217,7 @@
 							"name": "avaliabilitySetName",
 							"type": "Microsoft.Common.TextBox",
 							"label": "Avaliability set name",
-							"toolTip": "If avaliability set is New, enter it's name, which must not . If you select existing, name should point on existing available Avaliability Set.",
+							"toolTip": "Enter exact name of any existing availability set or create a new availability set",
 							"constraints": {
 								"required": false
 							},
