@@ -15,23 +15,32 @@
     		}
 	    },
 		{
-			"name": "SSHCredntials",
-			"type": "Microsoft.Compute.CredentialsCombo",
-			"label": {
-				"password": "Password",
-				"confirmPassword": "Confirm password"
-			},
-			"toolTip": {
-				"password": ""
-			},
-			"constraints": {
-				"required": true
-			},
-			"options": {
-				"hideConfirmation": false
-			},
-			"osPlatform": "Windows",
-			"visible": true
+			"name": "passwordSection",
+			"type": "Microsoft.Common.Section",
+		 	"label": "admin password",
+		 	"elements": [
+			{
+				"name": "SSHCredntials",
+				"type": "Microsoft.Compute.CredentialsCombo",
+				"label": {
+					"password": "admin password",
+					"confirmPassword": "Confirm admin password"
+				},
+				"toolTip": {
+					"password": "password for the admin user",
+					"confirmPassword": "password for the admin user"
+				},
+				"constraints": {
+					"required": true
+				},
+				"options": {
+					"hideConfirmation": false
+				},
+				"osPlatform": "Windows",
+				"visible": true
+			}
+		  ],
+		  "visible": true
 		}],
 		"steps": [{
 			"name": "vmSettings",
@@ -51,31 +60,31 @@
 					"constraints": {
 						"allowedValues": [
 							{
-								"label": "TE-1420 debug model (Standard DS2)",
+								"label": "TE-V1420 debug model (Standard DS2)",
 								"value": "vnios-te-1420-test"
 							},
 							{
-								"label": "TE-820 (Standard_DS2)",
+								"label": "TE-V820 (Standard DS2)",
 								"value": "te-820"
 							},
 							{
-								"label": "TE-1420 (Standard_DS3)",
+								"label": "TE-V1420 (Standard DS3)",
 								"value": "te-1420"
 							},
 							{
-								"label": "TE-2220 (Standard_DS3)",
+								"label": "TE-V2220 (Standard DS3)",
 								"value": "te-2220"
 							},
 							{
-								"label": "CP-V800 (Standard_DS2)",
+								"label": "CP-V800 (Standard DS2)",
 								"value": "cp-v800"
 							},
 							{
-								"label": "CP-V1400 (Standard_DS3)",
+								"label": "CP-V1400 (Standard DS3)",
 								"value": "cp-v1400"
 							},
 							{
-								"label": "CP-V2200 (Standard_DS3)",
+								"label": "CP-V2200 (Standard DS3)",
 								"value": "cp-v2200"
 							}
 						]
@@ -86,7 +95,7 @@
 					"name": "storageAccount",
 					"type": "Microsoft.Storage.StorageAccountSelector",
 					"label": "Storage account",
-					"toolTip": "Storage account VM Disk",
+					"toolTip": "Storage account for the NIOS disk, must be a premium type",
 					"defaultValue": {
 						"type": "Premium_LRS"
 					},
@@ -102,7 +111,7 @@
 					"name": "storageAccountForLogs",
 					"type": "Microsoft.Storage.StorageAccountSelector",
 					"label": "Storage account for BootDiagnostics.",
-					"toolTip": "Storage account for BootDiagnostics. Must be not preium.",
+					"toolTip": "Storage account for the Boot Disgnostic file, must be a non premium type",
 					"defaultValue": {
 						"type": "Standard_LRS"
 					},
@@ -125,10 +134,6 @@
 						"virtualNetwork": "",
 						"subnets": ""
 					},
-					"defaultValue": {
-						"name": "vnet01",
-						"addressPrefixSize": "/16"
-					},
 					"constraints": {
 						"minAddressPrefixSize": "/28"
 					},
@@ -138,10 +143,6 @@
 					"subnets": {
 						"subnetLan1": {
 							"label": "Subnet for LAN1 port",
-							"defaultValue": {
-								"name": "subnet1",
-								"addressPrefixSize": "/24"
-							},
 							"constraints": {
 								"minAddressPrefixSize": "/30",
 								"minAddressCount": 1
@@ -149,10 +150,6 @@
 						},
 						"subnetMgmt": {
 							"label": "Subnet for MGMT port",
-							"defaultValue": {
-								"name": "subnet2",
-								"addressPrefixSize": "/24"
-							},
 							"constraints": {
 								"minAddressPrefixSize": "/30",
 								"minAddressCount": 1
@@ -166,7 +163,7 @@
 					"type": "Microsoft.Network.PublicIpAddressCombo",
 					"label": {
 						"publicIpAddress": "Public IP address",
-						"domainNameLabel": "Domain name label"
+						"domainNameLabel": "Public DNS name"
 					},
 					"toolTip": {
 						"publicIpAddress": "",
@@ -193,9 +190,9 @@
 			"vmName": "[basics('vmName')]",
 			"niosModel": "[steps('vmSettings').niosModel]",
 
-			"adminPassword": "[basics('SSHCredntials').password]",
-			"sshPublicKey": "[basics('SSHCredntials').sshPublicKey]",
-			"authenticationType": "[basics('SSHCredntials').authenticationType]",
+			"adminPassword": "[basics('passwordSection').SSHCredntials.password]",
+			"sshPublicKey": "[basics('passwordSection').SSHCredntials.sshPublicKey]",
+			"authenticationType": "[basics('passwordSection').SSHCredntials.authenticationType]",
 
 			"virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
 			"virtualNetworkExistingRGName": "[steps('vmSettings').niosNetwork.resourceGroup]",
