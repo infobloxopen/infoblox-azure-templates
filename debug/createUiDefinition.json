@@ -17,7 +17,7 @@
 		{
 			"name": "passwordSection",
 			"type": "Microsoft.Common.Section",
-		 	"label": "Admin password",
+		 	"label": "Password for admin user",
 		 	"elements": [
 			{
 				"name": "SSHCredntials",
@@ -194,7 +194,7 @@
 							"type": "Microsoft.Common.OptionsGroup",
 							"label": "Avaliability Set",
 							"defaultValue": "None",
-							"toolTip": "Select New or Existing avaliability set if you want VM to be part of it.\n Important: Don't forget to fill Avaliability set name if you select New or Existing here.",
+							"toolTip": "Select New or Existing avaliability set if you want VM to be part of it. Don't forget to fill correctly Avaliability set name if you select New or Existing here.",
 							"constraints": {
 								"allowedValues": [
 									{
@@ -217,7 +217,7 @@
 							"name": "avaliabilitySetName",
 							"type": "Microsoft.Common.TextBox",
 							"label": "Avaliability set name",
-							"toolTip": "If avaliability set is selected as New or Existing, enter it's name. If you select existing, name should point on existing available Avaliability Set.",
+							"toolTip": "If avaliability set is New, enter it's name, which must not . If you select existing, name should point on existing available Avaliability Set.",
 							"constraints": {
 								"required": false
 							},
