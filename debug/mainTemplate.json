@@ -218,6 +218,25 @@
             "metadata":{
                 "description":"Resource Group containing existing public IP"
             }
+        },
+        "avaliabilitySetNewOrExistingOrNone":{
+            "type":"string",
+            "defaultValue":"new",
+            "allowedValues":[
+                "new",
+                "existing",
+                "none"
+            ],
+            "metadata":{
+                "description":"Indicates whether the avaliability Set IP is new, none or existing"
+            }
+        },
+        "avaliabilitySetName":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"Avaliability set name"
+            }
         }
     },
     "variables":{
