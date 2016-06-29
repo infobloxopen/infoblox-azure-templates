@@ -142,14 +142,14 @@
 					},
 					"subnets": {
 						"subnetLan1": {
-							"label": "Subnet for LAN1 port",
+							"label": "LAN1 interface’s subnet",
 							"constraints": {
 								"minAddressPrefixSize": "/30",
 								"minAddressCount": 1
 							}
 						},
 						"subnetMgmt": {
-							"label": "Subnet for MGMT port",
+							"label": "MGMT interface’s subnet",
 							"constraints": {
 								"minAddressPrefixSize": "/30",
 								"minAddressCount": 1
@@ -190,7 +190,7 @@
 				 	"label": "Avaliability set",
 				 	"elements": [
 						{
-							"name": "avaliabilityNoneNewOrExisting",
+							"name": "avaliabilitySetNewOrExistingOrNone",
 							"type": "Microsoft.Common.OptionsGroup",
 							"label": "Avaliability Set",
 							"defaultValue": "None",
@@ -263,7 +263,10 @@
 			"publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
 			"publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
 			"publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
-			"publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]"
+			"publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
+
+			"avaliabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.avaliabilitySetNewOrExistingOrNone]",
+			"avaliabilitySetName": "[steps('vmSettings').availabilitySection.avaliabilitySetName]"
 		}
 	}
 }
