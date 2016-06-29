@@ -221,7 +221,7 @@
         },
         "avaliabilitySetNewOrExistingOrNone":{
             "type":"string",
-            "defaultValue":"new",
+            "defaultValue":"none",
             "allowedValues":[
                 "new",
                 "existing",
