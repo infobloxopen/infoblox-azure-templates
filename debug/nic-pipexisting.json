@@ -13,6 +13,9 @@
         },
         "publicIPAddressId": {
             "type": "string"
+        },
+        "networkSecurityGroupId": {
+            "type": "string"
         }
     },
     "resources": [
@@ -33,6 +36,9 @@
                             },
                             "publicIPAddress": {
                                 "id":"[parameters('publicIPAddressId')]"
+                            },
+                            "networkSecurityGroup": {
+                              "id": "[parameters('networkSecurityGroupId')]"
                             }
                         }
                     }

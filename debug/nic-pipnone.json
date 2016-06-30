@@ -14,6 +14,9 @@
         "publicIPAddressId": {
             "type": "string",
             "defaultValue": ""
+        },
+        "networkSecurityGroupId": {
+            "type": "string"
         }
     },
     "resources": [
@@ -31,6 +34,9 @@
                             "privateIPAddress": "[parameters('IPAddress')]",
                             "subnet":{
                                 "id":"[parameters('subnetId')]"
+                            },
+                            "networkSecurityGroup": {
+                              "id": "[parameters('networkSecurityGroupId')]"
                             }
                         }
                     }
