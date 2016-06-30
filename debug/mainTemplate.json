@@ -431,7 +431,7 @@
                     "publicIPAddressId":{
                         "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
                     },
-                    "networkSecurityGroup":{
+                    "networkSecurityGroupId":{
                         "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
                     }
                 }
