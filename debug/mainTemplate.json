@@ -450,20 +450,6 @@
                             "priority": 106,
                             "direction": "Outbound"
                         }
-                    },
-                    {
-                        "name": "API_Proxy",
-                        "properties": {
-                            "description": "Allow vNIOS API Proxy",
-                            "protocol": "Tcp",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "8787",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 107,
-                            "direction": "Inbound"
-                        }
                     }
                 ]
             }
