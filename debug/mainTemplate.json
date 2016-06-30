@@ -620,7 +620,9 @@
                     "contentVersion":"1.0.0.0"
                 },
                 "parameters":{
-                    "vmName": "[parameters('vmName')]",
+                    "vmName": {
+                        "value" : "[parameters('vmName')]"
+                    },
                     "plan": {
                         "value" : {
                             "publisher": "[variables('imagePublisher')]",
