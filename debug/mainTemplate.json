@@ -432,7 +432,7 @@
                         "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
                     },
                     "networkSecurityGroupId":{
-                        "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
+                        "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
                     }
                 }
             }
@@ -443,7 +443,7 @@
             "type":"Microsoft.Resources/deployments",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-                "[concat('Microsoft.Network/networkSecurityGroups/',variables('nsgName'))]"
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
             ],
             "properties":{
                 "mode":"Incremental",
@@ -462,7 +462,7 @@
                         "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
                     },
                     "networkSecurityGroupId":{
-                        "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname'))]"
+                        "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
                     }
                 }
             }
