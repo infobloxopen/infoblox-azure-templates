@@ -265,7 +265,11 @@
         "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
         "customData":"[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
 
-        "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',parameters('availabilitySetNewOrExistingOrNone'),'.json')]",
+
+        "availabilitySetNewOrExisting": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'none', 'existing')]",
+        "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
+
+        "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrExisting'),'.json')]",
 
         "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
         "vmSize-vnios-te-1420-test":"Standard_DS2",
@@ -297,7 +301,9 @@
             "adminUsername":"[variables('adminUsername')]",
             "adminPassword":"[parameters('adminPassword')]",
             "customData": "[variables('customData')]"
-        }
+        },
+
+        "virtualMachineSetSetupURL":"[concat(variables('templateBaseUrl'),'/vm-availability-', variables('availabilitySetExistingOrNone'),'.json')]"
     },
     "resources":[
         {
