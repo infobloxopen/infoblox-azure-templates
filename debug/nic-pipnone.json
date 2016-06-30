@@ -33,10 +33,10 @@
                             "privateIPAllocationMethod":"Static",
                             "privateIPAddress": "[parameters('IPAddress')]",
                             "subnet":{
-                                "id":"[parameters('subnetId')]"
+                                "id": "[parameters('subnetId')]"
                             },
                             "networkSecurityGroup": {
-                              "id": "[parameters('networkSecurityGroupId')]"
+                                "id": "[parameters('networkSecurityGroupId')]"
                             }
                         }
                     }
