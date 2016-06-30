@@ -616,10 +616,8 @@
             "properties":{
                 "mode":"Incremental",
                 "templateLink": {
-                    "value" : {
-                        "uri":"[variables('virtualMachineSetURL')]",
-                        "contentVersion":"1.0.0.0"
-                    }
+                    "uri":"[variables('virtualMachineSetURL')]",
+                    "contentVersion":"1.0.0.0"
                 },
                 "parameters":{
                     "vmName": "[parameters('vmName')]",
