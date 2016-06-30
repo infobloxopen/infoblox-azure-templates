@@ -364,6 +364,104 @@
                             "priority": 100,
                             "direction": "Inbound"
                         }
+                    },
+                    {
+                        "name": "DNS",
+                        "properties": {
+                            "description": "Allow DNS",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "53",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 101,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "HTTPS",
+                        "properties": {
+                            "description": "Allow HTTPS",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 102,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_1194_in",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 1194 Inbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "1194",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 103,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_2114_in",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 2114 Inbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "2114",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 104,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_1194_out",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 1194 Outbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "1194",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 105,
+                            "direction": "Outbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_2114_out",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 2114 Outbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "2114",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 106,
+                            "direction": "Outbound"
+                        }
+                    },
+                    {
+                        "name": "API_Proxy",
+                        "properties": {
+                            "description": "Allow vNIOS API Proxy",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "8787",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 107,
+                            "direction": "Inbound"
+                        }
                     }
                 ]
             }
