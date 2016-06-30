@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "availabilitySetName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+        {
+            "apiVersion":"2016-03-30",
+            "type":"Microsoft.Compute/virtualMachines",
+            "name":"[parameters('vmName')]",
+            "location":"[resourceGroup().location]",
+            "dependsOn":[
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpAvailabilitySet')]"
+            ],
+            "plan": {
+                "publisher": "[variables('imagePublisher')]",
+                "product": "[variables('imageOffer')]",
+                "name": "[variables('imageSKU')]"
+            },
+            "properties":{
+                "hardwareProfile":{
+                    "vmSize":"[variables('vmSize')]"
+                },
+                "osProfile":"[variables('osProfile')]",
+                "storageProfile":{
+                    "imageReference":{
+                        "publisher":"[variables('imagePublisher')]",
+                        "offer":"[variables('imageOffer')]",
+                        "sku":"[variables('imageSKU')]",
+                        "version":"latest"
+                    },
+                    "osDisk":{
+                        "name":"[variables('OSDiskName')]",
+                        "vhd":{
+                            "uri":"[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'), '.vhd')]"
+                        },
+                        "caching":"ReadWrite",
+                        "createOption":"FromImage"
+                    }
+                },
+                "networkProfile":{
+                    "networkInterfaces":[
+                        {
+                            "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVer')).outputs.nicRef.value]",
+                            "properties":{ "primary":true }
+                        },
+                        {
+                            "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVer')).outputs.nicRef.value]",
+                            "properties":{ "primary":false }
+                        }
+                    ]
+                },
+                "diagnosticsProfile":{
+                    "bootDiagnostics":{
+                        "enabled":"false"
+                    }
+                },
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName') )]"
+                }
+            }
+        }
+  ],
+  "outputs": {}
+}
