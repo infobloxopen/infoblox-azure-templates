@@ -219,7 +219,7 @@
                 "description":"Resource Group containing existing public IP"
             }
         },
-        "avaliabilitySetNewOrExistingOrNone":{
+        "availabilitySetNewOrExistingOrNone":{
             "type":"string",
             "defaultValue":"none",
             "allowedValues":[
@@ -228,14 +228,14 @@
                 "none"
             ],
             "metadata":{
-                "description":"Indicates whether the avaliability Set IP is new, none or existing"
+                "description":"Indicates whether the availability Set IP is new, none or existing"
             }
         },
-        "avaliabilitySetName":{
+        "availabilitySetName":{
             "type":"string",
             "defaultValue":"",
             "metadata":{
-                "description":"Avaliability set name"
+                "description":"availability set name"
             }
         }
     },
@@ -264,6 +264,8 @@
         "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
         "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
         "customData":"[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
+
+        "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',parameters('availabilitySetNewOrExistingOrNone'),'.json')]",
 
         "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
         "vmSize-vnios-te-1420-test":"Standard_DS2",
@@ -503,7 +505,7 @@
         },
         {
             "name":"SettingUpPrimaryNic",
-            "apiVersion":"[variables('apiVer')]",
+            "apiVersion":"2016-03-30",
             "type":"Microsoft.Resources/deployments",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
@@ -537,7 +539,7 @@
         },
         {
             "name":"SettingUpSecondaryNic",
-            "apiVersion":"[variables('apiVer')]",
+            "apiVersion":"2016-03-30",
             "type":"Microsoft.Resources/deployments",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
@@ -592,6 +594,23 @@
             }
         },
         {
+            "name":"SettingUpAvailabilitySet",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('availabilitySetSetupURL')]",
+                    "contentVersion":"1.0.0.0"
+                },
+                "parameters":{
+                    "availabilitySetName":{
+                        "value":"[parameters('availabilitySetName')]"
+                    }
+                }
+            }
+        },
+        {
             "apiVersion":"2016-03-30",
             "type":"Microsoft.Compute/virtualMachines",
             "name":"[parameters('vmName')]",
@@ -600,7 +619,8 @@
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpAvailabilitySet')]"
             ],
             "plan": {
                 "publisher": "[variables('imagePublisher')]",
@@ -644,6 +664,9 @@
                     "bootDiagnostics":{
                         "enabled":"false"
                     }
+                },
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName') )]"
                 }
             }
         }
