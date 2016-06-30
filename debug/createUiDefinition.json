@@ -187,12 +187,12 @@
 				{
 					"name": "availabilitySection",
 					"type": "Microsoft.Common.Section",
-				 	"label": "Avaliability set",
+				 	"label": "availability set",
 				 	"elements": [
 						{
-							"name": "avaliabilitySetNewOrExistingOrNone",
+							"name": "availabilitySetNewOrExistingOrNone",
 							"type": "Microsoft.Common.OptionsGroup",
-							"label": "Avaliability Set",
+							"label": "availability Set",
 							"defaultValue": "None",
 							"toolTip": "Select availability set for the VM",
 							"constraints": {
@@ -214,9 +214,9 @@
 							"visible": true
 						},
 						{
-							"name": "avaliabilitySetName",
+							"name": "availabilitySetName",
 							"type": "Microsoft.Common.TextBox",
-							"label": "Avaliability set name",
+							"label": "availability set name",
 							"toolTip": "Enter exact name of any existing availability set or create a new availability set",
 							"constraints": {
 								"required": false
@@ -265,8 +265,8 @@
 			"publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
 			"publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
 
-			"avaliabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.avaliabilitySetNewOrExistingOrNone]",
-			"avaliabilitySetName": "[steps('vmSettings').availabilitySection.avaliabilitySetName]"
+			"availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
+			"availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]"
 		}
 	}
 }

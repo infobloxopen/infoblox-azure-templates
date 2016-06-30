@@ -80,10 +80,10 @@
     "publicIPExistingRGName": {
       "value": "templtestgroup"
     },
-      "avaliabilitySetNewOrExistingOrNone": {
+      "availabilitySetNewOrExistingOrNone": {
       "value": "new"
     },
-      "avaliabilitySetName": {
+      "availabilitySetName": {
       "value": "someset"
     }
   }
