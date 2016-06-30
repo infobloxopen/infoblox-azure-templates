@@ -20,7 +20,7 @@
     },
     "resources": [
         {
-            "apiVersion":"2016-06-01",
+            "apiVersion":"2016-03-30",
             "type":"Microsoft.Network/networkInterfaces",
             "name":"[parameters('nicName')]",
             "location":"[resourceGroup().location]",
