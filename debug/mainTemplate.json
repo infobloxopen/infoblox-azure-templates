@@ -491,8 +491,8 @@
         },
         {
             "name":"SettingUpPrimaryNic",
-            "apiVersion":"2016-03-30",
             "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]",
@@ -525,8 +525,8 @@
         },
         {
             "name":"SettingUpSecondaryNic",
-            "apiVersion":"2016-03-30",
             "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
                 "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
@@ -582,7 +582,7 @@
         {
             "name":"SettingUpAvailabilitySet",
             "type":"Microsoft.Resources/deployments",
-            "apiVersion":"2016-03-30",
+            "apiVersion":"[variables('apiVer')]",
             "properties":{
                 "mode":"Incremental",
                 "templateLink":{
