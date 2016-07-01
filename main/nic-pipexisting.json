@@ -13,11 +13,14 @@
         },
         "publicIPAddressId": {
             "type": "string"
+        },
+        "networkSecurityGroupId": {
+            "type": "string"
         }
     },
     "resources": [
         {
-            "apiVersion":"2016-06-01",
+            "apiVersion":"2016-03-30",
             "type":"Microsoft.Network/networkInterfaces",
             "name":"[parameters('nicName')]",
             "location":"[resourceGroup().location]",
@@ -29,10 +32,13 @@
                             "privateIPAllocationMethod":"Static",
                             "privateIPAddress": "[parameters('IPAddress')]",
                             "subnet":{
-                                "id":"[parameters('subnetId')]"
+                                "id": "[parameters('subnetId')]"
                             },
                             "publicIPAddress": {
-                                "id":"[parameters('publicIPAddressId')]"
+                                "id": "[parameters('publicIPAddressId')]"
+                            },
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroupId')]"
                             }
                         }
                     }

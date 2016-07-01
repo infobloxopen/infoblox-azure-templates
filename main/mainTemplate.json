@@ -218,6 +218,25 @@
             "metadata":{
                 "description":"Resource Group containing existing public IP"
             }
+        },
+        "availabilitySetNewOrExistingOrNone":{
+            "type":"string",
+            "defaultValue":"none",
+            "allowedValues":[
+                "new",
+                "existing",
+                "none"
+            ],
+            "metadata":{
+                "description":"Indicates whether the availability Set IP is new, none or existing"
+            }
+        },
+        "availabilitySetName":{
+            "type":"string",
+            "defaultValue":"",
+            "metadata":{
+                "description":"availability set name"
+            }
         }
     },
     "variables":{
@@ -230,6 +249,7 @@
         "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
         "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
+        "nsgName": "[concat(parameters('vmName'),'-securityGroup')]",
         "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
         "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
         "publicIPExistingOrNone": "[replace(parameters('publicIPNewOrExistingOrNone'), 'new', 'existing')]",
@@ -244,6 +264,12 @@
         "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
         "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
         "customData":"[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
+
+
+        "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
+        "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
+
+        "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
         "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
         "vmSize-vnios-te-1420-test":"Standard_DS2",
@@ -275,7 +301,9 @@
             "adminUsername":"[variables('adminUsername')]",
             "adminPassword":"[parameters('adminPassword')]",
             "customData": "[variables('customData')]"
-        }
+        },
+
+        "virtualMachineSetURL":"[concat(variables('templateBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
     },
     "resources":[
         {
@@ -325,6 +353,114 @@
             }
         },
         {
+            "apiVersion": "[variables('apiVer')]",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[variables('nsgName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "SSH",
+                        "properties": {
+                            "description": "Allow SSH",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 100,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "DNS",
+                        "properties": {
+                            "description": "Allow DNS",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "53",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 101,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "HTTPS",
+                        "properties": {
+                            "description": "Allow HTTPS",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 102,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_1194_in",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 1194 Inbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "1194",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 103,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_2114_in",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 2114 Inbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "2114",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 104,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_1194_out",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 1194 Outbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "1194",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 105,
+                            "direction": "Outbound"
+                        }
+                    },
+                    {
+                        "name": "Grid_traffic_UDP_2114_out",
+                        "properties": {
+                            "description": "Allow vNIOS Grid traffic 2114 Outbound",
+                            "protocol": "Udp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "2114",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 106,
+                            "direction": "Outbound"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name":"SettingUpVirtualNetwork",
             "type":"Microsoft.Resources/deployments",
             "apiVersion":"[variables('apiVer')]",
@@ -361,11 +497,12 @@
         },
         {
             "name":"SettingUpPrimaryNic",
-            "apiVersion":"[variables('apiVer')]",
             "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]",
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
             ],
             "properties":{
                 "mode":"Incremental",
@@ -385,16 +522,20 @@
                     },
                     "publicIPAddressId":{
                         "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
+                    },
+                    "networkSecurityGroupId":{
+                        "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
                     }
                 }
             }
         },
         {
             "name":"SettingUpSecondaryNic",
-            "apiVersion":"[variables('apiVer')]",
             "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
             "dependsOn":[
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
             ],
             "properties":{
                 "mode":"Incremental",
@@ -411,6 +552,9 @@
                     },
                     "subnetId":{
                         "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
+                    },
+                    "networkSecurityGroupId":{
+                        "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
                     }
                 }
             }
@@ -442,57 +586,102 @@
             }
         },
         {
-            "apiVersion":"2016-03-30",
-            "type":"Microsoft.Compute/virtualMachines",
-            "name":"[parameters('vmName')]",
-            "location":"[resourceGroup().location]",
+            "name":"SettingUpAvailabilitySet",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
+            "properties":{
+                "mode":"Incremental",
+                "templateLink":{
+                    "uri":"[variables('availabilitySetSetupURL')]",
+                    "contentVersion":"1.0.0.0"
+                },
+                "parameters":{
+                    "availabilitySetName":{
+                        "value":"[parameters('availabilitySetName')]"
+                    }
+                }
+            }
+        },
+        {
+            "name":"SettingUpVirtualMachine",
+            "type":"Microsoft.Resources/deployments",
+            "apiVersion":"[variables('apiVer')]",
             "dependsOn":[
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
                 "[concat('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
-                "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]"
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]",
+                "[concat('Microsoft.Resources/deployments/', 'SettingUpAvailabilitySet')]"
             ],
-            "plan": {
-                "publisher": "[variables('imagePublisher')]",
-                "product": "[variables('imageOffer')]",
-                "name": "[variables('imageSKU')]"
-            },
             "properties":{
-                "hardwareProfile":{
-                    "vmSize":"[variables('vmSize')]"
+                "mode":"Incremental",
+                "templateLink": {
+                    "uri":"[variables('virtualMachineSetURL')]",
+                    "contentVersion":"1.0.0.0"
                 },
-                "osProfile":"[variables('osProfile')]",
-                "storageProfile":{
-                    "imageReference":{
-                        "publisher":"[variables('imagePublisher')]",
-                        "offer":"[variables('imageOffer')]",
-                        "sku":"[variables('imageSKU')]",
-                        "version":"latest"
+                "parameters":{
+                    "vmName": {
+                        "value" : "[parameters('vmName')]"
                     },
-                    "osDisk":{
-                        "name":"[variables('OSDiskName')]",
-                        "vhd":{
-                            "uri":"[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'), '.vhd')]"
-                        },
-                        "caching":"ReadWrite",
-                        "createOption":"FromImage"
-                    }
-                },
-                "networkProfile":{
-                    "networkInterfaces":[
-                        {
-                            "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVer')).outputs.nicRef.value]",
-                            "properties":{ "primary":true }
-                        },
-                        {
-                            "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVer')).outputs.nicRef.value]",
-                            "properties":{ "primary":false }
+                    "plan": {
+                        "value" : {
+                            "publisher": "[variables('imagePublisher')]",
+                            "product": "[variables('imageOffer')]",
+                            "name": "[variables('imageSKU')]"
                         }
-                    ]
-                },
-                "diagnosticsProfile":{
-                    "bootDiagnostics":{
-                        "enabled":"false"
+                    },
+                    "hardwareProfile": {
+                        "value" : {
+                            "vmSize":"[variables('vmSize')]"
+                        }
+                    },
+                    "osProfile": {
+                        "value" : "[variables('osProfile')]"
+                    },
+                    "storageProfile": {
+                        "value" : {
+                            "imageReference":{
+                                "publisher":"[variables('imagePublisher')]",
+                                "offer":"[variables('imageOffer')]",
+                                "sku":"[variables('imageSKU')]",
+                                "version":"latest"
+                            },
+                            "osDisk":{
+                                "name":"[variables('OSDiskName')]",
+                                "vhd":{
+                                    "uri":"[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/', variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'), '.vhd')]"
+                                },
+                                "caching":"ReadWrite",
+                                "createOption":"FromImage"
+                            }
+                        }
+                    },
+                    "networkProfile": {
+                        "value" : {
+                            "networkInterfaces":[
+                                {
+                                    "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVer')).outputs.nicRef.value]",
+                                    "properties":{ "primary":true }
+                                },
+                                {
+                                    "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVer')).outputs.nicRef.value]",
+                                    "properties":{ "primary":false }
+                                }
+                            ]
+                        }
+                    },
+                    "diagnosticsProfile": {
+                        "value" : {
+                            "bootDiagnostics": {
+                                "enabled": "true",
+                                "storageUri": "[concat('http://',parameters('newStorageAccountForLogsName'),'.blob.core.windows.net')]"
+                            }
+                        }
+                    },
+                    "availabilitySet": {
+                        "value" : {
+                            "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
+                        }
                     }
                 }
             }

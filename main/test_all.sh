@@ -20,7 +20,7 @@ PARAMETERS_DIR="."
 
 azure group create "${RESOURCE_GROUP}" "${LOCATION}"
 
-
+echo "-------------------"
 echo "Test creation of all new elements"
 azure group deployment create \
     --template-uri "${TEMPLATE_URI}" \
@@ -29,6 +29,7 @@ azure group deployment create \
     "${DEPLOYMENT_NAME}"
 
 
+echo "-------------------"
 echo "Test adding one more VM to existing elements"
 # Add Public Ip, will be used as existing.
 azure network public-ip create \
@@ -45,11 +46,11 @@ azure group deployment create \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
 
-
-echo "Test adding one more VM to existing elements with no Publuc Ip"
+echo "-------------------"
+echo "Test adding one more VM to existing elements with no Publuc Ip and no availiability set"
 azure group deployment create \
     --template-uri "${TEMPLATE_URI}"\
-    --parameters-file "${PARAMETERS_DIR}/parameters.nopip.json" \
+    --parameters-file "${PARAMETERS_DIR}/parameters.none.json" \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
 
