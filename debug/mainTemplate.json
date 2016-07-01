@@ -672,8 +672,11 @@
                     },
                     "diagnosticsProfile": {
                         "value" : {
-                            "bootDiagnostics" : {
-                                "enabled":"false"
+                            "diagnosticsProfile": {
+                                "bootDiagnostics": {
+                                    "enabled": "true",
+                                    "storageUri": "[concat('http://',parameters('newStorageAccountForLogsName'),'.blob.core.windows.net')]"
+                                }
                             }
                         }
                     },
