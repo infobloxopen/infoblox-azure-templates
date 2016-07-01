@@ -27,7 +27,6 @@
             "type": "object"
         }
     },
-    "variables": {},
     "resources": [
         {
             "apiVersion":"2016-03-30",
