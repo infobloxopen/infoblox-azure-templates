@@ -10,8 +10,8 @@
 			"toolTip": "The name of the new NIOS vm.",
 			"constraints": {
 				"required": true,
-				"regex": "^[a-z][a-z0-9]{3,24}$",
-        		"validationMessage": "NIOS Vm name must be between 3 and 24 characters long, must start from lowercase letter and can contain only numbers and lowercase letters."
+                "regex": "^[^_\\W][\\w-._]{0,79}(?<![-.])$.",
+                "validationMessage": "Validation message here"
     		}
 	    },
 		{
@@ -187,12 +187,12 @@
 				{
 					"name": "availabilitySection",
 					"type": "Microsoft.Common.Section",
-				 	"label": "availability set",
+				 	"label": "Availability",
 				 	"elements": [
 						{
 							"name": "availabilitySetNewOrExistingOrNone",
 							"type": "Microsoft.Common.OptionsGroup",
-							"label": "availability Set",
+							"label": "Availability set",
 							"defaultValue": "None",
 							"toolTip": "Select availability set for the VM",
 							"constraints": {
@@ -216,7 +216,7 @@
 						{
 							"name": "availabilitySetName",
 							"type": "Microsoft.Common.TextBox",
-							"label": "availability set name",
+							"label": "Availability set name",
 							"toolTip": "Enter exact name of any existing availability set or create a new availability set",
 							"constraints": {
 								"required": false
