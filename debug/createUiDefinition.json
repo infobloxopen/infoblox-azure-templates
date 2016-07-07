@@ -10,7 +10,7 @@
 			"toolTip": "The name of the new NIOS vm.",
 			"constraints": {
 				"required": true,
-                "regex": "^[^_\\W][\\w-._]{0,79}(?<![-.])$.",
+                "regex": "^[^_\\W][\\w-._]{0,79}(?<![-.])$",
                 "validationMessage": "Validation message here"
     		}
 	    },
