@@ -1,47 +1,47 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "type": "string"
-        },
-        "plan": {
-            "type": "object"
-        },
-        "hardwareProfile": {
-            "type": "object"
-        },
-        "osProfile": {
-            "type": "object"
-        },
-        "storageProfile": {
-            "type": "object"
-        },
-        "networkProfile": {
-            "type": "object"
-        },
-        "diagnosticsProfile": {
-            "type": "object"
-        },
-        "availabilitySet": {
-            "type": "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "apiVersion":"2016-03-30",
-            "type":"Microsoft.Compute/virtualMachines",
-            "name":"[parameters('vmName')]",
-            "location":"[resourceGroup().location]",
-            "plan": "[parameters('plan')]",
-            "properties":{
-                "hardwareProfile":"[parameters('hardwareProfile')]",
-                "osProfile":"[parameters('osProfile')]",
-                "storageProfile":"[parameters('storageProfile')]",
-                "networkProfile":"[parameters('networkProfile')]",
-                "diagnosticsProfile":"[parameters('diagnosticsProfile')]"
-            }
-        }
-    ],
-    "outputs": {}
+    "plan": {
+      "type": "object"
+    },
+    "hardwareProfile": {
+      "type": "object"
+    },
+    "osProfile": {
+      "type": "object"
+    },
+    "storageProfile": {
+      "type": "object"
+    },
+    "networkProfile": {
+      "type": "object"
+    },
+    "diagnosticsProfile": {
+      "type": "object"
+    },
+    "availabilitySet": {
+      "type": "object"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion":"2016-03-30",
+      "type":"Microsoft.Compute/virtualMachines",
+      "name":"[parameters('vmName')]",
+      "location":"[resourceGroup().location]",
+      "plan": "[parameters('plan')]",
+      "properties":{
+        "hardwareProfile":"[parameters('hardwareProfile')]",
+        "osProfile":"[parameters('osProfile')]",
+        "storageProfile":"[parameters('storageProfile')]",
+        "networkProfile":"[parameters('networkProfile')]",
+        "diagnosticsProfile":"[parameters('diagnosticsProfile')]"
+      }
+    }
+  ],
+  "outputs": {}
 }
