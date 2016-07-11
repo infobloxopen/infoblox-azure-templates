@@ -1,56 +1,56 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "nicName": {
-            "type": "string"
-        },
-        "IPAddress": {
-            "type": "string"
-        },
-        "subnetId": {
-            "type": "string"
-        },
-        "publicIPAddressId": {
-            "type": "string"
-        },
-        "networkSecurityGroupId": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nicName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "apiVersion":"2016-03-30",
-            "type":"Microsoft.Network/networkInterfaces",
-            "name":"[parameters('nicName')]",
-            "location":"[resourceGroup().location]",
-            "properties":{
-                "ipConfigurations":[
-                    {
-                        "name":"ipconfig1",
-                        "properties":{
-                            "privateIPAllocationMethod":"Static",
-                            "privateIPAddress": "[parameters('IPAddress')]",
-                            "subnet":{
-                                "id": "[parameters('subnetId')]"
-                            },
-                            "publicIPAddress": {
-                                "id": "[parameters('publicIPAddressId')]"
-                            },
-                            "networkSecurityGroup": {
-                                "id": "[parameters('networkSecurityGroupId')]"
-                            }
-                        }
-                    }
-                ],
-                "enableIPForwarding":true
-            }
-        }
-    ],
-    "outputs": {
-        "nicRef": {
-            "value": "[resourceId('Microsoft.Network/networkInterfaces/', parameters('nicName'))]",
-            "type": "string"
-        }
+    "IPAddress": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "publicIPAddressId": {
+      "type": "string"
+    },
+    "networkSecurityGroupId": {
+      "type": "string"
     }
+  },
+  "resources": [
+    {
+      "apiVersion":"2016-03-30",
+      "type":"Microsoft.Network/networkInterfaces",
+      "name":"[parameters('nicName')]",
+      "location":"[resourceGroup().location]",
+      "properties":{
+        "ipConfigurations":[
+          {
+            "name":"ipconfig1",
+            "properties":{
+              "privateIPAllocationMethod":"Static",
+              "privateIPAddress": "[parameters('IPAddress')]",
+              "subnet":{
+                "id": "[parameters('subnetId')]"
+              },
+              "publicIPAddress": {
+                "id": "[parameters('publicIPAddressId')]"
+              },
+              "networkSecurityGroup": {
+                "id": "[parameters('networkSecurityGroupId')]"
+              }
+            }
+          }
+        ],
+        "enableIPForwarding":true
+      }
+    }
+  ],
+  "outputs": {
+    "nicRef": {
+      "value": "[resourceId('Microsoft.Network/networkInterfaces/', parameters('nicName'))]",
+      "type": "string"
+    }
+  }
 }
