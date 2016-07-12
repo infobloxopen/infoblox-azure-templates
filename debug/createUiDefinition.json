@@ -20,15 +20,15 @@
        "label": "Password for admin user",
        "elements": [
       {
-        "name": "SSHCredntials",
+        "name": "SSHCredentials",
         "type": "Microsoft.Compute.CredentialsCombo",
         "label": {
-          "password": "admin password",
+          "password": "Admin password",
           "confirmPassword": "Confirm admin password"
         },
         "toolTip": {
-          "password": "password for the admin user",
-          "confirmPassword": "password for the admin user"
+          "password": "Password for the admin user",
+          "confirmPassword": "Password for the admin user"
         },
         "constraints": {
           "required": true
@@ -56,7 +56,7 @@
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS model",
           "defaultValue": "TE-1420 debug model (Standard DS2)",
-          "toolTip": "",
+          "toolTip": "Select the NIOS model to load on the new VM",
           "constraints": {
             "allowedValues": [
               {
@@ -194,7 +194,7 @@
               "type": "Microsoft.Common.OptionsGroup",
               "label": "Availability set",
               "defaultValue": "None",
-              "toolTip": "Select availability set for the VM",
+              "toolTip": "Select the availability set option for the VM",
               "constraints": {
                 "allowedValues": [
                   {
@@ -217,7 +217,7 @@
               "name": "availabilitySetName",
               "type": "Microsoft.Common.TextBox",
               "label": "Availability set name",
-              "toolTip": "Enter exact name of any existing availability set or create a new availability set",
+              "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
               "constraints": {
                 "required": true,
                 "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
@@ -235,9 +235,9 @@
       "vmName": "[basics('vmName')]",
       "niosModel": "[steps('vmSettings').niosModel]",
 
-      "adminPassword": "[basics('passwordSection').SSHCredntials.password]",
-      "sshPublicKey": "[basics('passwordSection').SSHCredntials.sshPublicKey]",
-      "authenticationType": "[basics('passwordSection').SSHCredntials.authenticationType]",
+      "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
+      "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
+      "authenticationType": "[basics('passwordSection').SSHCredentials.authenticationType]",
 
       "virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
       "virtualNetworkExistingRGName": "[steps('vmSettings').niosNetwork.resourceGroup]",
