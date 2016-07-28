@@ -4,6 +4,11 @@
   "parameters": {
     "basics": [
     {
+      "name": "testtext",
+      "type": "Microsoft.Common.TextBox",
+      "label": "Some test text box"
+    },
+    {
       "name": "vmName",
       "type": "Microsoft.Common.TextBox",
       "label": "NIOS VM name",
@@ -51,6 +56,11 @@
         "postValidation": "Done"
       },
       "elements": [
+        {
+          "name": "sometest",
+          "type": "Microsoft.Common.TextBox",
+          "label": "[basics('testtext')]"
+        },
         {
           "name": "niosModel",
           "type": "Microsoft.Common.DropDown",
