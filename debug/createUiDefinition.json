@@ -1,6 +1,9 @@
 {
   "handler": "Microsoft.Compute.MultiVm",
   "version": "0.0.1-preview",
+  "variables": {
+    "testvar": "sometestvarLabel"
+  },
   "parameters": {
     "basics": [
     {
@@ -47,9 +50,6 @@
       ],
       "visible": true
     }],
-    "variables": {
-      "testvar": "sometestvar"
-    },    
     "steps": [{
       "name": "vmSettings",
       "label": "VM Settings",
