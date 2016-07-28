@@ -62,6 +62,11 @@
           "label": "[basics('testtext')]"
         },
         {
+          "name": "sometesttttt",
+          "type": "Microsoft.Common.TextBox",
+          "label": "[steps('vmSettings').testtext]"
+        },
+        {
           "name": "niosModel",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS model",
