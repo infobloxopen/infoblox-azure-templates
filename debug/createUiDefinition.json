@@ -47,6 +47,9 @@
       ],
       "visible": true
     }],
+    "variables": {
+      "testvar": "sometestvar"
+    },    
     "steps": [{
       "name": "vmSettings",
       "label": "VM Settings",
@@ -54,9 +57,6 @@
       "subLabel": {
         "preValidation": "Configure VM Settings",
         "postValidation": "Done"
-      },
-      "variables": {
-          "testvar": "[basics('testtext')]"
       },
       "elements": [
         {
