@@ -60,6 +60,11 @@
       },
       "elements": [
         {
+          "name": "sometest",
+          "type": "Microsoft.Common.TextBox",
+          "label": "somelabel"
+        },
+        {
           "name": "niosModel",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS model",
