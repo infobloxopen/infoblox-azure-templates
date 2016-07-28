@@ -55,11 +55,14 @@
         "preValidation": "Configure VM Settings",
         "postValidation": "Done"
       },
+      "variables": {
+          "testvar": "[basics('testtext')]"
+      },
       "elements": [
         {
           "name": "sometest",
           "type": "Microsoft.Common.TextBox",
-          "label": "[basics('testtext')]"
+          "label": "[variables('testvar')]"
         },
         {
           "name": "sometesttttt",
