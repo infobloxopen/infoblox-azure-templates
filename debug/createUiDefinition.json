@@ -64,7 +64,7 @@
         {
           "name": "sometesttttt",
           "type": "Microsoft.Common.TextBox",
-          "label": "[steps('vmSettings').testtext]"
+          "label": "[steps('vmSettings').sometest]"
         },
         {
           "name": "niosModel",
