@@ -335,7 +335,8 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[take(steps('vmSettings'), concat('niosVersion-',basics('niosModel'))]",
+      "niosVersion":  "[steps('vmSettings').parse(concat('niosVersion-',basics('niosModel')))]",
+
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
       "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
       "authenticationType": "[basics('passwordSection').SSHCredentials.authenticationType]",
