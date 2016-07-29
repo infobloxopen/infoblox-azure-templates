@@ -21,7 +21,7 @@
             },
             {
               "label": "TE-V2220 (Standard DS3)",
-              "value": "vnios-cp-v2200"
+              "value": "vnios-te-v2200"
             },
             {
               "label": "CP-V800 (Standard DS2)",
@@ -33,7 +33,7 @@
             },
             {
               "label": "CP-V2200 (Standard DS3)",
-              "value": "vnios-te-v2220"
+              "value": "vnios-cp-v2220"
             }
           ]
         },
@@ -89,9 +89,9 @@
       },
       "elements": [
         {
-          "name": "vnios-te-v1420-niosVersion",
+          "name": "niosVersion-vnios-te-v820",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version",
+          "label": "NIOS version for TE-V820",
           "defaultValue": "7.4.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -103,15 +103,19 @@
               {
                 "label": "7.4.1",
                 "value": "7.4.1"
+              },
+              {
+                "label": "7.4.2",
+                "value": "7.4.2"
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]"
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v820')]"
         },
         {
-          "name": "vnios-te-v820-niosVersion",
+          "name": "niosVersion-vnios-te-v1420",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version",
+          "label": "NIOS version for TE-V1420",
           "defaultValue": "7.4.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -122,7 +126,71 @@
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'vnios-te-v820')]"
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]"
+        },
+        {
+          "name": "niosVersion-vnios-te-v1420",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for TE-V2220",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]"
+        },
+        {
+          "name": "niosVersion-vnios-cp-v800",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V800",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v800')]"
+        },
+        {
+          "name": "niosVersion-vnios-cp-v1400",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V1400",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]"
+        },
+        {
+          "name": "niosVersion-vnios-cp-v2220",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V2200",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2220')]"
         },
         {
           "name": "storageAccount",
@@ -267,6 +335,7 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "niosModel": "[basics('niosModel')]",
+      "niosVersion":  "[steps('vmSettings').concat('niosVersion-',basics('niosModel'))]",
 
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
       "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
