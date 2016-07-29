@@ -33,7 +33,7 @@
             },
             {
               "label": "CP-V2200 (Standard DS3)",
-              "value": "vnios-cp-v2220"
+              "value": "vnios-cp-v2200"
             }
           ]
         },
@@ -129,7 +129,7 @@
           "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]"
         },
         {
-          "name": "niosVersion-vnios-te-v1420",
+          "name": "niosVersion-vnios-te-v2220",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V2220",
           "defaultValue": "7.4.0",
@@ -142,7 +142,7 @@
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]"
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v2220')]"
         },
         {
           "name": "niosVersion-vnios-cp-v800",
@@ -177,7 +177,7 @@
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]"
         },
         {
-          "name": "niosVersion-vnios-cp-v2220",
+          "name": "niosVersion-vnios-cp-v2200",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2200",
           "defaultValue": "7.4.0",
@@ -190,7 +190,7 @@
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2220')]"
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]"
         },
         {
           "name": "storageAccount",
@@ -320,7 +320,7 @@
               "label": "Availability set name",
               "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
               "constraints": {
-                "required": true,
+                "required": false,
                 "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
                 "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
               },
@@ -335,8 +335,7 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[steps('vmSettings').concat('niosVersion-',basics('niosModel'))]",
-
+      "niosVersion":  "[take(steps('vmSettings'), concat('niosVersion-',basics('niosModel'))]",
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
       "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
       "authenticationType": "[basics('passwordSection').SSHCredentials.authenticationType]",
