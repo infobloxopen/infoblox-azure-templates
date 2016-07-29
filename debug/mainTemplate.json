@@ -244,6 +244,7 @@
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vnios-te-v1420-preview",
     "imageSKU": "[parameters('niosModel')]",
+    "version":"latest",
     "OSDiskName":"[parameters('vmName')]",
     "vmStorageAccountContainerName":"disks",
     "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -644,7 +645,7 @@
                 "publisher":"[variables('imagePublisher')]",
                 "offer":"[variables('imageOffer')]",
                 "sku":"[variables('imageSKU')]",
-                "version":"latest"
+                "version":"[variables('version')]"
               },
               "osDisk":{
                 "name":"[variables('OSDiskName')]",
