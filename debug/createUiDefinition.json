@@ -9,7 +9,7 @@
     {
       "name": "testtext",
       "type": "Microsoft.Common.TextBox",
-      "label": "Some test text box"
+      "label": "[variables('testvar')]"
     },
     {
       "name": "vmName",
