@@ -16,12 +16,12 @@
         "description":"niosModel"
       },
       "allowedValues":[
-        "te-820",
-        "te-1420",
-        "te-2220",
-        "cp-v800",
-        "cp-v1400",
-        "cp-v2200"
+        "vnios-te-v820",
+        "vnios-te-v1420",
+        "vnios-te-v2220",
+        "vnios-cp-v800",
+        "vnios-cp-v1400",
+        "vnios-cp-v2200"
       ]
     },
     "niosVersion":{
