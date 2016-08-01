@@ -31,7 +31,7 @@
         "description":"niosVersion"
       },
       "allowedValues":[
-        "7.4.0"
+        "74.0.331933"
       ]
     },
     "adminPassword":{
