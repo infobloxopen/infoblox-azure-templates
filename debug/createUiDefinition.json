@@ -151,7 +151,7 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[steps('vmSettings')('niosVersion-vnios-te-v820')]"
+      "niosVersion":  "[steps('vmSettings').niosVersion-vnios-te-v820]"
     }
   }
 }
