@@ -282,13 +282,12 @@
     "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
-    "vmSize-vnios-te-1420-test":"Standard_DS2",
-    "vmSize-te-820":"Standard_DS2",
-    "vmSize-te-1420":"Standard_DS3",
-    "vmSize-te-2220":"Standard_DS3",
-    "vmSize-cp-v800":"Standard_DS2",
-    "vmSize-cp-v1400":"Standard_DS3",
-    "vmSize-cp-v2200":"Standard_DS3",
+    "vmSize-vnios-te-v820":"Standard_DS2",
+    "vmSize-vnios-te-v1420":"Standard_DS3",
+    "vmSize-vnios-te-v2220":"Standard_DS3",
+    "vmSize-vnios-cp-v800":"Standard_DS2",
+    "vmSize-vnios-cp-v1400":"Standard_DS3",
+    "vmSize-vnios-cp-v2200":"Standard_DS3",
 
     "osProfile":"[variables(concat('osProfile-',parameters('authenticationType')))]",
     "osProfile-sshPublicKey":{
