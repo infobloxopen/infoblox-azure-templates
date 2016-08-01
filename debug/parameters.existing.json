@@ -26,19 +26,19 @@
     "vnetNewOrExisting": {
       "value": "existing"
     },
-    "Subnet1Prefix": {
+    "subnet1Prefix": {
       "value": "10.4.0.0/24"
     },
-    "Subnet1Name": {
+    "subnet1Name": {
       "value": "subnet1"
     },
     "subnet1StartAddress": {
       "value": "10.4.0.5"
     },
-    "Subnet2Prefix": {
+    "subnet2Prefix": {
       "value": "10.4.1.0/24"
     },
-    "Subnet2Name": {
+    "subnet2Name": {
       "value": "subnet2"
     },
     "subnet2StartAddress": {
