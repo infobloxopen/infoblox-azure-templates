@@ -11,18 +11,27 @@
     },
     "niosModel":{
       "type":"string",
-      "defaultValue":"te-1420",
+      "defaultValue":"vnios-te-v1420",
       "metadata":{
         "description":"niosModel"
       },
       "allowedValues":[
-        "vnios-te-1420-test",
-        "te-820",
-        "te-1420",
-        "te-2220",
-        "cp-v800",
-        "cp-v1400",
-        "cp-v2200"
+        "vnios-te-v820",
+        "vnios-te-v1420",
+        "vnios-te-v2220",
+        "vnios-cp-v800",
+        "vnios-cp-v1400",
+        "vnios-cp-v2200"
+      ]
+    },
+    "niosVersion":{
+      "type":"string",
+      "defaultValue":"7.4.0",
+      "metadata":{
+        "description":"niosVersion"
+      },
+      "allowedValues":[
+        "7.4.0"
       ]
     },
     "adminPassword":{
@@ -78,14 +87,14 @@
         "description":"Identifies whether to use new or existing Virtual Network"
       }
     },
-    "Subnet1Name":{
+    "subnet1Name":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
         "description":"Subnet 1 Name"
       }
     },
-    "Subnet1Prefix":{
+    "subnet1Prefix":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
@@ -98,14 +107,14 @@
         "description":"Subnet 1 Starting IP Address"
       }
     },
-    "Subnet2Name":{
+    "subnet2Name":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
         "description":"Subnet 2 Name"
       }
     },
-    "Subnet2Prefix":{
+    "subnet2Prefix":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
@@ -244,11 +253,12 @@
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vnios-te-v1420-preview",
     "imageSKU": "[parameters('niosModel')]",
+    "version": "[parameters('niosVersion')]",
     "OSDiskName":"[parameters('vmName')]",
     "vmStorageAccountContainerName":"disks",
     "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-    "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
-    "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
+    "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]",
+    "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('subnet2Name'))]",
     "nsgName": "[concat(parameters('vmName'),'-securityGroup')]",
     "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
     "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
@@ -272,13 +282,12 @@
     "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
-    "vmSize-vnios-te-1420-test":"Standard_DS2",
-    "vmSize-te-820":"Standard_DS2",
-    "vmSize-te-1420":"Standard_DS3",
-    "vmSize-te-2220":"Standard_DS3",
-    "vmSize-cp-v800":"Standard_DS2",
-    "vmSize-cp-v1400":"Standard_DS3",
-    "vmSize-cp-v2200":"Standard_DS3",
+    "vmSize-vnios-te-v820":"Standard_DS2",
+    "vmSize-vnios-te-v1420":"Standard_DS3",
+    "vmSize-vnios-te-v2220":"Standard_DS3",
+    "vmSize-vnios-cp-v800":"Standard_DS2",
+    "vmSize-vnios-cp-v1400":"Standard_DS3",
+    "vmSize-vnios-cp-v2200":"Standard_DS3",
 
     "osProfile":"[variables(concat('osProfile-',parameters('authenticationType')))]",
     "osProfile-sshPublicKey":{
@@ -477,17 +486,17 @@
           "virtualNetworkAddressPrefix":{
             "value":"[parameters('virtualNetworkAddressPrefix')]"
           },
-          "Subnet1Name":{
-            "value":"[parameters('Subnet1Name')]"
+          "subnet1Name":{
+            "value":"[parameters('subnet1Name')]"
           },
-          "Subnet1Prefix":{
-            "value":"[parameters('Subnet1Prefix')]"
+          "subnet1Prefix":{
+            "value":"[parameters('subnet1Prefix')]"
           },
-          "Subnet2Name":{
-            "value":"[parameters('Subnet2Name')]"
+          "subnet2Name":{
+            "value":"[parameters('subnet2Name')]"
           },
-          "Subnet2Prefix":{
-            "value":"[parameters('Subnet2Prefix')]"
+          "subnet2Prefix":{
+            "value":"[parameters('subnet2Prefix')]"
           },
           "vnetExistingRGName":{
             "value":"[parameters('virtualNetworkExistingRGName')]"
@@ -644,7 +653,7 @@
                 "publisher":"[variables('imagePublisher')]",
                 "offer":"[variables('imageOffer')]",
                 "sku":"[variables('imageSKU')]",
-                "version":"latest"
+                "version":"[variables('version')]"
               },
               "osDisk":{
                 "name":"[variables('OSDiskName')]",

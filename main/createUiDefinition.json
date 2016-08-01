@@ -3,45 +3,82 @@
   "version": "0.0.1-preview",
   "parameters": {
     "basics": [
-    {
-      "name": "vmName",
-      "type": "Microsoft.Common.TextBox",
-      "label": "NIOS VM name",
-      "toolTip": "The name of the new NIOS vm.",
-      "constraints": {
-        "required": true,
-        "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
-        "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
-      }
-    },
-    {
-      "name": "passwordSection",
-      "type": "Microsoft.Common.Section",
-       "label": "Password for admin user",
-       "elements": [
       {
-        "name": "SSHCredentials",
-        "type": "Microsoft.Compute.CredentialsCombo",
-        "label": {
-          "password": "Admin password",
-          "confirmPassword": "Confirm admin password"
-        },
-        "toolTip": {
-          "password": "Password for the admin user",
-          "confirmPassword": "Password for the admin user"
-        },
+        "name": "niosModel",
+        "type": "Microsoft.Common.DropDown",
+        "label": "NIOS model",
+        "defaultValue": "TE-V1420 (Standard DS3)",
+        "toolTip": "Select the NIOS model to load on the new VM",
         "constraints": {
-          "required": true
+          "allowedValues": [
+            {
+              "label": "TE-V820 (Standard DS2)",
+              "value": "vnios-te-v820"
+            },
+            {
+              "label": "TE-V1420 (Standard DS3)",
+              "value": "vnios-te-v1420"
+            },
+            {
+              "label": "TE-V2220 (Standard DS3)",
+              "value": "vnios-te-v2220"
+            },
+            {
+              "label": "CP-V800 (Standard DS2)",
+              "value": "vnios-cp-v800"
+            },
+            {
+              "label": "CP-V1400 (Standard DS3)",
+              "value": "vnios-cp-v1400"
+            },
+            {
+              "label": "CP-V2200 (Standard DS3)",
+              "value": "vnios-cp-v2200"
+            }
+          ]
         },
-        "options": {
-          "hideConfirmation": false
-        },
-        "osPlatform": "Windows",
+        "visible": true
+      },
+      {
+        "name": "vmName",
+        "type": "Microsoft.Common.TextBox",
+        "label": "NIOS VM name",
+        "toolTip": "The name of the new NIOS vm.",
+        "constraints": {
+          "required": true,
+          "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
+          "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
+        }
+      },
+      {
+        "name": "passwordSection",
+        "type": "Microsoft.Common.Section",
+         "label": "Password for admin user",
+         "elements": [
+        {
+          "name": "SSHCredentials",
+          "type": "Microsoft.Compute.CredentialsCombo",
+          "label": {
+            "password": "Admin password",
+            "confirmPassword": "Confirm admin password"
+          },
+          "toolTip": {
+            "password": "Password for the admin user",
+            "confirmPassword": "Password for the admin user"
+          },
+          "constraints": {
+            "required": true
+          },
+          "options": {
+            "hideConfirmation": false
+          },
+          "osPlatform": "Windows",
+          "visible": true
+        }
+        ],
         "visible": true
       }
-      ],
-      "visible": true
-    }],
+    ],
     "steps": [{
       "name": "vmSettings",
       "label": "VM Settings",
@@ -52,44 +89,100 @@
       },
       "elements": [
         {
-          "name": "niosModel",
+          "name": "niosVersion-vnios-te-v820",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS model",
-          "defaultValue": "TE-1420 debug model (Standard DS2)",
-          "toolTip": "Select the NIOS model to load on the new VM",
+          "label": "NIOS version for TE-V820",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "TE-V1420 debug model (Standard DS2)",
-                "value": "vnios-te-1420-test"
-              },
-              {
-                "label": "TE-V820 (Standard DS2)",
-                "value": "te-820"
-              },
-              {
-                "label": "TE-V1420 (Standard DS3)",
-                "value": "te-1420"
-              },
-              {
-                "label": "TE-V2220 (Standard DS3)",
-                "value": "te-2220"
-              },
-              {
-                "label": "CP-V800 (Standard DS2)",
-                "value": "cp-v800"
-              },
-              {
-                "label": "CP-V1400 (Standard DS3)",
-                "value": "cp-v1400"
-              },
-              {
-                "label": "CP-V2200 (Standard DS3)",
-                "value": "cp-v2200"
+                "label": "7.4.0",
+                "value": "7.4.0"
               }
             ]
           },
-          "visible": true
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v820')]"
+        },
+        {
+          "name": "niosVersion-vnios-te-v1420",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for TE-V1420",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]"
+        },
+        {
+          "name": "niosVersion-vnios-te-v2220",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for TE-V2220",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v2220')]"
+        },
+        {
+          "name": "niosVersion-vnios-cp-v800",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V800",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v800')]"
+        },
+        {
+          "name": "niosVersion-vnios-cp-v1400",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V1400",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]"
+        },
+        {
+          "name": "niosVersion-vnios-cp-v2200",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V2200",
+          "defaultValue": "7.4.0",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "7.4.0",
+                "value": "7.4.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]"
         },
         {
           "name": "storageAccount",
@@ -219,7 +312,7 @@
               "label": "Availability set name",
               "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
               "constraints": {
-                "required": true,
+                "required": false,
                 "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
                 "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
               },
@@ -233,7 +326,8 @@
     }],
     "outputs": {
       "vmName": "[basics('vmName')]",
-      "niosModel": "[steps('vmSettings').niosModel]",
+      "niosModel": "[basics('niosModel')]",
+      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800,steps('vmSettings').niosVersion-vnios-cp-v1400,steps('vmSettings').niosVersion-vnios-cp-v2200)]",
 
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
       "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
@@ -244,12 +338,12 @@
       "virtualNetworkAddressPrefix": "[steps('vmSettings').niosNetwork.addressPrefix]",
       "vnetNewOrExisting": "[steps('vmSettings').niosNetwork.newOrExisting]",
 
-      "Subnet1Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.addressPrefix]",
-      "Subnet1Name": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.name]",
+      "subnet1Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.addressPrefix]",
+      "subnet1Name": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.name]",
       "subnet1StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.startAddress]",
 
-      "Subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
-      "Subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
+      "subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
+      "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
       "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
       
       "newStorageAccountName": "[steps('vmSettings').storageAccount.name]",

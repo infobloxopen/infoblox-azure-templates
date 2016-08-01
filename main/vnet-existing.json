@@ -8,16 +8,16 @@
     "virtualNetworkAddressPrefix": {
       "type": "string"
     },
-    "Subnet1Name": {
+    "subnet1Name": {
       "type": "string"
     },
-    "Subnet1Prefix": {
+    "subnet1Prefix": {
       "type": "string"
     },
-    "Subnet2Name": {
+    "subnet2Name": {
       "type": "string"
     },
-    "Subnet2Prefix": {
+    "subnet2Prefix": {
       "type": "string"
     },
     "vnetExistingRGName": {
@@ -31,11 +31,11 @@
   "resources": [],
   "outputs": {
     "subnet1Ref": {
-      "value": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
+      "value": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
       "type": "string"
     },
     "subnet2Ref": {
-      "value": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]",
+      "value": "[concat(variables('vnetID'),'/subnets/',parameters('subnet2Name'))]",
       "type": "string"
     }
   }

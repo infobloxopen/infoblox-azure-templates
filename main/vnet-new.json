@@ -8,16 +8,16 @@
     "virtualNetworkAddressPrefix": {
       "type": "string"
     },
-    "Subnet1Name": {
+    "subnet1Name": {
       "type": "string"
     },
-    "Subnet1Prefix": {
+    "subnet1Prefix": {
       "type": "string"
     },
-    "Subnet2Name": {
+    "subnet2Name": {
       "type": "string"
     },
-    "Subnet2Prefix": {
+    "subnet2Prefix": {
       "type": "string"
     },
     "vnetExistingRGName": {
@@ -42,15 +42,15 @@
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('Subnet1Name')]",
+                        "name": "[parameters('subnet1Name')]",
                         "properties": {
-                            "addressPrefix": "[parameters('Subnet1Prefix')]"
+                            "addressPrefix": "[parameters('subnet1Prefix')]"
                         }
                     },
                     {
-                        "name": "[parameters('Subnet2Name')]",
+                        "name": "[parameters('subnet2Name')]",
                         "properties": {
-                            "addressPrefix": "[parameters('Subnet2Prefix')]"
+                            "addressPrefix": "[parameters('subnet2Prefix')]"
                         }
                     }
                 ]
@@ -59,11 +59,11 @@
   ],
   "outputs": {
     "subnet1Ref": {
-      "value": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet1Name'))]",
+      "value": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
       "type": "string"
     },
     "subnet2Ref": {
-      "value": "[concat(variables('vnetID'),'/subnets/',parameters('Subnet2Name'))]",
+      "value": "[concat(variables('vnetID'),'/subnets/',parameters('subnet2Name'))]",
       "type": "string"
     }
   }
