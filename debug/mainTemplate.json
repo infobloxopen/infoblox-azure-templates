@@ -25,6 +25,16 @@
         "cp-v2200"
       ]
     },
+    "niosVersion":{
+      "type":"string",
+      "defaultValue":"7.4.0",
+      "metadata":{
+        "description":"niosVersion"
+      },
+      "allowedValues":[
+        "7.4.0"
+      ]
+    },
     "adminPassword":{
       "type":"securestring",
       "defaultValue":"",
@@ -78,14 +88,14 @@
         "description":"Identifies whether to use new or existing Virtual Network"
       }
     },
-    "Subnet1Name":{
+    "subnet1Name":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
         "description":"Subnet 1 Name"
       }
     },
-    "Subnet1Prefix":{
+    "subnet1Prefix":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
@@ -98,14 +108,14 @@
         "description":"Subnet 1 Starting IP Address"
       }
     },
-    "Subnet2Name":{
+    "subnet2Name":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
         "description":"Subnet 2 Name"
       }
     },
-    "Subnet2Prefix":{
+    "subnet2Prefix":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
@@ -244,12 +254,12 @@
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vnios-te-v1420-preview",
     "imageSKU": "[parameters('niosModel')]",
-    "version":"latest",
+    "version": "[parameters('niosVersion')]",
     "OSDiskName":"[parameters('vmName')]",
     "vmStorageAccountContainerName":"disks",
     "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-    "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet1Name'))]",
-    "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('Subnet2Name'))]",
+    "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]",
+    "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('subnet2Name'))]",
     "nsgName": "[concat(parameters('vmName'),'-securityGroup')]",
     "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
     "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
@@ -478,17 +488,17 @@
           "virtualNetworkAddressPrefix":{
             "value":"[parameters('virtualNetworkAddressPrefix')]"
           },
-          "Subnet1Name":{
-            "value":"[parameters('Subnet1Name')]"
+          "subnet1Name":{
+            "value":"[parameters('subnet1Name')]"
           },
-          "Subnet1Prefix":{
-            "value":"[parameters('Subnet1Prefix')]"
+          "subnet1Prefix":{
+            "value":"[parameters('subnet1Prefix')]"
           },
-          "Subnet2Name":{
-            "value":"[parameters('Subnet2Name')]"
+          "subnet2Name":{
+            "value":"[parameters('subnet2Name')]"
           },
-          "Subnet2Prefix":{
-            "value":"[parameters('Subnet2Prefix')]"
+          "subnet2Prefix":{
+            "value":"[parameters('subnet2Prefix')]"
           },
           "vnetExistingRGName":{
             "value":"[parameters('virtualNetworkExistingRGName')]"

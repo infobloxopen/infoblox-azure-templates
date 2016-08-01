@@ -8,6 +8,9 @@
     "niosModel": {
       "value": "vnios-te-1420-test"
     },
+    "niosVersion": {
+      "value": "vnios-te-1420-test"
+    },
     "adminPassword": {
       "value": "Infoblox=111"
     },

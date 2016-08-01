@@ -338,12 +338,12 @@
       "virtualNetworkAddressPrefix": "[steps('vmSettings').niosNetwork.addressPrefix]",
       "vnetNewOrExisting": "[steps('vmSettings').niosNetwork.newOrExisting]",
 
-      "Subnet1Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.addressPrefix]",
-      "Subnet1Name": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.name]",
+      "subnet1Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.addressPrefix]",
+      "subnet1Name": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.name]",
       "subnet1StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.startAddress]",
 
-      "Subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
-      "Subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
+      "subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
+      "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
       "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
       
       "newStorageAccountName": "[steps('vmSettings').storageAccount.name]",
