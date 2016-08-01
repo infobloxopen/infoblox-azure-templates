@@ -11,7 +11,7 @@
     },
     "niosModel":{
       "type":"string",
-      "defaultValue":"te-1420",
+      "defaultValue":"vnios-te-v1420",
       "metadata":{
         "description":"niosModel"
       },
