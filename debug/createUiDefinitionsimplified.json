@@ -327,7 +327,7 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[steps('vmSettings').[concat('niosVersion-',basics('niosModel'))]]",
+      "niosVersion":  "[steps('vmSettings')('niosVersion-vnios-te-v820')]",
 
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
       "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
