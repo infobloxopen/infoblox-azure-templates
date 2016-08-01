@@ -16,7 +16,6 @@
         "description":"niosModel"
       },
       "allowedValues":[
-        "vnios-te-1420-test",
         "te-820",
         "te-1420",
         "te-2220",
