@@ -307,8 +307,8 @@
     "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
-    "vmSize-14.04.3-LTS":"Standard_DS2",
     "vmSize-vnios-te-1420-test":"Standard_DS2",
+    "vmSize-14.04.3-LTS":"Standard_DS2",
     "vmSize-vnios-te-v820":"Standard_DS2",
     "vmSize-vnios-te-v1420":"Standard_DS3",
     "vmSize-vnios-te-v2220":"Standard_DS3",
