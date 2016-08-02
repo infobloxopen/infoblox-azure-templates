@@ -276,6 +276,7 @@
       "type":"string",
       "defaultValue":"none",
       "allowedValues":[
+        "none",
         "plain",
         "base64"
       ],
