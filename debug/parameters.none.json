@@ -6,10 +6,10 @@
       "value": "testvmnopip"
     },
     "niosModel": {
-      "value": "vnios-cp-v800"
+      "value": "niosVersion-vnios-te-1420-test"
     },
     "niosVersion": {
-      "value": "74.0.331933"
+      "value": "latest"
     },
     "adminPassword": {
       "value": "Infoblox=111"

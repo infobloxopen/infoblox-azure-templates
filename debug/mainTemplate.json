@@ -16,6 +16,7 @@
         "description":"niosModel"
       },
       "allowedValues":[
+        "vnios-te-1420-test",
         "vnios-te-v820",
         "vnios-te-v1420",
         "vnios-te-v2220",
@@ -282,6 +283,7 @@
     "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
+    "vmSize-vnios-te-1420-test":"Standard_DS2",
     "vmSize-vnios-te-v820":"Standard_DS2",
     "vmSize-vnios-te-v1420":"Standard_DS3",
     "vmSize-vnios-te-v2220":"Standard_DS3",
