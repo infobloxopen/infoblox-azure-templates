@@ -13,7 +13,7 @@
       "type":"string",
       "defaultValue":"infoblox",
       "metadata":{
-        "description":"imagePublisher. For testing"
+        "description":"imagePublisher. For testing purposes."
       },
       "allowedValues":[
         "infoblox",
@@ -24,7 +24,7 @@
       "type":"string",
       "defaultValue":"infoblox-vnios-te-v1420-preview",
       "metadata":{
-        "description":"imageOffer. For testing"
+        "description":"imageOffer. For testing purposes."
       },
       "allowedValues":[
         "infoblox-vnios-te-v1420-preview",
