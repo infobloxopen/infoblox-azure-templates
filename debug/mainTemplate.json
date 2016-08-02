@@ -39,13 +39,13 @@
       },
       "allowedValues":[
         "vnios-te-1420-test",
+        "14.04.3-LTS",
         "vnios-te-v820",
         "vnios-te-v1420",
         "vnios-te-v2220",
         "vnios-cp-v800",
         "vnios-cp-v1400",
-        "vnios-cp-v2200",
-        "14.04.3-LTS"
+        "vnios-cp-v2200"
       ]
     },
     "niosVersion":{
@@ -307,6 +307,7 @@
     "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
+    "vmSize-14.04.3-LTS":"Standard_DS2",
     "vmSize-vnios-te-1420-test":"Standard_DS2",
     "vmSize-vnios-te-v820":"Standard_DS2",
     "vmSize-vnios-te-v1420":"Standard_DS3",
