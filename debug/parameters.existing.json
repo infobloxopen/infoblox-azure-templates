@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "testvmexisting"
+      "value": "templtestvmexisting"
     },
     "niosModel": {
       "value": "vnios-te-1420-test"

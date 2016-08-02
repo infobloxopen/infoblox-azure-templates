@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "testvmnopip"
+      "value": "templtestvmnopip"
     },
     "niosModel": {
       "value": "vnios-te-1420-test"
