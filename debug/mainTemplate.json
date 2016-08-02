@@ -272,11 +272,22 @@
         "description":"availability set name"
       }
     },
+    "customDataPlainOrBase64":{
+      "type":"string",
+      "defaultValue":"none",
+      "allowedValues":[
+        "plain",
+        "base64"
+      ],
+      "metadata":{
+        "description":"Indicates whether the customData is already in base64 format or plain."
+      }
+    },
     "customData":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
-        "description":"customData. Not necessary to define."
+        "description":"customData. Not necessary to define. May be plain or base64"
       }
     }
   },

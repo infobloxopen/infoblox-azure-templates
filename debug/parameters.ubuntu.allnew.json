@@ -91,9 +91,6 @@
     },
       "availabilitySetNewOrExistingOrNone": {
       "value": "none"
-    },
-      "availabilitySetName": {
-      "value": "someset"
     }
   }
 }
