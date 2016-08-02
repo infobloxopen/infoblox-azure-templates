@@ -6,13 +6,13 @@
       "value": "testvmallnew"
     },
     "imagePublisher": {
-      "value": "canonical"
+      "value": "Canonical"
     },
     "imageOffer": {
       "value": "UbuntuServer"
     },
     "niosModel": {
-      "value": "14.04.3-LTS"
+      "value": "14.04.4-LTS"
     },
     "niosVersion": {
       "value": "latest"
