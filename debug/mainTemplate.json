@@ -9,6 +9,28 @@
         "description":"Name for the Virtual Machine."
       }
     },
+    "imagePublisher":{
+      "type":"string",
+      "defaultValue":"infoblox",
+      "metadata":{
+        "description":"imagePublisher. For testing"
+      },
+      "allowedValues":[
+        "infoblox",
+        "Canonical"
+      ]
+    },
+    "imageOffer":{
+      "type":"string",
+      "defaultValue":"infoblox-vnios-te-v1420-preview",
+      "metadata":{
+        "description":"imageOffer. For testing"
+      },
+      "allowedValues":[
+        "infoblox-vnios-te-v1420-preview",
+        "UbuntuServer"
+      ]
+    },
     "niosModel":{
       "type":"string",
       "defaultValue":"vnios-te-v1420",
@@ -22,7 +44,8 @@
         "vnios-te-v2220",
         "vnios-cp-v800",
         "vnios-cp-v1400",
-        "vnios-cp-v2200"
+        "vnios-cp-v2200",
+        "14.04.3-LTS"
       ]
     },
     "niosVersion":{
@@ -252,8 +275,8 @@
   },
   "variables":{
     "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/debug",
-    "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vnios-te-v1420-preview",
+    "imagePublisher":"[parameters('imagePublisher')]",
+    "imageOffer": "[parameters('imageOffer')]",
     "imageSKU": "[parameters('niosModel')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[parameters('vmName')]",
