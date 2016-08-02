@@ -35,7 +35,7 @@
       "type":"string",
       "defaultValue":"vnios-te-v1420",
       "metadata":{
-        "description":"niosModel. Used as imageSKU."
+        "description":"niosModel."
       },
       "allowedValues":[
         "vnios-te-1420-test",

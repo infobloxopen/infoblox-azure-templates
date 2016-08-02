@@ -90,7 +90,7 @@
       "value": "templtestgroup"
     },
       "availabilitySetNewOrExistingOrNone": {
-      "value": "new"
+      "value": "none"
     },
       "availabilitySetName": {
       "value": "someset"
