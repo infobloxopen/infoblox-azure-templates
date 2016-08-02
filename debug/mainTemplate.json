@@ -272,7 +272,7 @@
         "description":"availability set name"
       }
     },
-    "customDataPlainOrBase64":{
+    "customDataNoneOrPlainOrBase64":{
       "type":"string",
       "defaultValue":"none",
       "allowedValues":[
@@ -317,7 +317,15 @@
     "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
     "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
-    "customData":"[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
+    
+    "usrCustomData":"[variables(concat('usrCustomData-',parameters('customDataNoneOrPlainOrBase64')))]",
+    "usrCustomData-none":"",
+    "usrCustomData-plain":"[parameters('customData')]",
+    "usrCustomData-base64":"[decodeBase64(parameters('customData'))]",
+
+    "customData": "[variables(concat('customData-', contains(variables('usrCustomData'), 'default_admin_password')))]",
+    "customData-false":"[encodeBase64(concat(variables('usrCustomData'), '\n', 'default_admin_password: ', parameters('adminPassword')))]",
+    "customData-true":"[encodeBase64(variables('usrCustomData')))]",
 
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
