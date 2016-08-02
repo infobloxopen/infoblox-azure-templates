@@ -271,6 +271,13 @@
       "metadata":{
         "description":"availability set name"
       }
+    },
+    "customData":{
+      "type":"string",
+      "defaultValue":"",
+      "metadata":{
+        "description":"customData. Not necessary to define."
+      }
     }
   },
   "variables":{

@@ -33,6 +33,7 @@
       "type":"Microsoft.Compute/virtualMachines",
       "name":"[parameters('vmName')]",
       "location":"[resourceGroup().location]",
+
       "properties":{
         "hardwareProfile":"[parameters('hardwareProfile')]",
         "osProfile":"[parameters('osProfile')]",
