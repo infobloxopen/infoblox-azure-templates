@@ -17,7 +17,7 @@
       },
       "allowedValues":[
         "infoblox",
-        "Canonical"
+        "canonical"
       ]
     },
     "imageOffer":{
@@ -35,7 +35,7 @@
       "type":"string",
       "defaultValue":"vnios-te-v1420",
       "metadata":{
-        "description":"niosModel"
+        "description":"niosModel. Used as imageSKU."
       },
       "allowedValues":[
         "vnios-te-1420-test",
