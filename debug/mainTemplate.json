@@ -27,11 +27,12 @@
     },
     "niosVersion":{
       "type":"string",
-      "defaultValue":"7.4.0",
+      "defaultValue":"latest",
       "metadata":{
         "description":"niosVersion"
       },
       "allowedValues":[
+        "latest",
         "74.0.331933"
       ]
     },

@@ -96,12 +96,12 @@
           "name": "niosVersion-vnios-te-1420-test",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V1420-Debug",
-          "defaultValue": "7.4.0",
+          "defaultValue": "latest",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "7.4.0",
+                "label": "latest",
                 "value": "latest"
               }
             ]
