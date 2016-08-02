@@ -29,4 +29,4 @@ azure group deployment create \
     "${DEPLOYMENT_NAME}"
 
 # Remove resource group
-# azure group delete --quiet "${RESOURCE_GROUP}"
+azure group delete --quiet "${RESOURCE_GROUP}"

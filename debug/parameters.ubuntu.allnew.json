@@ -27,7 +27,7 @@
       "value": "vnet01"
     },
     "virtualNetworkExistingRGName": {
-      "value": "templtestgroup"
+      "value": "templtestgroupubuntu"
     },
     "virtualNetworkAddressPrefix": {
       "value": "10.4.0.0/16"
@@ -63,10 +63,10 @@
       "value": "new"
     },
     "storageAccountExistingRG": {
-      "value": "templtestgroup"
+      "value": "templtestgroupubuntu"
     },
     "newStorageAccountForLogsName": {
-      "value": "templtestgrouplogs"
+      "value": "templtestgroupubuntulogs"
     },
     "storageAccountForLogsType": {
       "value": "Standard_LRS"
@@ -75,19 +75,19 @@
       "value": "new"
     },
     "storageAccountForLogsExistingRG": {
-      "value": "templtestgroup"
+      "value": "templtestgroupubuntu"
     },
     "publicIPAddressName": {
-      "value": "templatestestpip"
+      "value": "templatestestubuntupip"
     },
     "publicIPDnsName": {
-      "value": "templatestestpip"
+      "value": "templatestestubuntupip"
     },
     "publicIPNewOrExistingOrNone": {
       "value": "new"
     },
     "publicIPExistingRGName": {
-      "value": "templtestgroup"
+      "value": "templtestgroupubuntu"
     },
       "availabilitySetNewOrExistingOrNone": {
       "value": "none"
