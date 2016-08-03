@@ -272,11 +272,23 @@
         "description":"availability set name"
       }
     },
+    "customDataNoneOrPlainOrBase64":{
+      "type":"string",
+      "defaultValue":"none",
+      "allowedValues":[
+        "none",
+        "plain",
+        "base64"
+      ],
+      "metadata":{
+        "description":"Indicates whether the customData is already in base64 format or plain."
+      }
+    },
     "customData":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
-        "description":"Not necessary to define. Must be plain text. If default_admin_password is not defined inside, than it will be added to the end of customData according to password field."
+        "description":"customData. Not necessary to define. May be plain or base64"
       }
     }
   },
@@ -306,9 +318,12 @@
     "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
     
-    "customData": "[variables(concat('customData-', contains(parameters('customData'), 'default_admin_password')))]",
-    "customData-false":"[base64(concat(parameters('customData'), '\n', 'default_admin_password: ', parameters('adminPassword'))]",
-    "customData-true":"[base64(parameters('customData')))]",
+    "usrCustomData":"[variables(concat('usrCustomData-',parameters('customDataNoneOrPlainOrBase64')))]",
+    "usrCustomData-none":"",
+    "usrCustomData-plain":"[parameters('customData')]",
+    "usrCustomData-base64":"[parameters('customData')]",
+
+    "customData": "[base64(concat(variables('usrCustomData')), '\n', 'default_admin_password: ', parameters('adminPassword'))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",

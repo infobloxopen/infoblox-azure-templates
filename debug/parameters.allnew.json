@@ -88,6 +88,12 @@
     },
       "availabilitySetName": {
       "value": "someset"
+    },
+      "customDataNoneOrPlainOrBase64": {
+      "value": "plain"
+    },
+      "customData": {
+      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: myPassword\ntemp_license: cloud vnios dns"
     }
   }
 }
