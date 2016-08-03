@@ -9,28 +9,6 @@
         "description":"Name for the Virtual Machine."
       }
     },
-    "imagePublisher":{
-      "type":"string",
-      "defaultValue":"infoblox",
-      "metadata":{
-        "description":"imagePublisher. For testing purposes."
-      },
-      "allowedValues":[
-        "infoblox",
-        "Canonical"
-      ]
-    },
-    "imageOffer":{
-      "type":"string",
-      "defaultValue":"infoblox-vnios-te-v1420-preview",
-      "metadata":{
-        "description":"imageOffer. For testing purposes."
-      },
-      "allowedValues":[
-        "infoblox-vnios-te-v1420-preview",
-        "UbuntuServer"
-      ]
-    },
     "niosModel":{
       "type":"string",
       "defaultValue":"vnios-te-v1420",
@@ -272,30 +250,18 @@
         "description":"availability set name"
       }
     },
-    "customDataNoneOrPlainOrBase64":{
-      "type":"string",
-      "defaultValue":"none",
-      "allowedValues":[
-        "none",
-        "plain",
-        "base64"
-      ],
-      "metadata":{
-        "description":"Indicates whether the customData is already in base64 format or plain."
-      }
-    },
     "customData":{
       "type":"string",
       "defaultValue":"",
       "metadata":{
-        "description":"customData. Not necessary to define. May be plain or base64"
+        "description":"customData. Not necessary to define."
       }
     }
   },
   "variables":{
     "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/debug",
-    "imagePublisher":"[parameters('imagePublisher')]",
-    "imageOffer": "[parameters('imageOffer')]",
+    "imagePublisher":"infoblox",
+    "imageOffer":"infoblox-vnios-te-v1420-preview",
     "imageSKU": "[parameters('niosModel')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[parameters('vmName')]",
@@ -318,12 +284,7 @@
     "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
     
-    "usrCustomData":"[variables(concat('usrCustomData-',parameters('customDataNoneOrPlainOrBase64')))]",
-    "usrCustomData-none":"",
-    "usrCustomData-plain":"[parameters('customData')]",
-    "usrCustomData-base64":"[parameters('customData')]",
-
-    "customData": "[base64(concat(variables('usrCustomData'), '\n', 'default_admin_password: ', parameters('adminPassword')))]",
+    "customData": "[base64(concat(parameters('customData'), '\n', 'default_admin_password: ', parameters('adminPassword')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
