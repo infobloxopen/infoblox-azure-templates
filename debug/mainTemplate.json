@@ -323,7 +323,7 @@
     "usrCustomData-plain":"[parameters('customData')]",
     "usrCustomData-base64":"[parameters('customData')]",
 
-    "customData": "[base64(concat(variables('usrCustomData')), '\n', 'default_admin_password: ', parameters('adminPassword'))]",
+    "customData": "[base64(concat(variables('usrCustomData'), '\n', 'default_admin_password: ', parameters('adminPassword')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
