@@ -252,7 +252,7 @@
       "type":"string",
       "defaultValue":"",
       "metadata":{
-        "description":"Some custom data parameter are not available for Azure, please refer to Azure NIOS Guide for allowed parameters."
+        "description":"Use space and '\n' symbols for indentation. Some custom data parameter are not available for Azure, please refer to Azure NIOS Guide for allowed parameters."
       }
     }
   },
