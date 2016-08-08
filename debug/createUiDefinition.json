@@ -7,14 +7,10 @@
         "name": "niosModel",
         "type": "Microsoft.Common.DropDown",
         "label": "NIOS model",
-        "defaultValue": "TE-V1420-Debug (Standard DS2)",
+        "defaultValue": "TE-V1420 (Standard DS3)",
         "toolTip": "Select the NIOS model to load on the new VM",
         "constraints": {
           "allowedValues": [
-            {
-              "label": "TE-V1420-Debug (Standard DS2)",
-              "value": "vnios-te-1420-test"
-            },
             {
               "label": "TE-V820 (Standard DS2)",
               "value": "vnios-te-v820"
@@ -92,22 +88,6 @@
         "postValidation": "Done"
       },
       "elements": [
-        {
-          "name": "niosVersion-vnios-te-1420-test",
-          "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V1420-Debug",
-          "defaultValue": "latest",
-          "toolTip": "Select the version of NIOS to load",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "latest",
-                "value": "latest"
-              }
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-te-1420-test')]"
-        },
         {
           "name": "niosVersion-vnios-te-v820",
           "type": "Microsoft.Common.DropDown",
@@ -363,7 +343,7 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-1420-test,steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800,steps('vmSettings').niosVersion-vnios-cp-v1400,steps('vmSettings').niosVersion-vnios-cp-v2200)]",
+      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800,steps('vmSettings').niosVersion-vnios-cp-v1400,steps('vmSettings').niosVersion-vnios-cp-v2200)]",
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
       "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
       "authenticationType": "[basics('passwordSection').SSHCredentials.authenticationType]",
