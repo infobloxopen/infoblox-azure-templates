@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "testvmallnew"
+      "value": "templtestvmallnew"
     },
     "niosModel": {
-      "value": "vnios-te-v820"
+      "value": "vnios-te-1420-test"
     },
     "niosVersion": {
-      "value": "74.0.331933"
+      "value": "latest"
     },
     "adminPassword": {
       "value": "Infoblox=111"
@@ -88,6 +88,9 @@
     },
       "availabilitySetName": {
       "value": "someset"
+    },
+      "customData": {
+      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: myPassword\ntemp_license: cloud vnios dns"
     }
   }
 }

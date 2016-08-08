@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
-      "value": "testvmexisting"
+      "value": "templtestvmexisting"
     },
     "niosModel": {
-      "value": "vnios-te-v1420"
+      "value": "vnios-te-1420-test"
     },
     "niosVersion": {
-      "value": "74.0.331933"
+      "value": "latest"
     },
     "adminPassword": {
       "value": "Infoblox=111"

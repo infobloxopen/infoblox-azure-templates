@@ -11,11 +11,12 @@
     },
     "niosModel":{
       "type":"string",
-      "defaultValue":"vnios-te-v1420",
+      "defaultValue":"vnios-te-1420-test",
       "metadata":{
-        "description":"niosModel"
+        "description":"niosModel."
       },
       "allowedValues":[
+        "vnios-te-1420-test",
         "vnios-te-v820",
         "vnios-te-v1420",
         "vnios-te-v2220",
@@ -26,11 +27,12 @@
     },
     "niosVersion":{
       "type":"string",
-      "defaultValue":"7.4.0",
+      "defaultValue":"latest",
       "metadata":{
         "description":"niosVersion"
       },
       "allowedValues":[
+        "latest",
         "74.0.331933"
       ]
     },
@@ -246,6 +248,13 @@
       "metadata":{
         "description":"availability set name"
       }
+    },
+    "customData":{
+      "type":"string",
+      "defaultValue":"",
+      "metadata":{
+        "description":"customData. Parameter 'default_admin_password' will be overwritten. Use space and '\n' symbols for indentation."
+      }
     }
   },
   "variables":{
@@ -273,8 +282,8 @@
     "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
     "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
-    "customData":"[base64(concat('default_admin_password: ', parameters('adminPassword')))]",
-
+    
+    "customData": "[base64(concat(parameters('customData'), '\n', 'default_admin_password: ', parameters('adminPassword')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
@@ -282,6 +291,7 @@
     "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
+    "vmSize-vnios-te-1420-test":"Standard_DS2",
     "vmSize-vnios-te-v820":"Standard_DS2",
     "vmSize-vnios-te-v1420":"Standard_DS3",
     "vmSize-vnios-te-v2220":"Standard_DS3",
