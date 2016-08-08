@@ -254,7 +254,7 @@
       "type":"string",
       "defaultValue":"",
       "metadata":{
-        "description":"customData. Not necessary to define. Parameter 'default_admin_password' will be overwritten."
+        "description":"customData. Parameter 'default_admin_password' will be overwritten. Use space and '\n' symbols for indentation."
       }
     }
   },
