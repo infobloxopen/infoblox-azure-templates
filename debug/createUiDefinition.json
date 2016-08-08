@@ -325,7 +325,7 @@
           "name": "customData",
           "type": "Microsoft.Common.FileUpload",
           "label": "Upload file with custom data if needed.",
-          "toolTip": "Note: default_admin_password is overwritten by value from password field",
+          "toolTip": "Some custom data parameter are not available for Azure, please refer to Azure NIOS Guide for allowed parameters",
           "constraints": {
             "required": false,
             "accept": ".yaml"
