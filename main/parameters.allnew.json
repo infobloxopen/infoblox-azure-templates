@@ -6,10 +6,10 @@
       "value": "templtestvmallnew"
     },
     "niosModel": {
-      "value": "vnios-te-1420-test"
+      "value": "vnios-te-v820"
     },
     "niosVersion": {
-      "value": "latest"
+      "value": "74.0.331933"
     },
     "adminPassword": {
       "value": "Infoblox=111"
@@ -90,7 +90,7 @@
       "value": "someset"
     },
       "customData": {
-      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: myPassword\ntemp_license: cloud vnios dns"
+      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: Ignoredpassword=111\ntemp_license: cloud vnios dns"
     }
   }
 }
