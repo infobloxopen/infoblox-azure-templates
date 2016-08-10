@@ -32,7 +32,8 @@
       },
       "allowedValues":[
         "latest",
-        "74.0.331933"
+        "74.0.331933",
+        "74.0.337462"
       ]
     },
     "adminPassword":{
