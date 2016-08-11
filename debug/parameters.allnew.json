@@ -6,10 +6,10 @@
       "value": "templtestvmallnew"
     },
     "niosModel": {
-      "value": "vnios-te-v820"
+      "value": "vnios-te-v2220"
     },
     "niosVersion": {
-      "value": "74.0.331933"
+      "value": "74.0.337462"
     },
     "adminPassword": {
       "value": "Infoblox=111"
