@@ -59,12 +59,12 @@
           "name": "SSHCredentials",
           "type": "Microsoft.Compute.CredentialsCombo",
           "label": {
-            "password": "Admin password",
-            "confirmPassword": "Confirm admin password"
+            "password": "'Admin' password",
+            "confirmPassword": "Confirm 'admin' password"
           },
           "toolTip": {
-            "password": "Password for the admin user",
-            "confirmPassword": "Password for the admin user"
+            "password": "Password for the 'admin' user",
+            "confirmPassword": "Password for the 'admin' user"
           },
           "constraints": {
             "required": true
