@@ -331,115 +331,130 @@
           "visible": true
         },
         {
-          "name": "license1",
-          "type": "Microsoft.Common.OptionsGroup",
-          "label": "Install temporary vNIOS license",
-          "defaultValue": "yes",
-          "toolTip": "Select yes if you want to install temporary vNIOS license",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "yes",
-                "value": "vnios "
+          "name": "licensesSelector",
+          "type": "Microsoft.Common.Selector",
+          "label": "Temporary licenses selector",
+          "sublabel": {
+            "prevalidation": "Select licenses",
+            "postvalidation": "Done"
+          },
+          "toolTip": "",
+          "bladeTitle": "Licenses selector",
+          "bladeSubtitle": "Select temporary licenses",
+          "elements": [
+            {
+              "name": "license1",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary vNIOS license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary vNIOS license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "vnios "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
               },
-              {
-                "label": "no",
-                "value": ""
-              }
-            ]
-          },
-          "visible": true
-        },
-        {
-          "name": "license2",
-          "type": "Microsoft.Common.OptionsGroup",
-          "label": "Install temporary Grid license",
-          "defaultValue": "yes",
-          "toolTip": "Select yes if you want to install temporary Grid license",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "yes",
-                "value": "enterprise "
+              "visible": true
+            },
+            {
+              "name": "license2",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary Grid license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary Grid license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "enterprise "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
               },
-              {
-                "label": "no",
-                "value": ""
-              }
-            ]
-          },
-          "visible": true
-        },
-        {
-          "name": "license3",
-          "type": "Microsoft.Common.OptionsGroup",
-          "label": "Install temporary DNS license",
-          "defaultValue": "yes",
-          "toolTip": "Select yes if you want to install temporary DNS license",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "yes",
-                "value": "dns "
+              "visible": true
+            },
+            {
+              "name": "license3",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary DNS license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary DNS license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "dns "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
               },
-              {
-                "label": "no",
-                "value": ""
-              }
-            ]
-          },
-          "visible": true
-        },
-        {
-          "name": "license4",
-          "type": "Microsoft.Common.OptionsGroup",
-          "label": "Install temporary CNA license",
-          "defaultValue": "yes",
-          "toolTip": "Select yes if you want to install temporary CNA license",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "yes",
-                "value": "cloud "
+              "visible": true
+            },
+            {
+              "name": "license4",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary CNA license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary CNA license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "cloud "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
               },
-              {
-                "label": "no",
-                "value": ""
-              }
-            ]
-          },
-          "visible": "[or(equals(basics('niosModel'), 'vnios-te-v820'), equals(basics('niosModel'), 'vnios-te-v1420'), equals(basics('niosModel'), 'vnios-te-v2220'))]"
-        },
-        {
-          "name": "license5",
-          "type": "Microsoft.Common.OptionsGroup",
-          "label": "Install temporary Cloud Platform license",
-          "defaultValue": "yes",
-          "toolTip": "Select yes if you want to install temporary Cloud Platform license",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "yes",
-                "value": "cloud_api "
+              "visible": "[or(equals(basics('niosModel'), 'vnios-te-v820'), equals(basics('niosModel'), 'vnios-te-v1420'), equals(basics('niosModel'), 'vnios-te-v2220'))]"
+            },
+            {
+              "name": "license5",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary Cloud Platform license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary Cloud Platform license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "cloud_api "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
               },
-              {
-                "label": "no",
-                "value": ""
-              }
-            ]
-          },
-          "visible": "[or(equals(basics('niosModel'), 'vnios-cp-v800'), equals(basics('niosModel'), 'vnios-cp-v1400'), equals(basics('niosModel'), 'vnios-cp-v2200'))]"
-        },
-        {
-          "name": "licensesList",
-          "type": "Microsoft.Common.TextBox",
-          "label": "List of available license.",
-          "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
-          "constraints": {
-            "required": false,
-            "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
-            "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
-          },
+              "visible": "[or(equals(basics('niosModel'), 'vnios-cp-v800'), equals(basics('niosModel'), 'vnios-cp-v1400'), equals(basics('niosModel'), 'vnios-cp-v2200'))]"
+            },
+            {
+              "name": "licensesList",
+              "type": "Microsoft.Common.TextBox",
+              "label": "List of available license.",
+              "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
+              "constraints": {
+                "required": false,
+                "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
+                "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
+              },
+              "visible": true
+            }
+          ],
           "visible": true
         },
         {
@@ -500,7 +515,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat(steps('vmSettings').customData, '\n', steps('vmSettings').license1, steps('vmSettings').license2, steps('vmSettings').license3, steps('vmSettings').license4, steps('vmSettings').license5, steps('vmSettings').licensesList)]"
+      "customData": "[concat(steps('vmSettings').customData, '\n', steps('vmSettings').licensesSelector.license1, steps('vmSettings').licensesSelector.license2, steps('vmSettings').licensesSelector.license3, steps('vmSettings').licensesSelector.license4, steps('vmSettings').licensesSelector.license5, steps('vmSettings').licensesList)]"
     }
   }
 }
