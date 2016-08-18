@@ -327,7 +327,7 @@
       ]
     }],
     "outputs": {
-      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), '\n')]"
+      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), ' ')]"
     }
   }
 }
