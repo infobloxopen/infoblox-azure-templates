@@ -439,11 +439,9 @@
               "name": "licensesList",
               "type": "Microsoft.Common.TextBox",
               "label": "List of available license.",
-              "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
+              "toolTip": "Enter the space separated list of additional temp licenses if any.",
               "constraints": {
-                "required": false,
-                "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
-                "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
+                "required": false
               },
               "visible": true
             }
