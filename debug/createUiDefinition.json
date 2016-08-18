@@ -439,7 +439,7 @@
               "name": "licensesList",
               "type": "Microsoft.Common.TextBox",
               "label": "List of available license.",
-              "toolTip": "Enter the space separated list of additional temp licenses if any.",
+              "toolTip": "Enter the space separated list of additional temp licenses if any",
               "constraints": {
                 "required": false
               },
@@ -506,7 +506,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat(steps('vmSettings').customData, '\n')]"
+      "customData": "[concat(steps('vmSettings').customData,'\n',steps('vmSettings').licenseSection.license1,steps('vmSettings').licenseSection.license2,steps('vmSettings').licenseSection.license3,steps('vmSettings').licenseSection.license4,steps('vmSettings').licenseSection.license5,steps('vmSettings').licenseSection.licensesList)]"
     }
   }
 }
