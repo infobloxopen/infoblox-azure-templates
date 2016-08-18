@@ -59,7 +59,7 @@
           "name": "SSHCredentials",
           "type": "Microsoft.Compute.CredentialsCombo",
           "label": {
-            "password": "'Admin' password",
+            "password": "'admin' password",
             "confirmPassword": "Confirm 'admin' password"
           },
           "toolTip": {
@@ -506,7 +506,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat('foo', steps('vmSettings').customData)]"
+      "customData": "[concat('foo', coalesce(steps('vmSettings').customData, ''))]"
     }
   }
 }
