@@ -506,7 +506,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat('foo', concat(steps('vmSettings').customData)]"
+      "customData": "[concat('foo', steps('vmSettings').customData)]"
     }
   }
 }
