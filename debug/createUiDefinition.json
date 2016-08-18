@@ -327,7 +327,7 @@
       ]
     }],
     "outputs": {
-      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), parse('\\r\\n'), steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), steps('vmSettings').licenseSection.licensesList)]"
+      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), string('\\r\\n'), steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), steps('vmSettings').licenseSection.licensesList)]"
     }
   }
 }
