@@ -38,45 +38,6 @@
           ]
         },
         "visible": true
-      },
-      {
-        "name": "vmName",
-        "type": "Microsoft.Common.TextBox",
-        "label": "NIOS VM name",
-        "toolTip": "The name of the new NIOS vm.",
-        "constraints": {
-          "required": true,
-          "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
-          "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
-        }
-      },
-      {
-        "name": "passwordSection",
-        "type": "Microsoft.Common.Section",
-         "label": "Password for 'admin' user",
-         "elements": [
-        {
-          "name": "SSHCredentials",
-          "type": "Microsoft.Compute.CredentialsCombo",
-          "label": {
-            "password": "'admin' password",
-            "confirmPassword": "Confirm 'admin' password"
-          },
-          "toolTip": {
-            "password": "Password for the 'admin' user",
-            "confirmPassword": "Password for the 'admin' user"
-          },
-          "constraints": {
-            "required": true
-          },
-          "options": {
-            "hideConfirmation": false
-          },
-          "osPlatform": "Windows",
-          "visible": true
-        }
-        ],
-        "visible": true
       }
     ],
     "steps": [{
@@ -183,108 +144,6 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]"
-        },
-        {
-          "name": "storageAccount",
-          "type": "Microsoft.Storage.StorageAccountSelector",
-          "label": "Storage account",
-          "toolTip": "Storage account for the NIOS disk, must be a premium type",
-          "defaultValue": {
-            "type": "Premium_LRS"
-          },
-          "constraints": {
-            "allowedTypes": ["Premium_LRS"]
-          },
-          "options": {
-            "hideExisting": false
-          },
-          "visible": true
-        },
-        {
-          "name": "storageAccountForLogs",
-          "type": "Microsoft.Storage.StorageAccountSelector",
-          "label": "Storage account for BootDiagnostics.",
-          "toolTip": "Storage account for the Boot Disgnostic file, must be a non premium type",
-          "defaultValue": {
-            "type": "Standard_LRS"
-          },
-          "constraints": {
-            "allowedTypes": ["Standard_LRS"]
-          },
-          "options": {
-            "hideExisting": false
-          },
-          "visible": true
-        },
-        {
-          "name": "niosNetwork",
-          "type": "Microsoft.Network.VirtualNetworkCombo",
-          "label": {
-            "virtualNetwork": "Virtual network",
-            "subnets": "Subnets"
-          },
-          "toolTip": {
-            "virtualNetwork": "",
-            "subnets": ""
-          },
-          "defaultValue": {
-            "addressPrefixSize": "/16"
-          },
-          "constraints": {
-            "minAddressPrefixSize": "/28"
-          },
-          "options": {
-            "hideExisting": false
-          },
-          "subnets": {
-            "subnetLan1": {
-              "label": "LAN1 interface’s subnet",
-              "defaultValue": {
-                "addressPrefixSize": "/24"
-              },
-              "constraints": {
-                "minAddressPrefixSize": "/30",
-                "minAddressCount": 1
-              }
-            },
-            "subnetMgmt": {
-              "label": "MGMT interface’s subnet",
-              "defaultValue": {
-                "addressPrefixSize": "/24"
-              },
-              "constraints": {
-                "minAddressPrefixSize": "/30",
-                "minAddressCount": 1
-              }
-            }
-          },
-          "visible": true
-        },
-        {
-          "name": "dnsAndPublicIP",
-          "type": "Microsoft.Network.PublicIpAddressCombo",
-          "label": {
-            "publicIpAddress": "Public IP address",
-            "domainNameLabel": "Public DNS name"
-          },
-          "toolTip": {
-            "publicIpAddress": "",
-            "domainNameLabel": ""
-          },
-          "defaultValue": {
-            "publicIpAddressName": ""
-          },
-          "constraints": {
-            "required": {
-              "domainNameLabel": true
-            }
-          },
-          "options": {
-            "hideNone": false,
-            "hideDomainNameLabel": false,
-            "hideExisting": false
-          },
-          "visible": true
         },
         {
           "name": "availabilitySection",
@@ -468,47 +327,7 @@
       ]
     }],
     "outputs": {
-      "vmName": "[basics('vmName')]",
-      "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800,steps('vmSettings').niosVersion-vnios-cp-v1400,steps('vmSettings').niosVersion-vnios-cp-v2200)]",
-      "adminPassword": "[basics('passwordSection').SSHCredentials.password]",
-      "sshPublicKey": "[basics('passwordSection').SSHCredentials.sshPublicKey]",
-      "authenticationType": "[basics('passwordSection').SSHCredentials.authenticationType]",
-
-      "virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
-      "virtualNetworkExistingRGName": "[steps('vmSettings').niosNetwork.resourceGroup]",
-      "virtualNetworkAddressPrefix": "[steps('vmSettings').niosNetwork.addressPrefix]",
-      "vnetNewOrExisting": "[steps('vmSettings').niosNetwork.newOrExisting]",
-
-      "subnet1Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.addressPrefix]",
-      "subnet1Name": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.name]",
-      "subnet1StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetLan1.startAddress]",
-
-      "subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
-      "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
-      "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
-      
-      "newStorageAccountName": "[steps('vmSettings').storageAccount.name]",
-      "storageAccountType": "[steps('vmSettings').storageAccount.type]",
-      "storageAccountNewOrExisting": "[steps('vmSettings').storageAccount.newOrExisting]",
-      "storageAccountExistingRG": "[steps('vmSettings').storageAccount.resourceGroup]",
-
-      "newStorageAccountForLogsName": "[steps('vmSettings').storageAccountForLogs.name]",
-      "storageAccountForLogsType": "[steps('vmSettings').storageAccountForLogs.type]",
-      "storageAccountForLogsNewOrExisting": "[steps('vmSettings').storageAccountForLogs.newOrExisting]",
-      "storageAccountForLogsExistingRG": "[steps('vmSettings').storageAccountForLogs.resourceGroup]",
-
-      "publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
-      "publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
-      "publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
-      "publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
-
-      "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
-      "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
-
-      "licenses": "[concat(steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), steps('vmSettings').licenseSection.licensesList)]",
-      "customData": "[steps('vmSettings').customData]"
-
+      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), '\\n')]"
     }
   }
 }
