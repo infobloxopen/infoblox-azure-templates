@@ -298,6 +298,7 @@
               "name": "licensesList",
               "type": "Microsoft.Common.TextBox",
               "label": "List of available license.",
+              "defaultValue": "",
               "toolTip": "Enter the space separated list of additional temp licenses if any",
               "constraints": {
                 "required": false
