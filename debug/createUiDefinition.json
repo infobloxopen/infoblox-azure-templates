@@ -506,7 +506,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat(steps('vmSettings').customData, '\n', steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, steps('vmSettings').licenseSection.license4, steps('vmSettings').licenseSection.license5, steps('vmSettings').licenseSection.licensesList)]"
+      "customData": "[concat(steps('vmSettings').customData, '\n', steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, steps('vmSettings').licenseSection.licensesList)]"
     }
   }
 }
