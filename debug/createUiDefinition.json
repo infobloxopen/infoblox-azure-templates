@@ -442,7 +442,7 @@
               "toolTip": "Enter the space separated list of additional temp licenses",
               "constraints": {
                 "required": false,
-                "regex": "^(\banycast\b|\bdhcp\b|\bdns\b|\benterprise\b|\bipam\b|\bvnios\b|\bkeystone_supldap\b|\bnios_support\b|\bms_management\b|\bntp\b|\btftp\b|\bmgm\b|\bhwul\b|\bqrd\b|\bvco_plugin\b|\breporting\b|\brpt_sub\b|\bdns_cache_accel\b|\bdca\b|\bipam_freeware\b|\bddi_trial\b|\brpz\b|\bfireeye\b|\bdnsqrw\b|\boem\b|\bdiscovery\b|\btp\b|\btp_sub\b|\bfreq_control\b|\bdtc\b|\bcloud\b|\bcloud_api\b|\bunbound\b|\bthreat_anl\b|\bsec_eco\b|\bnios\b| )+$",
+                "regex": "^(\\banycast\\b|\\bdhcp\\b|\\bdns\\b|\\benterprise\\b|\\bipam\\b|\\bvnios\\b|\\bkeystone_supldap\\b|\\bnios_support\\b|\\bms_management\\b|\\bntp\\b|\\btftp\\b|\\bmgm\\b|\\bhwul\\b|\\bqrd\\b|\\bvco_plugin\\b|\\breporting\\b|\\brpt_sub\\b|\\bdns_cache_accel\\b|\\bdca\\b|\\bipam_freeware\\b|\\bddi_trial\\b|\\brpz\\b|\\bfireeye\\b|\\bdnsqrw\\b|\\boem\\b|\\bdiscovery\\b|\\btp\\b|\\btp_sub\\b|\\bfreq_control\\b|\\bdtc\\b|\\bcloud\\b|\\bcloud_api\\b|\\bunbound\\b|\\bthreat_anl\\b|\\bsec_eco\\b|\\bnios\\b| )+$",
                 "validationMessage": "Expected space separated list with additional licenses. Available licenses: anycast dhcp dns enterprise ipam vnios keystone_supldap nios_support ms_management ntp tftp mgm hwul qrd vco_plugin reporting rpt_sub dns_cache_accel dca ipam_freeware ddi_trial rpz fireeye dnsqrw oem discovery tp tp_sub freq_control dtc cloud cloud_api unbound threat_anl sec_eco nios"
               },
               "visible": true
