@@ -441,7 +441,9 @@
               "label": "List of available license.",
               "toolTip": "Enter the space separated list of additional temp licenses if any",
               "constraints": {
-                "required": false
+                "required": false,
+                "regex": "[\\w- ]*",
+                "validationMessage": "Characters must be spaces, letters, numbers or underscores."
               },
               "visible": true
             }
