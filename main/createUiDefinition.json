@@ -53,18 +53,18 @@
       {
         "name": "passwordSection",
         "type": "Microsoft.Common.Section",
-         "label": "Password for admin user",
+         "label": "Password for 'admin' user",
          "elements": [
         {
           "name": "SSHCredentials",
           "type": "Microsoft.Compute.CredentialsCombo",
           "label": {
-            "password": "Admin password",
-            "confirmPassword": "Confirm admin password"
+            "password": "'admin' password",
+            "confirmPassword": "Confirm 'admin' password"
           },
           "toolTip": {
-            "password": "Password for the admin user",
-            "confirmPassword": "Password for the admin user"
+            "password": "Password for the 'admin' user",
+            "confirmPassword": "Password for the 'admin' user"
           },
           "constraints": {
             "required": true
@@ -227,6 +227,9 @@
             "virtualNetwork": "",
             "subnets": ""
           },
+          "defaultValue": {
+            "addressPrefixSize": "/16"
+          },
           "constraints": {
             "minAddressPrefixSize": "/28"
           },
@@ -236,6 +239,9 @@
           "subnets": {
             "subnetLan1": {
               "label": "LAN1 interface’s subnet",
+              "defaultValue": {
+                "addressPrefixSize": "/24"
+              },
               "constraints": {
                 "minAddressPrefixSize": "/30",
                 "minAddressCount": 1
@@ -243,6 +249,9 @@
             },
             "subnetMgmt": {
               "label": "MGMT interface’s subnet",
+              "defaultValue": {
+                "addressPrefixSize": "/24"
+              },
               "constraints": {
                 "minAddressPrefixSize": "/30",
                 "minAddressCount": 1
@@ -322,6 +331,126 @@
           "visible": true
         },
         {
+          "name": "licenseSection",
+          "type": "Microsoft.Common.Section",
+          "label": "Licenses",
+          "elements": [
+            {
+              "name": "license1",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary vNIOS license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary vNIOS license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "vnios "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
+              },
+              "visible": true
+            },
+            {
+              "name": "license2",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary Grid license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary Grid license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "enterprise "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
+              },
+              "visible": true
+            },
+            {
+              "name": "license3",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary DNS license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary DNS license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "dns "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
+              },
+              "visible": true
+            },
+            {
+              "name": "license4",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary CNA license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary CNA license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "cloud "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
+              },
+              "visible": "[or(equals(basics('niosModel'), 'vnios-te-v820'), equals(basics('niosModel'), 'vnios-te-v1420'), equals(basics('niosModel'), 'vnios-te-v2220'))]"
+            },
+            {
+              "name": "license5",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary Cloud Platform license",
+              "defaultValue": "yes",
+              "toolTip": "Select yes if you want to install temporary Cloud Platform license",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "cloud_api "
+                  },
+                  {
+                    "label": "no",
+                    "value": ""
+                  }
+                ]
+              },
+              "visible": "[or(equals(basics('niosModel'), 'vnios-cp-v800'), equals(basics('niosModel'), 'vnios-cp-v1400'), equals(basics('niosModel'), 'vnios-cp-v2200'))]"
+            },
+            {
+              "name": "licensesList",
+              "type": "Microsoft.Common.TextBox",
+              "label": "List of available license.",
+              "toolTip": "Enter the space separated list of additional temp licenses",
+              "constraints": {
+                "required": false,
+                "regex": "(\banycast\b|\bdhcp\b|\bdns\b|\benterprise\b|\bipam\b|\bvnios\b|\bkeystone_supldap\b|\bnios_support\b|\bms_management\b|\bntp\b|\btftp\b|\bmgm\b|\bhwul\b|\bqrd\b|\bvco_plugin\b|\breporting\b|\brpt_sub\b|\bdns_cache_accel\b|\bdca\b|\bipam_freeware\b|\bddi_trial\b|\brpz\b|\bfireeye\b|\bdnsqrw\b|\boem\b|\bdiscovery\b|\btp\b|\btp_sub\b|\bfreq_control\b|\bdtc\b|\bcloud\b|\bcloud_api\b|\bunbound\b|\bthreat_anl\b|\bsec_eco\b|\bnios\b| )*",
+                "validationMessage": "Expected space separated list with additional licenses. Available licenses: anycast dhcp dns enterprise ipam vnios keystone_supldap nios_support ms_management ntp tftp mgm hwul qrd vco_plugin reporting rpt_sub dns_cache_accel dca ipam_freeware ddi_trial rpz fireeye dnsqrw oem discovery tp tp_sub freq_control dtc cloud cloud_api unbound threat_anl sec_eco nios"
+              },
+              "visible": true
+            }
+          ],
+          "visible": true
+        },
+        {
           "name": "customData",
           "type": "Microsoft.Common.FileUpload",
           "label": "Upload file with custom data if needed.",
@@ -379,7 +508,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[steps('vmSettings').customData]"
+      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), decodeBase64('DQo='), 'temp_license: ', steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), coalesce(steps('vmSettings').licenseSection.licensesList, ''))]"
     }
   }
 }
