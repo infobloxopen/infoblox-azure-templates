@@ -283,7 +283,7 @@
     "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
     
-    "customData": "[base64(concat(parameters('customData'), '\n', 'default_admin_password: ', parameters('adminPassword')))]",
+    "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",

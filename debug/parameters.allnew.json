@@ -90,7 +90,7 @@
       "value": "someset"
     },
       "customData": {
-      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: Ignoredpassword=111\ntemp_license: cloud vnios dns"
+      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: yanmlpasswd\ntemp_license: cloud vnios dns"
     }
   }
 }

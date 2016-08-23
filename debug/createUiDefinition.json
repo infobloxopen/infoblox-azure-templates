@@ -434,18 +434,6 @@
                 ]
               },
               "visible": "[or(equals(basics('niosModel'), 'vnios-cp-v800'), equals(basics('niosModel'), 'vnios-cp-v1400'), equals(basics('niosModel'), 'vnios-cp-v2200'))]"
-            },
-            {
-              "name": "licensesList",
-              "type": "Microsoft.Common.TextBox",
-              "label": "List of available license.",
-              "toolTip": "Enter the space separated list of additional temp licenses",
-              "constraints": {
-                "required": false,
-                "regex": "^(\\banycast\\b|\\bdhcp\\b|\\bdns\\b|\\benterprise\\b|\\bipam\\b|\\bvnios\\b|\\bkeystone_supldap\\b|\\bnios_support\\b|\\bms_management\\b|\\bntp\\b|\\btftp\\b|\\bmgm\\b|\\bhwul\\b|\\bqrd\\b|\\bvco_plugin\\b|\\breporting\\b|\\brpt_sub\\b|\\bdns_cache_accel\\b|\\bdca\\b|\\bipam_freeware\\b|\\bddi_trial\\b|\\brpz\\b|\\bfireeye\\b|\\bdnsqrw\\b|\\boem\\b|\\bdiscovery\\b|\\btp\\b|\\btp_sub\\b|\\bfreq_control\\b|\\bdtc\\b|\\bcloud\\b|\\bcloud_api\\b|\\bunbound\\b|\\bthreat_anl\\b|\\bsec_eco\\b|\\bnios\\b| )+$",
-                "validationMessage": "Expected space separated list with additional licenses. Available licenses: anycast dhcp dns enterprise ipam vnios keystone_supldap nios_support ms_management ntp tftp mgm hwul qrd vco_plugin reporting rpt_sub dns_cache_accel dca ipam_freeware ddi_trial rpz fireeye dnsqrw oem discovery tp tp_sub freq_control dtc cloud cloud_api unbound threat_anl sec_eco nios"
-              },
-              "visible": true
             }
           ],
           "visible": true
@@ -508,7 +496,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat(coalesce(steps('vmSettings').customData, ''), decodeBase64('DQo='), 'temp_license: ', steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), coalesce(steps('vmSettings').licenseSection.licensesList, ''))]"
+      "customData": "[concat('temp_license: ', steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), decodeBase64('DQo='), coalesce(steps('vmSettings').customData, ''),)]"
     }
   }
 }
