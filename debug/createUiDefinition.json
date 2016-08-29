@@ -336,76 +336,16 @@
           "label": "Licenses",
           "elements": [
             {
-              "name": "license1",
+              "name": "licenses1",
               "type": "Microsoft.Common.OptionsGroup",
-              "label": "Install temporary vNIOS license",
+              "label": "Install temporary licenses",
               "defaultValue": "yes",
-              "toolTip": "Select yes if you want to install temporary vNIOS license",
+              "toolTip": "Select yes to to install automatically temporary licenses vNIOS, Grid, DNS and Cloud. Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
               "constraints": {
                 "allowedValues": [
                   {
                     "label": "yes",
-                    "value": "vnios "
-                  },
-                  {
-                    "label": "no",
-                    "value": ""
-                  }
-                ]
-              },
-              "visible": true
-            },
-            {
-              "name": "license2",
-              "type": "Microsoft.Common.OptionsGroup",
-              "label": "Install temporary Grid license",
-              "defaultValue": "yes",
-              "toolTip": "Select yes if you want to install temporary Grid license",
-              "constraints": {
-                "allowedValues": [
-                  {
-                    "label": "yes",
-                    "value": "enterprise "
-                  },
-                  {
-                    "label": "no",
-                    "value": ""
-                  }
-                ]
-              },
-              "visible": true
-            },
-            {
-              "name": "license3",
-              "type": "Microsoft.Common.OptionsGroup",
-              "label": "Install temporary DNS license",
-              "defaultValue": "yes",
-              "toolTip": "Select yes if you want to install temporary DNS license",
-              "constraints": {
-                "allowedValues": [
-                  {
-                    "label": "yes",
-                    "value": "dns "
-                  },
-                  {
-                    "label": "no",
-                    "value": ""
-                  }
-                ]
-              },
-              "visible": true
-            },
-            {
-              "name": "license4",
-              "type": "Microsoft.Common.OptionsGroup",
-              "label": "Install temporary CNA license",
-              "defaultValue": "yes",
-              "toolTip": "Select yes if you want to install temporary CNA license",
-              "constraints": {
-                "allowedValues": [
-                  {
-                    "label": "yes",
-                    "value": "cloud "
+                    "value": "vnios enterprise dns cloud "
                   },
                   {
                     "label": "no",
@@ -416,16 +356,16 @@
               "visible": "[or(equals(basics('niosModel'), 'vnios-te-v820'), equals(basics('niosModel'), 'vnios-te-v1420'), equals(basics('niosModel'), 'vnios-te-v2220'))]"
             },
             {
-              "name": "license5",
+              "name": "licenses2",
               "type": "Microsoft.Common.OptionsGroup",
-              "label": "Install temporary Cloud Platform license",
+              "label": "Install temporary licenses",
               "defaultValue": "yes",
-              "toolTip": "Select yes if you want to install temporary Cloud Platform license",
+              "toolTip": "Select yes to to install automatically temporary licenses vNIOS, Grid, DNS and Cloud. Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
               "constraints": {
                 "allowedValues": [
                   {
                     "label": "yes",
-                    "value": "cloud_api "
+                    "value": "vnios enterprise dns cloud_api "
                   },
                   {
                     "label": "no",
@@ -439,20 +379,28 @@
           "visible": true
         },
         {
-          "name": "customData",
-          "type": "Microsoft.Common.FileUpload",
-          "label": "Upload file with custom data if needed.",
-          "toolTip": "Some custom data parameter are not available for Azure, please refer to Azure NIOS Guide for allowed parameters",
-          "constraints": {
-            "required": false,
-            "accept": ".yaml"
-          },
-          "options": {
-            "multiple": false,
-            "uploadMode": "file",
-            "openMode": "text",
-            "encoding": "UTF-8"
-          },
+          "name": "enchancedOptionsSection",
+          "type": "Microsoft.Common.Section",
+          "label": "Enchanced options",
+          "elements": [
+            {
+              "name": "customData",
+              "type": "Microsoft.Common.FileUpload",
+              "label": "Upload file with custom data if required.",
+              "toolTip": "These extra options intend to be used in specific case, in coordination with Infoblox Support",
+              "constraints": {
+                "required": false,
+                "accept": ".yaml"
+              },
+              "options": {
+                "multiple": false,
+                "uploadMode": "file",
+                "openMode": "text",
+                "encoding": "UTF-8"
+              },
+              "visible": true
+            }
+          ],
           "visible": true
         }
       ]
@@ -496,7 +444,7 @@
       "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
       "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
 
-      "customData": "[concat('temp_license: ', steps('vmSettings').licenseSection.license1, steps('vmSettings').licenseSection.license2, steps('vmSettings').licenseSection.license3, coalesce(steps('vmSettings').licenseSection.license4, ''), coalesce(steps('vmSettings').licenseSection.license5, ''), decodeBase64('DQo='), coalesce(steps('vmSettings').customData, ''))]"
+      "customData": "[concat('temp_license: ', coalesce(steps('vmSettings').licenseSection.licenses1, ''), coalesce(steps('vmSettings').licenseSection.licenses2, ''), decodeBase64('DQo='), coalesce(steps('vmSettings').enchancedOptionsSection.customData, ''))]"
     }
   }
 }
