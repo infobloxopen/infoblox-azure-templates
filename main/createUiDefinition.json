@@ -340,7 +340,7 @@
               "type": "Microsoft.Common.OptionsGroup",
               "label": "Install temporary licenses",
               "defaultValue": "yes",
-              "toolTip": "Select yes to to install automatically temporary licenses vNIOS, Grid, DNS and Cloud. Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
+              "toolTip": "Select yes to install automatically temporary licenses vNIOS, Grid, DNS and Cloud(CNA). Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
               "constraints": {
                 "allowedValues": [
                   {
@@ -360,7 +360,7 @@
               "type": "Microsoft.Common.OptionsGroup",
               "label": "Install temporary licenses",
               "defaultValue": "yes",
-              "toolTip": "Select yes to to install automatically temporary licenses vNIOS, Grid, DNS and Cloud. Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
+              "toolTip": "Select yes to install automatically temporary licenses vNIOS, Grid, DNS and Cloud(CP). Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
               "constraints": {
                 "allowedValues": [
                   {
