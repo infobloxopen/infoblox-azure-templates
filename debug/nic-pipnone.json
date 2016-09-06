@@ -34,13 +34,13 @@
               "privateIPAddress": "[parameters('IPAddress')]",
               "subnet":{
                 "id": "[parameters('subnetId')]"
-              },
-              "networkSecurityGroup": {
-                "id": "[parameters('networkSecurityGroupId')]"
               }
             }
           }
         ],
+        "networkSecurityGroup": {
+                "id": "[parameters('networkSecurityGroupId')]"
+        },
         "enableIPForwarding":true
       }
     }
