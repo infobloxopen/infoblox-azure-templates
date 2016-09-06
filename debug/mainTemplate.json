@@ -542,7 +542,7 @@
             "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
           },
           "networkSecurityGroupId":{
-            "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+            "value":"[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
           }
         }
       }
@@ -572,7 +572,7 @@
             "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
           },
           "networkSecurityGroupId":{
-            "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+            "value":"[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
           }
         }
       }
