@@ -520,7 +520,7 @@
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+        "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
       ],
       "properties":{
         "mode":"Incremental",
@@ -553,7 +553,7 @@
       "apiVersion":"[variables('apiVer')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+        "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
       ],
       "properties":{
         "mode":"Incremental",
