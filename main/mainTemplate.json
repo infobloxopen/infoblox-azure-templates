@@ -63,7 +63,7 @@
     },
     "virtualNetworkName":{
       "type":"string",
-      "defaultValue":"CSR_Network",
+      "defaultValue":"NIOS_Network",
       "metadata":{
         "description":"VNet name"
       }
@@ -206,7 +206,7 @@
     },
     "publicIPDnsName":{
       "type":"string",
-      "defaultValue":"csrdns",
+      "defaultValue":"niosdns",
       "metadata":{
         "description":"Unique DNS Prefix for the Public IP used to access the Virtual Machine."
       }
