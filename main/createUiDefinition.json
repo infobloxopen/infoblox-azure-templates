@@ -12,28 +12,8 @@
         "constraints": {
           "allowedValues": [
             {
-              "label": "TE-V820 (Standard DS2)",
-              "value": "vnios-te-v820"
-            },
-            {
               "label": "TE-V1420 (Standard DS3)",
               "value": "vnios-te-v1420"
-            },
-            {
-              "label": "TE-V2220 (Standard DS3)",
-              "value": "vnios-te-v2220"
-            },
-            {
-              "label": "CP-V800 (Standard DS2)",
-              "value": "vnios-cp-v800"
-            },
-            {
-              "label": "CP-V1400 (Standard DS3)",
-              "value": "vnios-cp-v1400"
-            },
-            {
-              "label": "CP-V2200 (Standard DS3)",
-              "value": "vnios-cp-v2200"
             }
           ]
         },
@@ -307,7 +287,7 @@
                     "label": "New",
                     "value": "new"
                   },
-                  {
+                    {
                     "label": "Existing",
                     "value": "existing"
                   }
@@ -425,7 +405,7 @@
       "subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
       "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
       "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
-      
+
       "newStorageAccountName": "[steps('vmSettings').storageAccount.name]",
       "storageAccountType": "[steps('vmSettings').storageAccount.type]",
       "storageAccountNewOrExisting": "[steps('vmSettings').storageAccount.newOrExisting]",
