@@ -259,7 +259,7 @@
   "variables":{
     "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vnios-te-v1420-preview",
+    "imageOffer":"infoblox-vnios-te-v1420",
     "imageSKU": "[parameters('niosModel')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[parameters('vmName')]",
