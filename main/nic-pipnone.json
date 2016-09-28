@@ -18,10 +18,14 @@
     "networkSecurityGroupId": {
       "type": "string"
     }
+    "apiVersion": {
+      "type": "string"
+    }
+
   },
   "resources": [
     {
-      "apiVersion":"2016-03-30",
+      "apiVersion":"[parameters('apiVersion')]",
       "type":"Microsoft.Network/networkInterfaces",
       "name":"[parameters('nicName')]",
       "location":"[resourceGroup().location]",

@@ -52,7 +52,7 @@
           "options": {
             "hideConfirmation": false
           },
-          "osPlatform": "Windows",
+          "osPlatform": "Linux",
           "visible": true
         }
         ],

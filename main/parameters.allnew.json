@@ -9,7 +9,7 @@
       "value": "vnios-te-v2220"
     },
     "niosVersion": {
-      "value": "74.0.337462"
+      "value": "latest"
     },
     "adminPassword": {
       "value": "Infoblox=111"

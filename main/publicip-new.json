@@ -13,11 +13,14 @@
     },
     "publicIpRGName": {
       "type": "string"
+    },
+    "apiVersion": {
+      "type": "string"
     }
   },
   "resources": [
     {
-      "apiVersion": "2016-06-01",
+      "apiVersion": "[parameters('apiVersion')]",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[parameters('publicIPAddressName')]",
       "location": "[resourceGroup().location]",
@@ -35,7 +38,7 @@
       "type": "string"
     },
     "fqdn": {
-      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName')),providers('Microsoft.Network', 'publicIPAddresses').apiVersions[0]).dnsSettings.fqdn]",
+      "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName')),parameters('apiVersion')).dnsSettings.fqdn]",
       "type": "string"
     }
   }

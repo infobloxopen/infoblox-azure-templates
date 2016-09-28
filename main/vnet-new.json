@@ -23,6 +23,9 @@
     "vnetExistingRGName": {
       "type": "string",
       "defaultValue": ""
+    },
+    "apiVersion": {
+      "type": "string"
     }
   },
   "variables": {
@@ -30,7 +33,7 @@
   },
   "resources": [
         {
-            "apiVersion": "2016-06-01",
+            "apiVersion": "[parameters('apiVersion')]",
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('virtualNetworkName')]",
             "location": "[resourceGroup().location]",

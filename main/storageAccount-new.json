@@ -25,13 +25,16 @@
       "metadata": {
         "Description": "Resource Group Name of the existing Storage Account"
       }
+    },
+    "apiVersion": {
+      "type": "string"
     }
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[concat(parameters('storageAccountName'))]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "[parameters('apiVersion')]",
       "location": "[resourceGroup().location]",
       "properties": {
         "accountType": "[parameters('storageAccountType')]"
