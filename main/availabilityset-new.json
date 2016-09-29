@@ -4,14 +4,11 @@
   "parameters": {
     "availabilitySetName": {
       "type": "string"
-    },
-    "apiVersion": {
-      "type": "string"
     }
   },
   "resources": [
     {
-      "apiVersion": "[parameters('apiVersion')]",
+      "apiVersion": "2016-03-30",
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[parameters('availabilitySetName')]",
       "location": "[resourceGroup().location]",

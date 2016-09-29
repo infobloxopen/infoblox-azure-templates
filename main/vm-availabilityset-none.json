@@ -26,13 +26,10 @@
     "availabilitySet": {
       "type": "object"
     }
-    "apiVersion": {
-      "type": "string"
-    }
   },
   "resources": [
     {
-      "apiVersion":"[parameters('apiVersion')]",
+      "apiVersion":"2016-03-30",
       "type":"Microsoft.Compute/virtualMachines",
       "name":"[parameters('vmName')]",
       "location":"[resourceGroup().location]",

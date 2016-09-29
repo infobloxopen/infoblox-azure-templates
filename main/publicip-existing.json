@@ -13,9 +13,6 @@
     },
     "publicIpRGName": {
       "type": "string"
-    },
-    "apiVersion": {
-      "type": "string"
     }
   },
   "variables": {
@@ -28,7 +25,7 @@
       "type": "string"
     },
     "fqdn": {
-      "value": "[reference(variables('publicIpId'),parameters('apiVersion')).dnsSettings.fqdn]",
+      "value": "[reference(variables('publicIpId'),providers('Microsoft.Network', 'publicIPAddresses').apiVersions[0]).dnsSettings.fqdn]",
       "type": "string"
     }
   }
