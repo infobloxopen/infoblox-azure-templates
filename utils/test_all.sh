@@ -15,8 +15,8 @@ RESOURCE_GROUP="templtestgroup"
 LOCATION="eastus"
 DEPLOYMENT_NAME="newdeployment$(date +%Y%m%d%H%M%S)"
 
-TEMPLATE_URI="https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/mainTemplate.json"
-PARAMETERS_DIR="."
+TEMPLATE_URI="https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/test/main/mainTemplate.json"
+PARAMETERS_DIR="main/"
 
 azure group create "${RESOURCE_GROUP}" "${LOCATION}"
 
