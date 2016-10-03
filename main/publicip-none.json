@@ -23,10 +23,6 @@
     "publicIpId": {
       "value": "[variables('publicIpId')]",
       "type": "string"
-    },
-    "fqdn": {
-      "value": "",
-      "type": "string"
     }
   }
 }
