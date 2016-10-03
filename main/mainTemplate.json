@@ -277,7 +277,7 @@
     "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
     "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
     "publicIPExistingOrNone": "[replace(parameters('publicIPNewOrExistingOrNone'), 'new', 'existing')]",
-    "apiVer":"2016-06-01",
+    "apiVersion":"2016-06-01",
     "publicIPAddressType":"Dynamic",
     "adminUsername":"azureuser",
     "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
@@ -332,7 +332,7 @@
     {
       "name":"SettingUpStorageAccount",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -355,7 +355,7 @@
     {
       "name":"SettingUpStorageAccountForLogs",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -376,7 +376,7 @@
       }
     },
     {
-      "apiVersion": "[variables('apiVer')]",
+      "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('nsgName')]",
       "location": "[resourceGroup().location]",
@@ -486,7 +486,7 @@
     {
       "name":"SettingUpVirtualNetwork",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -521,7 +521,7 @@
     {
       "name":"SettingUpPrimaryNic",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]",
@@ -541,7 +541,7 @@
             "value":"[parameters('subnet1StartAddress')]"
           },
           "subnetId":{
-            "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
+            "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVersion')).outputs.subnet1Ref.value]"
           },
           "publicIPAddressId":{
             "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
@@ -555,7 +555,7 @@
     {
       "name":"SettingUpSecondaryNic",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
@@ -574,7 +574,7 @@
             "value":"[parameters('subnet2StartAddress')]"
           },
           "subnetId":{
-            "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
+            "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVersion')).outputs.subnet2Ref.value]"
           },
           "networkSecurityGroupId":{
             "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
@@ -585,7 +585,7 @@
     {
       "name":"SettingUpPublicIP",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -611,7 +611,7 @@
     {
       "name":"SettingUpAvailabilitySet",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -628,7 +628,7 @@
     {
       "name":"SettingUpVirtualMachine",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
         "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
@@ -683,11 +683,11 @@
             "value" : {
               "networkInterfaces":[
                 {
-                  "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVer')).outputs.nicRef.value]",
+                  "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVersion')).outputs.nicRef.value]",
                   "properties":{ "primary":true }
                 },
                 {
-                  "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVer')).outputs.nicRef.value]",
+                  "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVersion')).outputs.nicRef.value]",
                   "properties":{ "primary":false }
                 }
               ]
