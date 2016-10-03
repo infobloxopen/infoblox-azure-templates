@@ -2,6 +2,13 @@
   "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion":"1.0.0.0",
   "parameters":{
+    "baseUrl": {
+      "type": "string",
+      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/",
+      "metadata": {
+        "description": "Base URL for dependent assets."
+      }
+    },
     "vmName":{
       "type":"string",
       "defaultValue":"CSR",
@@ -257,7 +264,6 @@
     }
   },
   "variables":{
-    "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vnios-te-v1420",
     "imageSKU": "[parameters('niosModel')]",
@@ -275,19 +281,19 @@
     "publicIPAddressType":"Dynamic",
     "adminUsername":"azureuser",
     "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
-    "storageAccountSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-    "storageAccountForLogsSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
-    "publicIPSetupURL":"[concat(variables('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
-    "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
-    "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
-    "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
+    "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+    "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
+    "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
+    "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+    "nicPrimarySetupURL":"[concat(parameters('baseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
+    "nicSecondarySetupURL":"[concat(parameters('baseUrl'),'/nic-pipnone.json')]",
 
     "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
 
-    "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
+    "availabilitySetSetupURL":"[concat(parameters('baseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
     "vmSize-vnios-te-v820":"Standard_DS2",
@@ -320,7 +326,7 @@
       "customData": "[variables('customData')]"
     },
 
-    "virtualMachineSetURL":"[concat(variables('templateBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
+    "virtualMachineSetURL":"[concat(parameters('baseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
     {
