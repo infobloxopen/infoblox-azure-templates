@@ -387,6 +387,7 @@
     }],
     "outputs": {
       "vmName": "[basics('vmName')]",
+      "location": "[location()]",
       "niosModel": "[basics('niosModel')]",
       "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800,steps('vmSettings').niosVersion-vnios-cp-v1400,steps('vmSettings').niosVersion-vnios-cp-v2200)]",
       "adminPassword": "[basics('passwordSection').SSHCredentials.password]",

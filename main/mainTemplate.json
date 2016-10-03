@@ -9,6 +9,13 @@
         "description": "Base URL for dependent assets."
       }
     },
+    "location": {
+      "type": "string",
+      "defaultValue": "[ResourceGroup().Location]",
+      "metadata": {
+        "description": "Location of resources."
+      }
+    },
     "vmName":{
       "type":"string",
       "defaultValue":"CSR",
@@ -340,6 +347,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "storageAccountType":{
             "value":"[parameters('storageAccountType')]"
           },
@@ -363,6 +373,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "storageAccountType":{
             "value":"[parameters('storageAccountForLogsType')]"
           },
@@ -379,7 +392,7 @@
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('nsgName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "properties": {
         "securityRules": [
           {
@@ -494,6 +507,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "virtualNetworkName":{
             "value":"[parameters('virtualNetworkName')]"
           },
@@ -534,6 +550,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "nicName":{
             "value":"[variables('nicPrimaryName')]"
           },
@@ -567,6 +586,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "nicName":{
             "value":"[variables('nicSecondaryName')]"
           },
@@ -593,6 +615,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "publicIPAddressName":{
             "value":"[parameters('publicIPAddressName')]"
           },
@@ -619,6 +644,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "availabilitySetName":{
             "value":"[parameters('availabilitySetName')]"
           }
@@ -645,6 +673,9 @@
         "parameters":{
           "vmName": {
             "value" : "[parameters('vmName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
           },
           "plan": {
             "value" : {
