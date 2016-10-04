@@ -18,14 +18,6 @@
       "type": "string"
     }
   },
-  "variables": {
-    "publicIpId": ""
-  },
   "resources": [],
-  "outputs": {
-    "publicIpId": {
-      "value": "[variables('publicIpId')]",
-      "type": "string"
-    }
-  }
+  "outputs": {}
 }

@@ -23,10 +23,5 @@
     "publicIpId": "[resourceId(parameters('publicIpRGName'),concat('Microsoft.Network','/','publicIPAddresses'),parameters('publicIPAddressName'))]"
   },
   "resources": [],
-  "outputs": {
-    "publicIpId": {
-      "value": "[variables('publicIpId')]",
-      "type": "string"
-    }
-  }
+  "outputs": {}
 }

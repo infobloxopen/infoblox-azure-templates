@@ -50,10 +50,5 @@
       }
     }
   ],
-  "outputs": {
-    "nicRef": {
-      "value": "[resourceId('Microsoft.Network/networkInterfaces/', parameters('nicName'))]",
-      "type": "string"
-    }
-  }
+  "outputs": {}
 }
