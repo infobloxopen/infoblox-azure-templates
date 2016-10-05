@@ -165,6 +165,108 @@
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]"
         },
         {
+          "name": "vmSize-vnios-te-v820",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for TE-V820",
+          "toolTip": "Select the size of VM for TE-V820",
+          "defaultValue": "Standard_DS2",
+          "recommendedSizes": [
+            "Standard_DS2"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS2"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v820')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-vnios-te-v1420",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for TE-V1420",
+          "toolTip": "Select the size of VM for TE-V1420",
+          "defaultValue": "Standard_DS3",
+          "recommendedSizes": [
+            "Standard_DS3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-vnios-te-v2220",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for TE-V2220",
+          "toolTip": "Select the size of VM for TE-V2220",
+          "defaultValue": "Standard_DS3",
+          "recommendedSizes": [
+            "Standard_DS3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-te-v2220')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-vnios-cp-v800",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for CP-V800",
+          "toolTip": "Select the size of VM for CP-V800",
+          "defaultValue": "Standard_DS2",
+          "recommendedSizes": [
+            "Standard_DS2"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS2"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v800')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-vnios-cp-v1400",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for CP-V1400",
+          "toolTip": "Select the size of VM for CP-V1400",
+          "defaultValue": "Standard_DS3",
+          "recommendedSizes": [
+            "Standard_DS3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-vnios-cp-v2200",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for CP-V2200",
+          "toolTip": "Select the size of VM for CP-V2200",
+          "defaultValue": "Standard_DS3",
+          "recommendedSizes": [
+            "Standard_DS3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]",
+          "osPlatform": "Linux"
+        },
+        {
           "name": "storageAccount",
           "type": "Microsoft.Storage.StorageAccountSelector",
           "label": "Storage account",
