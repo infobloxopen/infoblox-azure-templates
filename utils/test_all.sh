@@ -10,12 +10,14 @@
 # Supposed to be usefull to validate templates after they are changed.
 # Note: To check the templates, they must be uploaded to some public place. In this example it is github.
 # You need to set  baseUrl in parameters file according to the place where templates are uploaded.
-# Also you need to set TEMPLATE_URI, e.g. you can add this line to your shell init file:
-# export TEMPLATE_URI="https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/mainTemplate.json"
+# Also you need to set AZURE_TEMPLATE_URI, e.g. you can add this line to your shell init file:
+# export AZURE_TEMPLATE_URI="https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/mainTemplate.json"
+# Also please set AZURE_DEV_ID to avoid conflicts with developers running tests simultaneously:
+# export AZURE_DEV_ID="dk"
 
-RESOURCE_GROUP="templtestgroup"
+RESOURCE_GROUP="${AZURE_DEV_ID}templtestgroup"
 LOCATION="eastus"
-DEPLOYMENT_NAME="newdeployment$(date +%Y%m%d%H%M%S)"
+DEPLOYMENT_NAME="${AZURE_DEV_ID}newdeployment$(date +%Y%m%d%H%M%S)"
 
 PARAMETERS_DIR="utils/params"
 
@@ -24,7 +26,7 @@ azure group create "${RESOURCE_GROUP}" "${LOCATION}"
 echo "-------------------"
 echo "Test creation of all new elements"
 azure group deployment create \
-    --template-uri "${TEMPLATE_URI}" \
+    --template-uri "${AZURE_TEMPLATE_URI}" \
     --parameters-file "${PARAMETERS_DIR}/parameters.allnew.json" \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
@@ -34,15 +36,15 @@ echo "-------------------"
 echo "Test adding one more VM to existing elements"
 # Add Public Ip, will be used as existing.
 azure network public-ip create \
-    --name "templatestestpipexisting" \
+    --name "${AZURE_DEV_ID}templatestestpipexisting" \
     --allocation-method Dynamic \
-    --domain-name-label "templatestestpipexisting" \
+    --domain-name-label "${AZURE_DEV_ID}templatestestpipexisting" \
     --resource-group "${RESOURCE_GROUP}" \
     --location "${LOCATION}"
 
 # Add VM
 azure group deployment create \
-    --template-uri "${TEMPLATE_URI}"\
+    --template-uri "${AZURE_TEMPLATE_URI}"\
     --parameters-file "${PARAMETERS_DIR}/parameters.existing.json" \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
@@ -50,7 +52,7 @@ azure group deployment create \
 echo "-------------------"
 echo "Test adding one more VM to existing elements with no Publuc Ip and no availiability set"
 azure group deployment create \
-    --template-uri "${TEMPLATE_URI}"\
+    --template-uri "${AZURE_TEMPLATE_URI}"\
     --parameters-file "${PARAMETERS_DIR}/parameters.none.json" \
     --resource-group "${RESOURCE_GROUP}" \
     "${DEPLOYMENT_NAME}"
