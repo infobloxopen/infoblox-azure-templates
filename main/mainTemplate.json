@@ -4,7 +4,7 @@
   "parameters":{
     "baseUrl": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/",
+      "defaultValue": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/",
       "metadata": {
         "description": "Base URL for dependent assets."
       }
