@@ -369,50 +369,6 @@
           "visible": true
         },
         {
-          "name": "availabilitySection",
-          "type": "Microsoft.Common.Section",
-           "label": "Availability",
-           "elements": [
-            {
-              "name": "availabilitySetNewOrExistingOrNone",
-              "type": "Microsoft.Common.OptionsGroup",
-              "label": "Availability set",
-              "defaultValue": "None",
-              "toolTip": "Select the availability set option for the VM",
-              "constraints": {
-                "allowedValues": [
-                  {
-                    "label": "None",
-                    "value": "none"
-                  },
-                  {
-                    "label": "New",
-                    "value": "new"
-                  },
-                    {
-                    "label": "Existing",
-                    "value": "existing"
-                  }
-                ]
-              },
-              "visible": true
-            },
-            {
-              "name": "availabilitySetName",
-              "type": "Microsoft.Common.TextBox",
-              "label": "Availability set name",
-              "toolTip": "Enter either the exact name of 'Existing' availability set to select, or the name of the 'New' availability set to create",
-              "constraints": {
-                "required": false,
-                "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
-                "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
-              },
-              "visible": true
-            }
-          ],
-          "visible": true
-        },
-        {
           "name": "licenseSection",
           "type": "Microsoft.Common.Section",
           "label": "Licenses",
@@ -524,8 +480,7 @@
       "publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
       "publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
 
-      "availabilitySetNewOrExistingOrNone": "[steps('vmSettings').availabilitySection.availabilitySetNewOrExistingOrNone]",
-      "availabilitySetName": "[steps('vmSettings').availabilitySection.availabilitySetName]",
+      "availabilitySetNewOrExistingOrNone": "none",
 
       "customData": "[concat('temp_license: ', coalesce(steps('vmSettings').licenseSection.licenses1, ''), coalesce(steps('vmSettings').licenseSection.licenses2, ''), decodeBase64('DQo='), coalesce(steps('vmSettings').enhancedOptionsSection.customData, ''))]"
     }
