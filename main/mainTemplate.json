@@ -2,6 +2,20 @@
   "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion":"1.0.0.0",
   "parameters":{
+    "baseUrl": {
+      "type": "string",
+      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/",
+      "metadata": {
+        "description": "Base URL for dependent assets."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[ResourceGroup().Location]",
+      "metadata": {
+        "description": "Location of resources."
+      }
+    },
     "vmName":{
       "type":"string",
       "defaultValue":"CSR",
@@ -257,37 +271,42 @@
     }
   },
   "variables":{
-    "templateBaseUrl": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main",
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vnios-te-v1420",
     "imageSKU": "[parameters('niosModel')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[parameters('vmName')]",
     "vmStorageAccountContainerName":"disks",
-    "vnetID":"[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-    "subnet1Ref":"[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]",
-    "subnet2Ref":"[concat(variables('vnetID'),'/subnets/', parameters('subnet2Name'))]",
+    "vnetResourceId":"[variables(concat('vnet-',parameters('vnetNewOrExisting')))]",
+    "vnet-new":"[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+    "vnet-existing":"[resourceId(parameters('virtualNetworkExistingRGName'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+    "subnet1ResourceId":"[concat(variables('vnetResourceId'),'/subnets/',parameters('subnet1Name'))]",
+    "subnet2ResourceId":"[concat(variables('vnetResourceId'),'/subnets/',parameters('subnet2Name'))]",
     "nsgName": "[concat(parameters('vmName'),'-securityGroup')]",
     "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
     "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
     "publicIPExistingOrNone": "[replace(parameters('publicIPNewOrExistingOrNone'), 'new', 'existing')]",
-    "apiVer":"2016-06-01",
+    "publicIpResourceId":"[variables(concat('publicIp-',parameters('publicIPNewOrExistingOrNone')))]",
+    "publicIp-new": "[resourceId(concat('Microsoft.Network','/','publicIPAddresses'),parameters('publicIPAddressName'))]",
+    "publicIp-existing": "[resourceId(parameters('publicIPExistingRGName'),concat('Microsoft.Network','/','publicIPAddresses'),parameters('publicIPAddressName'))]",
+    "publicIp-none": "",
+    "apiVersion":"2016-06-01",
     "publicIPAddressType":"Dynamic",
     "adminUsername":"azureuser",
     "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
-    "storageAccountSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-    "storageAccountForLogsSetupURL":"[concat(variables('templateBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
-    "publicIPSetupURL":"[concat(variables('templateBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
-    "virtualNetworkSetupURL":"[concat(variables('templateBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
-    "nicPrimarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
-    "nicSecondarySetupURL":"[concat(variables('templateBaseUrl'),'/nic-pipnone.json')]",
+    "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+    "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
+    "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
+    "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+    "nicPrimarySetupURL":"[concat(parameters('baseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
+    "nicSecondarySetupURL":"[concat(parameters('baseUrl'),'/nic-pipnone.json')]",
 
     "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
 
-    "availabilitySetSetupURL":"[concat(variables('templateBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
+    "availabilitySetSetupURL":"[concat(parameters('baseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
 
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
     "vmSize-vnios-te-v820":"Standard_DS2",
@@ -320,13 +339,13 @@
       "customData": "[variables('customData')]"
     },
 
-    "virtualMachineSetURL":"[concat(variables('templateBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
+    "virtualMachineSetURL":"[concat(parameters('baseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
     {
       "name":"SettingUpStorageAccount",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -334,6 +353,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "storageAccountType":{
             "value":"[parameters('storageAccountType')]"
           },
@@ -349,7 +371,7 @@
     {
       "name":"SettingUpStorageAccountForLogs",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -357,6 +379,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "storageAccountType":{
             "value":"[parameters('storageAccountForLogsType')]"
           },
@@ -370,10 +395,10 @@
       }
     },
     {
-      "apiVersion": "[variables('apiVer')]",
+      "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('nsgName')]",
-      "location": "[resourceGroup().location]",
+      "location": "[parameters('location')]",
       "properties": {
         "securityRules": [
           {
@@ -480,7 +505,7 @@
     {
       "name":"SettingUpVirtualNetwork",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -488,6 +513,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "virtualNetworkName":{
             "value":"[parameters('virtualNetworkName')]"
           },
@@ -515,7 +543,7 @@
     {
       "name":"SettingUpPrimaryNic",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[concat('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]",
@@ -528,6 +556,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "nicName":{
             "value":"[variables('nicPrimaryName')]"
           },
@@ -535,10 +566,10 @@
             "value":"[parameters('subnet1StartAddress')]"
           },
           "subnetId":{
-            "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet1Ref.value]"
+            "value":"[variables('subnet1ResourceId')]"
           },
           "publicIPAddressId":{
-            "value":"[reference('SettingUpPublicIP').outputs.publicIpId.value]"
+            "value":"[variables('publicIpResourceId')]"
           },
           "networkSecurityGroupId":{
             "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
@@ -549,7 +580,7 @@
     {
       "name":"SettingUpSecondaryNic",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
@@ -561,6 +592,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "nicName":{
             "value":"[variables('nicSecondaryName')]"
           },
@@ -568,7 +602,7 @@
             "value":"[parameters('subnet2StartAddress')]"
           },
           "subnetId":{
-            "value":"[reference('Microsoft.Resources/deployments/SettingUpVirtualNetwork',variables('apiVer')).outputs.subnet2Ref.value]"
+            "value":"[variables('subnet2ResourceId')]"
           },
           "networkSecurityGroupId":{
             "value":"[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
@@ -579,7 +613,7 @@
     {
       "name":"SettingUpPublicIP",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -587,6 +621,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "publicIPAddressName":{
             "value":"[parameters('publicIPAddressName')]"
           },
@@ -605,7 +642,7 @@
     {
       "name":"SettingUpAvailabilitySet",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -613,6 +650,9 @@
           "contentVersion":"1.0.0.0"
         },
         "parameters":{
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "availabilitySetName":{
             "value":"[parameters('availabilitySetName')]"
           }
@@ -622,7 +662,7 @@
     {
       "name":"SettingUpVirtualMachine",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"[variables('apiVer')]",
+      "apiVersion":"[variables('apiVersion')]",
       "dependsOn":[
         "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
         "[concat('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
@@ -639,6 +679,9 @@
         "parameters":{
           "vmName": {
             "value" : "[parameters('vmName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
           },
           "plan": {
             "value" : {
@@ -677,11 +720,11 @@
             "value" : {
               "networkInterfaces":[
                 {
-                  "id":"[reference('Microsoft.Resources/deployments/SettingUpPrimaryNic',variables('apiVer')).outputs.nicRef.value]",
+                  "id":"[resourceId('Microsoft.Network/networkInterfaces/', variables('nicPrimaryName'))]",
                   "properties":{ "primary":true }
                 },
                 {
-                  "id":"[reference('Microsoft.Resources/deployments/SettingUpSecondaryNic',variables('apiVer')).outputs.nicRef.value]",
+                  "id":"[resourceId('Microsoft.Network/networkInterfaces/', variables('nicSecondaryName'))]",
                   "properties":{ "primary":false }
                 }
               ]

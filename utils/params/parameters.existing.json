@@ -2,14 +2,17 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    // "baseUrl": {
+    //   "value": "https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/review-issues/main/"
+    // },
     "vmName": {
-      "value": "templtestvmallnew"
+      "value": "templtestvmexisting"
     },
     "niosModel": {
-      "value": "vnios-te-v2220"
+      "value": "vnios-te-v1420"
     },
     "niosVersion": {
-      "value": "74.0.337462"
+      "value": "latest"
     },
     "adminPassword": {
       "value": "Infoblox=111"
@@ -23,11 +26,8 @@
     "virtualNetworkExistingRGName": {
       "value": "templtestgroup"
     },
-    "virtualNetworkAddressPrefix": {
-      "value": "10.4.0.0/16"
-    },
     "vnetNewOrExisting": {
-      "value": "new"
+      "value": "existing"
     },
     "subnet1Prefix": {
       "value": "10.4.0.0/24"
@@ -36,7 +36,7 @@
       "value": "subnet1"
     },
     "subnet1StartAddress": {
-      "value": "10.4.0.4"
+      "value": "10.4.0.5"
     },
     "subnet2Prefix": {
       "value": "10.4.1.0/24"
@@ -45,7 +45,7 @@
       "value": "subnet2"
     },
     "subnet2StartAddress": {
-      "value": "10.4.1.4"
+      "value": "10.4.1.5"
     },
     "newStorageAccountName": {
       "value": "templtestgroup"
@@ -54,7 +54,7 @@
       "value": "Premium_LRS"
     },
     "storageAccountNewOrExisting": {
-      "value": "new"
+      "value": "existing"
     },
     "storageAccountExistingRG": {
       "value": "templtestgroup"
@@ -66,31 +66,28 @@
       "value": "Standard_LRS"
     },
     "storageAccountForLogsNewOrExisting": {
-      "value": "new"
+      "value": "existing"
     },
     "storageAccountForLogsExistingRG": {
       "value": "templtestgroup"
     },
     "publicIPAddressName": {
-      "value": "templatestestpip"
+      "value": "templatestestpipexisting"
     },
     "publicIPDnsName": {
-      "value": "templatestestpip"
+      "value": "templatestestpipexisting"
     },
     "publicIPNewOrExistingOrNone": {
-      "value": "new"
+      "value": "existing"
     },
     "publicIPExistingRGName": {
       "value": "templtestgroup"
     },
       "availabilitySetNewOrExistingOrNone": {
-      "value": "new"
+      "value": "existing"
     },
       "availabilitySetName": {
       "value": "someset"
-    },
-      "customData": {
-      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: yanmlpasswd\ntemp_license: cloud vnios dns"
     }
   }
 }
