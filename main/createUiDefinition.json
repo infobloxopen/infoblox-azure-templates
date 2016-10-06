@@ -323,6 +323,7 @@
             "subnetLan1": {
               "label": "LAN1 interface’s subnet",
               "defaultValue": {
+                "name": "lan1",
                 "addressPrefixSize": "/24"
               },
               "constraints": {
@@ -333,6 +334,7 @@
             "subnetMgmt": {
               "label": "MGMT interface’s subnet",
               "defaultValue": {
+                "name": "mgmt",
                 "addressPrefixSize": "/24"
               },
               "constraints": {
