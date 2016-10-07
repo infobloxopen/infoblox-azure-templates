@@ -17,9 +17,6 @@
     "adminPassword": {
       "value": "Infoblox=111"
     },
-    "authenticationType": {
-      "value": "password"
-    },
     "virtualNetworkName": {
       "value": "vnet01"
     },

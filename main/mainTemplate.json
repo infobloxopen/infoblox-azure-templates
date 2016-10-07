@@ -56,24 +56,6 @@
         "description":"Password for the Virtual Machine."
       }
     },
-    "sshPublicKey":{
-      "type":"string",
-      "defaultValue":"",
-      "metadata":{
-        "description":"SSH Key for the virtual machines"
-      }
-    },
-    "authenticationType":{
-      "type":"string",
-      "defaultValue":"password",
-      "allowedValues":[
-        "password",
-        "sshPublicKey"
-      ],
-      "metadata":{
-        "description":"Authentication Type to chose for the Virtual Machines"
-      }
-    },
     "virtualNetworkName":{
       "type":"string",
       "defaultValue":"NIOS_Network",
@@ -292,8 +274,6 @@
     "publicIp-none": "",
     "apiVersion":"2016-06-01",
     "publicIPAddressType":"Dynamic",
-    "adminUsername":"azureuser",
-    "sshKeyPath":"[concat('/home/',variables('adminUsername'),'/.ssh/authorized_keys')]",
     "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
     "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
     "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
@@ -315,30 +295,12 @@
     "vmSize-vnios-cp-v800":"Standard_DS2",
     "vmSize-vnios-cp-v1400":"Standard_DS3",
     "vmSize-vnios-cp-v2200":"Standard_DS3",
-
-    "osProfile":"[variables(concat('osProfile-',parameters('authenticationType')))]",
-    "osProfile-sshPublicKey":{
+    "osProfile":{
       "computerName":"[parameters('vmName')]",
-      "adminUsername":"[variables('adminUsername')]",
-      "linuxConfiguration":{
-        "disablePasswordAuthentication":"true",
-        "ssh":{
-          "publicKeys":[
-            {
-              "path":"[variables('sshKeyPath')]",
-              "keyData":"[parameters('sshPublicKey')]"
-            }
-          ]
-        }
-      }
-    },
-    "osProfile-password":{
-      "computerName":"[parameters('vmName')]",
-      "adminUsername":"[variables('adminUsername')]",
-      "adminPassword":"[parameters('adminPassword')]",
+      "adminUsername":"[uniqueString(ResourceGroup().Id)]",
+      "adminPassword":"[uniqueString(ResourceGroup().Id)]",
       "customData": "[variables('customData')]"
     },
-
     "virtualMachineSetURL":"[concat(parameters('baseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
