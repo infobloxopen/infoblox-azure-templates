@@ -298,7 +298,7 @@
     "osProfile":{
       "computerName":"[parameters('vmName')]",
       "adminUsername":"[uniqueString(ResourceGroup().Id)]",
-      "adminPassword":"[uniqueString(ResourceGroup().Id)]",
+      "adminPassword":"[parameters('adminPassword')]",
       "customData": "[variables('customData')]"
     },
     "virtualMachineSetURL":"[concat(parameters('baseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
