@@ -9,53 +9,65 @@
 # It starts deployment using templates, with different input (all templates to be used).
 # Supposed to be usefull to validate templates after they are changed.
 # Note: To check the templates, they must be uploaded to some public place. In this example it is github.
-# You need to set  baseUrl in parameters file according to the place where templates are uploaded.
-# Also you need to set AZURE_TEMPLATE_URI, e.g. you can add this line to your shell init file:
-# export AZURE_TEMPLATE_URI="https://raw.githubusercontent.com/ibekleiner/infoblox-azure-templates/master/main/mainTemplate.json"
-# Also please set AZURE_DEV_ID to avoid conflicts with developers running tests simultaneously:
-# export AZURE_DEV_ID="dk"
+# If you are using not the master brunch, You need to change according to the place where templates are uploaded:
+# baseUrl in parameters files and AZURE_TEMPLATE_URI in this test script.
+AZURE_TEMPLATE_URI="https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/mainTemplate.json"
 
-RESOURCE_GROUP="${AZURE_DEV_ID}templtestgroup"
+# To avoid overlapping with other developers please change PREFIX in test script. Also you should
+# modify parameter files accordingly.
+# You can quickly do the job by running this command from the current directory:
+# find . -type f -exec sed -i 's/former_prefix/new_prefix/g' {} +
+PREFIX="templtest"
+
+RESOURCE_GROUP="${PREFIX}group"
 LOCATION="eastus"
-DEPLOYMENT_NAME="${AZURE_DEV_ID}newdeployment$(date +%Y%m%d%H%M%S)"
+DEPLOYMENT_NAME="${PREFIX}deployment$(date +%Y%m%d%H%M%S)"
 
 PARAMETERS_DIR="utils/params"
+
+if azure group show ${RESOURCE_GROUP} &> /dev/null; then
+    echo "Resource group ${RESOURCE_GROUP} exists.
+To avoid overlapping with other developers please change PREFIX in test script.
+Also you should modify parameter files accordingly.
+You can quickly do the job by running this command from the current directory:
+find . -type f -exec sed -i 's/former_prefix/new_prefix/g' {} +"
+    exit 1
+fi
 
 azure group create "${RESOURCE_GROUP}" "${LOCATION}"
 
 echo "-------------------"
 echo "Test creation of all new elements"
 azure group deployment create \
-    --template-uri "${AZURE_TEMPLATE_URI}" \
-    --parameters-file "${PARAMETERS_DIR}/parameters.allnew.json" \
-    --resource-group "${RESOURCE_GROUP}" \
-    "${DEPLOYMENT_NAME}"
-
+      --template-uri "${AZURE_TEMPLATE_URI}" \
+      --parameters-file "${PARAMETERS_DIR}/parameters.allnew.json" \
+      --resource-group "${RESOURCE_GROUP}" \
+      "${DEPLOYMENT_NAME}"
 
 echo "-------------------"
 echo "Test adding one more VM to existing elements"
 # Add Public Ip, will be used as existing.
 azure network public-ip create \
-    --name "${AZURE_DEV_ID}templatestestpipexisting" \
-    --allocation-method Dynamic \
-    --domain-name-label "${AZURE_DEV_ID}templatestestpipexisting" \
-    --resource-group "${RESOURCE_GROUP}" \
-    --location "${LOCATION}"
+      --name "${PREFIX}pipexisting" \
+      --allocation-method Dynamic \
+      --domain-name-label "${PREFIX}pipexisting" \
+      --resource-group "${RESOURCE_GROUP}" \
+      --location "${LOCATION}"
 
 # Add VM
 azure group deployment create \
-    --template-uri "${AZURE_TEMPLATE_URI}"\
-    --parameters-file "${PARAMETERS_DIR}/parameters.existing.json" \
-    --resource-group "${RESOURCE_GROUP}" \
-    "${DEPLOYMENT_NAME}"
+      --template-uri "${AZURE_TEMPLATE_URI}" \
+      --parameters-file "${PARAMETERS_DIR}/parameters.existing.json" \
+      --resource-group "${RESOURCE_GROUP}" \
+      "${DEPLOYMENT_NAME}"
 
 echo "-------------------"
-echo "Test adding one more VM to existing elements with no Publuc Ip and no availiability set"
+echo "Test adding one more VM to existing elements with no Public Ip and no availiability set"
 azure group deployment create \
-    --template-uri "${AZURE_TEMPLATE_URI}"\
-    --parameters-file "${PARAMETERS_DIR}/parameters.none.json" \
-    --resource-group "${RESOURCE_GROUP}" \
-    "${DEPLOYMENT_NAME}"
+      --template-uri "${AZURE_TEMPLATE_URI}" \
+      --parameters-file "${PARAMETERS_DIR}/parameters.none.json" \
+      --resource-group "${RESOURCE_GROUP}" \
+      "${DEPLOYMENT_NAME}"
 
 # Remove resource group
 azure group delete --quiet "${RESOURCE_GROUP}"
