@@ -72,10 +72,10 @@
       "value": "templtestgroup"
     },
     "publicIPAddressName": {
-      "value": "templatestestpip"
+      "value": "templtestpip"
     },
     "publicIPDnsName": {
-      "value": "templatestestpip"
+      "value": "templtestpip"
     },
     "publicIPNewOrExistingOrNone": {
       "value": "new"
