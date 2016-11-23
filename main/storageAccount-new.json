@@ -41,5 +41,10 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "endpointURL": {
+      "type": "string",
+      "value": "[reference(parameters('StorageAccountName'), '2015-06-15').primaryEndpoints.blob]"
+    }
+  }
 }
