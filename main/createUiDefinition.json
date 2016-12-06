@@ -495,7 +495,7 @@
       "storageAccountForLogsType": "[steps('vmSettings').storageAccountForLogs.type]",
       "storageAccountForLogsNewOrExisting": "[steps('vmSettings').storageAccountForLogs.newOrExisting]",
       "storageAccountForLogsExistingRG": "[steps('vmSettings').storageAccountForLogs.resourceGroup]",
-
+      "storageAccountForLogsNeedFix": "[string(and(equals(steps('vmSettings').storageAccount.name, steps('vmSettings').storageAccountForLogs.name), equals(steps('vmSettings').storageAccountForLogs.newOrExisting, 'new')))]",
       "publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
       "publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
       "publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",

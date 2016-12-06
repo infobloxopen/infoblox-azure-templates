@@ -185,6 +185,13 @@
         "description":"Identifies whether to use new or existing Storage Account for boot diagnostics"
       }
     },
+    "storageAccountForLogsNeedFix":{
+      "type":"string",
+      "defaultValue":"false",
+      "metadata":{
+        "description":"Whether storage account for logs name should be appended by 'logs' or not"
+      }
+    },
     "storageAccountForLogsExistingRG":{
       "type":"string",
       "defaultValue":"",
@@ -274,6 +281,9 @@
     "publicIp-none": "",
     "apiVersion":"2016-06-01",
     "publicIPAddressType":"Dynamic",
+    "storageAccountForLogsName":"[variables(concat('storageAccountForLogsNameNeedFix-', parameters('storageAccountForLogsNeedFix')))]",
+    "storageAccountForLogsNameNeedFix-true":"[concat(parameters('newStorageAccountForLogsName'), 'logs')]",
+    "storageAccountForLogsNameNeedFix-false":"[parameters('newStorageAccountForLogsName')]",
     "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
     "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
     "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
@@ -281,13 +291,13 @@
     "nicPrimarySetupURL":"[concat(parameters('baseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(parameters('baseUrl'),'/nic-pipnone.json')]",
 
-    "customData": "[base64(concat('default_admin_password: ', parameters('adminPassword'), '\n', parameters('customData')))]",
+    "customData": "[base64(concat('default_admin_password: ', variables('singleQuote'), parameters('adminPassword'), variables('singleQuote'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
 
     "availabilitySetSetupURL":"[concat(parameters('baseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
-
+    "singleQuote":"'",
     "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
     "vmSize-vnios-te-v820":"Standard_DS2",
     "vmSize-vnios-te-v1420":"Standard_DS3",
@@ -348,7 +358,7 @@
             "value":"[parameters('storageAccountForLogsType')]"
           },
           "storageAccountName":{
-            "value":"[parameters('newStorageAccountForLogsName')]"
+            "value":"[variables('storageAccountForLogsName')]"
           },
           "storageAccountExistingRG":{
             "value":"[parameters('storageAccountForLogsExistingRG')]"
