@@ -7,32 +7,32 @@
         "name": "niosModel",
         "type": "Microsoft.Common.DropDown",
         "label": "NIOS model",
-        "defaultValue": "TE-V1420 (Standard DS3)",
+        "defaultValue": "TE-V1420",
         "toolTip": "Select the NIOS model to load on the new VM",
         "constraints": {
           "allowedValues": [
             {
-              "label": "TE-V820 (Standard DS2)",
+              "label": "TE-V820",
               "value": "vnios-te-v820"
             },
             {
-              "label": "TE-V1420 (Standard DS3)",
+              "label": "TE-V1420",
               "value": "vnios-te-v1420"
             },
             {
-              "label": "TE-V2220 (Standard DS3)",
+              "label": "TE-V2220",
               "value": "vnios-te-v2220"
             },
             {
-              "label": "CP-V800 (Standard DS2)",
+              "label": "CP-V800",
               "value": "vnios-cp-v800"
             },
             {
-              "label": "CP-V1400 (Standard DS3)",
+              "label": "CP-V1400",
               "value": "vnios-cp-v1400"
             },
             {
-              "label": "CP-V2200 (Standard DS3)",
+              "label": "CP-V2200",
               "value": "vnios-cp-v2200"
             }
           ]
@@ -192,11 +192,13 @@
           "toolTip": "Select the size of VM for TE-V820",
           "defaultValue": "Standard_DS2",
           "recommendedSizes": [
-            "Standard_DS2"
+            "Standard_DS2",
+            "Standard_DS2_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS2"
+              "Standard_DS2",
+              "Standard_DS2_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-te-v820')]",
@@ -209,11 +211,13 @@
           "toolTip": "Select the size of VM for TE-V1420",
           "defaultValue": "Standard_DS3",
           "recommendedSizes": [
-            "Standard_DS3"
+            "Standard_DS3",
+            "Standard_DS3_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS3"
+              "Standard_DS3",
+              "Standard_DS3_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-te-v1420')]",
@@ -226,11 +230,13 @@
           "toolTip": "Select the size of VM for TE-V2220",
           "defaultValue": "Standard_DS3",
           "recommendedSizes": [
-            "Standard_DS3"
+            "Standard_DS3",
+            "Standard_DS3_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS3"
+              "Standard_DS3",
+              "Standard_DS3_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-te-v2220')]",
@@ -243,11 +249,13 @@
           "toolTip": "Select the size of VM for CP-V800",
           "defaultValue": "Standard_DS2",
           "recommendedSizes": [
-            "Standard_DS2"
+            "Standard_DS2",
+            "Standard_DS2_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS2"
+              "Standard_DS2",
+              "Standard_DS2_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v800')]",
@@ -260,11 +268,13 @@
           "toolTip": "Select the size of VM for CP-V1400",
           "defaultValue": "Standard_DS3",
           "recommendedSizes": [
-            "Standard_DS3"
+            "Standard_DS3",
+            "Standard_DS3_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS3"
+              "Standard_DS3",
+              "Standard_DS3_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]",
@@ -277,11 +287,13 @@
           "toolTip": "Select the size of VM for CP-V2200",
           "defaultValue": "Standard_DS3",
           "recommendedSizes": [
-            "Standard_DS3"
+            "Standard_DS3",
+            "Standard_DS3_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS3"
+              "Standard_DS3",
+              "Standard_DS3_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]",
@@ -469,6 +481,7 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "location": "[location()]",
+      "vmSize": "[coalesce(steps('vmSettings').vmSize-vnios-te-v820,steps('vmSettings').vmSize-vnios-te-v1420,steps('vmSettings').vmSize-vnios-te-v2220,steps('vmSettings').vmSize-vnios-cp-v800,steps('vmSettings').vmSize-vnios-cp-v1400,steps('vmSettings').vmSize-vnios-cp-v2200)]",
       "niosModel": "[basics('niosModel')]",
       "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800,steps('vmSettings').niosVersion-vnios-cp-v1400,steps('vmSettings').niosVersion-vnios-cp-v2200)]",
       "adminPassword": "[basics('passwordSection').adminPassword]",

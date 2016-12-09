@@ -23,6 +23,18 @@
         "description":"Name for the Virtual Machine."
       }
     },
+    "vmSize":{
+      "type":"string",
+      "metadata":{
+        "description":"Size of the Virtual Machine."
+      },
+      "allowedValues":[
+        "Standard_DS2",
+        "Standard_DS2_v2",
+        "Standard_DS3",
+        "Standard_DS3_v2"
+      ]
+    },
     "niosModel":{
       "type":"string",
       "defaultValue":"vnios-te-v1420",
@@ -188,6 +200,10 @@
     "storageAccountForLogsNeedFix":{
       "type":"string",
       "defaultValue":"false",
+      "allowedValues":[
+        "false",
+        "true"
+      ],
       "metadata":{
         "description":"Whether storage account for logs name should be appended by 'logs' or not"
       }
@@ -298,13 +314,6 @@
 
     "availabilitySetSetupURL":"[concat(parameters('baseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
     "singleQuote":"'",
-    "vmSize":"[variables(concat('vmSize-',parameters('niosModel')))]",
-    "vmSize-vnios-te-v820":"Standard_DS2",
-    "vmSize-vnios-te-v1420":"Standard_DS3",
-    "vmSize-vnios-te-v2220":"Standard_DS3",
-    "vmSize-vnios-cp-v800":"Standard_DS2",
-    "vmSize-vnios-cp-v1400":"Standard_DS3",
-    "vmSize-vnios-cp-v2200":"Standard_DS3",
     "osProfile":{
       "computerName":"[parameters('vmName')]",
       "adminUsername":"[uniqueString(ResourceGroup().Id)]",
@@ -664,7 +673,7 @@
           },
           "hardwareProfile": {
             "value" : {
-              "vmSize":"[variables('vmSize')]"
+              "vmSize":"[parameters('vmSize')]"
             }
           },
           "osProfile": {
