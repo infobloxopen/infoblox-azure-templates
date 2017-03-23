@@ -8,6 +8,9 @@
     "vmName": {
       "value": "templtestvmexisting"
     },
+    "vmSize": {
+      "value": "Standard_DS3"
+    },
     "niosModel": {
       "value": "vnios-te-v1420"
     },
