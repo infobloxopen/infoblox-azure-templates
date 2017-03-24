@@ -280,7 +280,7 @@
     "imageOffer":"infoblox-vnios-te-v1420",
     "imageSKU": "[parameters('niosModel')]",
     "version": "[parameters('niosVersion')]",
-    "OSDiskName":"[parameters('vmName')]",
+    "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id, deployment().name))]",
     "vmStorageAccountContainerName":"disks",
     "vnetResourceId":"[variables(concat('vnet-',parameters('vnetNewOrExisting')))]",
     "vnet-new":"[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",

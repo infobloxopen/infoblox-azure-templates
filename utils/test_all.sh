@@ -11,7 +11,7 @@
 # Note: To check the templates, they must be uploaded to some public place. In this example it is github.
 # If you are using not the master brunch, You need to change according to the place where templates are uploaded:
 # baseUrl in parameters files and AZURE_TEMPLATE_URI in this test script.
-AZURE_TEMPLATE_URI="https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/mainTemplate.json"
+AZURE_TEMPLATE_PATH="./main/mainTemplate.json"
 
 # To avoid overlapping with other developers please change PREFIX in test script. Also you should
 # modify parameter files accordingly.
@@ -39,7 +39,7 @@ azure group create "${RESOURCE_GROUP}" "${LOCATION}"
 echo "-------------------"
 echo "Test creation of all new elements"
 azure group deployment create \
-      --template-uri "${AZURE_TEMPLATE_URI}" \
+      -f "${AZURE_TEMPLATE_PATH}" \
       --parameters-file "${PARAMETERS_DIR}/parameters.allnew.json" \
       --resource-group "${RESOURCE_GROUP}" \
       "${DEPLOYMENT_NAME}"
@@ -56,7 +56,7 @@ azure network public-ip create \
 
 # Add VM
 azure group deployment create \
-      --template-uri "${AZURE_TEMPLATE_URI}" \
+      -f "${AZURE_TEMPLATE_PATH}" \
       --parameters-file "${PARAMETERS_DIR}/parameters.existing.json" \
       --resource-group "${RESOURCE_GROUP}" \
       "${DEPLOYMENT_NAME}"
@@ -64,7 +64,7 @@ azure group deployment create \
 echo "-------------------"
 echo "Test adding one more VM to existing elements with no Public Ip and no availiability set"
 azure group deployment create \
-      --template-uri "${AZURE_TEMPLATE_URI}" \
+      -f "${AZURE_TEMPLATE_PATH}" \
       --parameters-file "${PARAMETERS_DIR}/parameters.none.json" \
       --resource-group "${RESOURCE_GROUP}" \
       "${DEPLOYMENT_NAME}"
