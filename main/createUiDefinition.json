@@ -46,8 +46,8 @@
         "toolTip": "The name of the new NIOS vm.",
         "constraints": {
           "required": true,
-          "regex": "^[^_\\W][\\w-.]{0,78}[\\w]$",
-          "validationMessage": "The length must be between 2 and 80 characters. The first character must be a letter or number. The last character must be a letter, number, or underscore. The remaining characters must be letters, numbers, periods, underscores, or dashes."
+          "regex": "^(([0-9a-zA-Z][0-9a-zA-Z-.]{0,63}[0-9a-zA-Z])|[0-9a-zA-Z])$",
+          "validationMessage": "The length must be between 1 and 64 characters. The first and the last characters must be letters or numbers. The remaining characters must be letters, numbers, periods or dashes."
         }
       },
       {
