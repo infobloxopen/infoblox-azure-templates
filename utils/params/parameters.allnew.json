@@ -18,7 +18,7 @@
       "value": "latest"
     },
     "adminPassword": {
-      "value": "Infoblox=111"
+      "value": "Infoblox'111"
     },
     "virtualNetworkName": {
       "value": "vnet01"
@@ -93,7 +93,7 @@
       "value": "someset"
     },
       "customData": {
-      "value": "#infoblox-config\nremote_console_enabled: y\ndefault_admin_password: yanmlpasswd\ntemp_license: cloud vnios dns"
+      "value": "#infoblox-config\nremote_console_enabled: y\ntemp_license: cloud vnios dns"
     }
   }
 }

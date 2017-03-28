@@ -307,13 +307,13 @@
     "nicPrimarySetupURL":"[concat(parameters('baseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(parameters('baseUrl'),'/nic-pipnone.json')]",
 
-    "customData": "[base64(concat('default_admin_password: ', variables('singleQuote'), parameters('adminPassword'), variables('singleQuote'), '\n', parameters('customData')))]",
+    "customData": "[base64(concat('default_admin_password: ', variables('sq'), replace(parameters('adminPassword'), variables('sq'), concat(variables('sq'), variables('sq'))), variables('sq'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
 
     "availabilitySetSetupURL":"[concat(parameters('baseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
-    "singleQuote":"'",
+    "sq":"'",
     "osProfile":{
       "computerName":"[parameters('vmName')]",
       "adminUsername":"[uniqueString(ResourceGroup().Id)]",
