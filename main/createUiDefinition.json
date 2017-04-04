@@ -93,13 +93,17 @@
           "name": "niosVersion-vnios-te-v820",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V820",
-          "defaultValue": "8.0.0",
+          "defaultValue": "8.1.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
                 "label": "8.0.0",
                 "value": "800.343389.3"
+              },
+              {
+                "label": "8.1.0",
+                "value": "810.352813.0"
               }
             ]
           },
@@ -109,13 +113,17 @@
           "name": "niosVersion-vnios-te-v1420",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V1420",
-          "defaultValue": "8.0.0",
+          "defaultValue": "8.1.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
                 "label": "8.0.0",
                 "value": "800.343389.3"
+              },
+              {
+                "label": "8.1.0",
+                "value": "810.352813.0"
               }
             ]
           },
@@ -125,13 +133,17 @@
           "name": "niosVersion-vnios-te-v2220",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V2220",
-          "defaultValue": "8.0.0",
+          "defaultValue": "8.1.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
                 "label": "8.0.0",
                 "value": "800.343389.3"
+              },
+              {
+                "label": "8.1.0",
+                "value": "810.352813.0"
               }
             ]
           },
@@ -141,13 +153,17 @@
           "name": "niosVersion-vnios-cp-v800",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V800",
-          "defaultValue": "8.0.0",
+          "defaultValue": "8.1.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
                 "label": "8.0.0",
                 "value": "800.343389.3"
+              },
+              {
+                "label": "8.1.0",
+                "value": "810.352813.0"
               }
             ]
           },
@@ -157,13 +173,17 @@
           "name": "niosVersion-vnios-cp-v1400",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V1400",
-          "defaultValue": "8.0.0",
+          "defaultValue": "8.1.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
                 "label": "8.0.0",
                 "value": "800.343389.3"
+              },
+              {
+                "label": "8.1.0",
+                "value": "810.352813.0"
               }
             ]
           },
@@ -173,13 +193,17 @@
           "name": "niosVersion-vnios-cp-v2200",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2200",
-          "defaultValue": "8.0.0",
+          "defaultValue": "8.1.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
                 "label": "8.0.0",
                 "value": "800.343389.3"
+              },
+              {
+                "label": "8.1.0",
+                "value": "810.352813.0"
               }
             ]
           },
