@@ -1,6 +1,6 @@
 {
   "handler": "Microsoft.Compute.MultiVm",
-  "version": "0.0.1-preview",
+  "version": "0.1.2-preview",
   "parameters": {
     "basics": [
       {
@@ -62,10 +62,7 @@
             "password": "'admin' password",
             "confirmPassword": "Confirm 'admin' password"
           },
-          "toolTip": {
-            "password": "Password for the 'admin' user",
-            "confirmPassword": "Password for the 'admin' user"
-          },
+          "toolTip": "Password for the 'admin' user",
           "constraints": {
             "required": true,
             "regex": "^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\\d\\W])|(?=.*\\W)(?=.*\\d))|(?=.*\\W)(?=.*[A-Z])(?=.*\\d)).{6,64}$",
@@ -214,7 +211,6 @@
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for TE-V820",
           "toolTip": "Select the size of VM for TE-V820",
-          "defaultValue": "Standard_DS2",
           "recommendedSizes": [
             "Standard_DS2",
             "Standard_DS2_v2"
@@ -233,7 +229,6 @@
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for TE-V1420",
           "toolTip": "Select the size of VM for TE-V1420",
-          "defaultValue": "Standard_DS3",
           "recommendedSizes": [
             "Standard_DS3",
             "Standard_DS3_v2"
@@ -252,7 +247,6 @@
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for TE-V2220",
           "toolTip": "Select the size of VM for TE-V2220",
-          "defaultValue": "Standard_DS3",
           "recommendedSizes": [
             "Standard_DS3",
             "Standard_DS3_v2"
@@ -271,7 +265,6 @@
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for CP-V800",
           "toolTip": "Select the size of VM for CP-V800",
-          "defaultValue": "Standard_DS2",
           "recommendedSizes": [
             "Standard_DS2",
             "Standard_DS2_v2"
@@ -290,7 +283,6 @@
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for CP-V1400",
           "toolTip": "Select the size of VM for CP-V1400",
-          "defaultValue": "Standard_DS3",
           "recommendedSizes": [
             "Standard_DS3",
             "Standard_DS3_v2"
@@ -309,7 +301,6 @@
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for CP-V2200",
           "toolTip": "Select the size of VM for CP-V2200",
-          "defaultValue": "Standard_DS3",
           "recommendedSizes": [
             "Standard_DS3",
             "Standard_DS3_v2"
