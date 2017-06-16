@@ -32,7 +32,10 @@
         "Standard_DS2",
         "Standard_DS2_v2",
         "Standard_DS3",
-        "Standard_DS3_v2"
+        "Standard_DS3_v2",
+        "Standard_DS11_v2",
+        "Standard_DS12_v2",
+        "Standard_DS13_v2"
       ]
     },
     "niosModel":{
@@ -43,8 +46,11 @@
       },
       "allowedValues":[
         "vnios-te-v820",
+        "IB-V825",
         "vnios-te-v1420",
+        "IB-V1425",
         "vnios-te-v2220",
+        "IB-V2225",
         "vnios-cp-v800",
         "vnios-cp-v1400",
         "vnios-cp-v2200"
@@ -59,7 +65,8 @@
       "allowedValues":[
         "latest",
         "800.343389.3",
-        "810.352813.0"
+        "810.352813.0",
+        "820.356920.1"
       ]
     },
     "adminPassword":{
@@ -279,7 +286,10 @@
   "variables":{
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vnios-te-v1420",
-    "imageSKU": "[parameters('niosModel')]",
+    "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
+    "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
+    "imageSKUSoT-true": "vsot",
+    "imageSKUSoT-false": "[parameters('niosModel')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id, deployment().name))]",
     "vmStorageAccountContainerName":"disks",
