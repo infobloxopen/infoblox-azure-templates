@@ -541,11 +541,11 @@
                 "allowedValues": [
                   {
                     "label": "yes",
-                    "value": "vnios enterprise dns cloud "
+                    "value": "TE"
                   },
                   {
                     "label": "no",
-                    "value": ""
+                    "value": "none"
                   }
                 ]
               },
@@ -561,11 +561,11 @@
                 "allowedValues": [
                   {
                     "label": "yes",
-                    "value": "vnios enterprise dns cloud_api "
+                    "value": "CP"
                   },
                   {
                     "label": "no",
-                    "value": ""
+                    "value": "none"
                   }
                 ]
               },
@@ -581,11 +581,11 @@
                 "allowedValues": [
                   {
                     "label": "yes",
-                    "value": "[concat('nios', basics('niosModel'), 'enterprise dns cloud')]"
+                    "value": "TE-SoT"
                   },
                   {
                     "label": "no",
-                    "value": ""
+                    "value": "none"
                   }
                 ]
               },
@@ -658,8 +658,9 @@
       "publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
 
       "availabilitySetNewOrExistingOrNone": "none",
+      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses1, steps('vmSettings').licenseSection.licenses2, steps('vmSettings').licenseSection.licenses3)]",
 
-      "customData": "[concat('temp_license: ', coalesce(steps('vmSettings').licenseSection.licenses1, steps('vmSettings').licenseSection.licenses2, steps('vmSettings').licenseSection.licenses3), decodeBase64('DQo='), coalesce(steps('vmSettings').enhancedOptionsSection.customData, ''))]"
+      "customData": "[coalesce(steps('vmSettings').enhancedOptionsSection.customData, '')]"
     }
   }
 }

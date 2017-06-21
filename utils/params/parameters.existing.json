@@ -88,6 +88,9 @@
     },
       "availabilitySetName": {
       "value": "someset"
+    },
+      "tempLicenseOption": {
+      "value": "TE"
     }
   }
 }

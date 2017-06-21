@@ -281,15 +281,33 @@
       "metadata":{
         "description":"Use space and '\n' symbols for indentation. Some custom data parameter are not available for Azure, please refer to Azure NIOS Guide for allowed parameters."
       }
+    },
+    "tempLicenseOption":{
+      "type":"string",
+      "defaultValue":"none",
+      "allowedValues":[
+        "none",
+        "TE",
+        "CP",
+        "TE-SoT"
+      ],
+      "metadata":{
+        "description":"Temporary license option."
+      }
     }
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vnios-te-v1420",
+    "imageOffer":"infoblox-vnios-te-v1420-preview",
     "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
     "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
     "imageSKUSoT-true": "vsot",
     "imageSKUSoT-false": "[parameters('niosModel')]",
+    "tempLicense": "[variables(concat('tempLicense-', parameters('tempLicenseOption')))]",
+    "tempLicense-TE": "vnios enterprise dns cloud",
+    "tempLicense-CP": "vnios enterprise dns cloud_api",
+    "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud')]",
+    "tempLicense-none": "",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id, deployment().name))]",
     "vmStorageAccountContainerName":"disks",
@@ -318,7 +336,7 @@
     "nicPrimarySetupURL":"[concat(parameters('baseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
     "nicSecondarySetupURL":"[concat(parameters('baseUrl'),'/nic-pipnone.json')]",
 
-    "customData": "[base64(concat('default_admin_password: ', variables('sq'), replace(parameters('adminPassword'), variables('sq'), concat(variables('sq'), variables('sq'))), variables('sq'), '\n', parameters('customData')))]",
+    "customData": "[base64(concat('temp_license: ', variables('tempLicense'), '\n', 'default_admin_password: ', variables('sq'), replace(parameters('adminPassword'), variables('sq'), concat(variables('sq'), variables('sq'))), variables('sq'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
