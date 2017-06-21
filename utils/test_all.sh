@@ -27,7 +27,7 @@ DEPLOYMENT_NAME="${PREFIX}deployment$(date +%Y%m%d%H%M%S)"
 PARAMETERS_DIR="utils/params"
 
 RESPONSE=$(az group show --name ${RESOURCE_GROUP})
-if [ ${RESPONSE} ] ; then
+if [ "${RESPONSE}" ]; then
     echo "Resource group ${RESOURCE_GROUP} exists.
 To avoid overlapping with other developers please change PREFIX in test script.
 Also you should modify parameter files accordingly.
