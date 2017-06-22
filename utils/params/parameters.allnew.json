@@ -12,7 +12,7 @@
       "value": "Standard_DS3"
     },
     "niosModel": {
-      "value": "vnios-te-v1420"
+      "value": "IB-V825"
     },
     "niosVersion": {
       "value": "latest"
@@ -92,8 +92,8 @@
       "availabilitySetName": {
       "value": "someset"
     },
-      "customData": {
-      "value": "#infoblox-config\nremote_console_enabled: y\ntemp_license: cloud vnios dns"
+      "tempLicenseOption": {
+      "value": "TE-SoT"
     }
   }
 }
