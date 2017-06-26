@@ -693,7 +693,7 @@
                 "vhd":{
                   "uri":"[concat(reference('SettingUpStorageAccount').outputs.endpointURL.value, variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'), '.vhd')]"
                 },
-                "caching":"ReadWrite",
+                "caching":"ReadOnly",
                 "createOption":"FromImage"
               }
             }
