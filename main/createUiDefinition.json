@@ -7,7 +7,7 @@
         "name": "niosModel",
         "type": "Microsoft.Common.DropDown",
         "label": "NIOS model",
-        "defaultValue": "TE-V1420",
+        "defaultValue": "TE-V1425",
         "toolTip": "Select the NIOS model to load on the new VM",
         "constraints": {
           "allowedValues": [
