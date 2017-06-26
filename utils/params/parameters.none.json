@@ -6,25 +6,28 @@
       "value": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/"
     },
     "vmName": {
-      "value": "templtestvmnopip"
+      "value": "templtestvmnone"
     },
     "vmSize": {
       "value": "Standard_DS3"
     },
     "niosModel": {
-      "value": "vnios-te-v1420"
+      "value": "IB-V825"
     },
     "niosVersion": {
       "value": "latest"
     },
     "adminPassword": {
-      "value": "Infoblox=111"
+      "value": "Infoblox'111"
     },
     "virtualNetworkName": {
       "value": "vnet01"
     },
     "virtualNetworkExistingRGName": {
       "value": "templtestgroup"
+    },
+    "virtualNetworkAddressPrefix": {
+      "value": "10.4.0.0/16"
     },
     "vnetNewOrExisting": {
       "value": "existing"
@@ -72,7 +75,10 @@
       "value": "templtestgroup"
     },
     "publicIPAddressName": {
-      "value": ""
+      "value": "templtestpip"
+    },
+    "publicIPDnsName": {
+      "value": "templtestpip"
     },
     "publicIPNewOrExistingOrNone": {
       "value": "none"
@@ -84,7 +90,10 @@
       "value": "none"
     },
       "availabilitySetName": {
-      "value": ""
+      "value": "someset"
+    },
+      "tempLicenseOption": {
+      "value": "TE-SoT"
     }
   }
 }
