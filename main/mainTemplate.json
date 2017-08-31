@@ -71,7 +71,6 @@
     },
     "adminPassword":{
       "type":"securestring",
-      "defaultValue":"",
       "metadata":{
         "description":"Password for the Virtual Machine."
       }
@@ -206,11 +205,11 @@
       }
     },
     "storageAccountForLogsNeedFix":{
-      "type":"string",
-      "defaultValue":"false",
+      "type":"bool",
+      "defaultValue":false,
       "allowedValues":[
-        "false",
-        "true"
+        false,
+        true
       ],
       "metadata":{
         "description":"Whether storage account for logs name should be appended by 'logs' or not"
@@ -309,7 +308,7 @@
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud rpz')]",
     "tempLicense-none": "",
     "version": "[parameters('niosVersion')]",
-    "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id, deployment().name))]",
+    "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
     "vmStorageAccountContainerName":"disks",
     "vnetResourceId":"[variables(concat('vnet-',parameters('vnetNewOrExisting')))]",
     "vnet-new":"[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
@@ -326,7 +325,7 @@
     "publicIp-none": "",
     "apiVersion":"2016-06-01",
     "publicIPAddressType":"Dynamic",
-    "storageAccountForLogsName":"[variables(concat('storageAccountForLogsNameNeedFix-', parameters('storageAccountForLogsNeedFix')))]",
+    "storageAccountForLogsName":"[variables(concat('storageAccountForLogsNameNeedFix-', string(parameters('storageAccountForLogsNeedFix'))))]",
     "storageAccountForLogsNameNeedFix-true":"[concat(parameters('newStorageAccountForLogsName'), 'logs')]",
     "storageAccountForLogsNameNeedFix-false":"[parameters('newStorageAccountForLogsName')]",
     "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
