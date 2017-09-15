@@ -2,11 +2,10 @@
   "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion":"1.0.0.0",
   "parameters":{
-    "baseUrl": {
-      "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/",
-      "metadata": {
-        "description": "Base URL for dependent assets."
+    "artifactsBaseUrl": {
+    "type": "string",
+    "metadata": {
+        "description": "Base URL for Marketplace."
       }
     },
     "location": {
@@ -328,19 +327,19 @@
     "storageAccountForLogsName":"[variables(concat('storageAccountForLogsNameNeedFix-', string(parameters('storageAccountForLogsNeedFix'))))]",
     "storageAccountForLogsNameNeedFix-true":"[concat(parameters('newStorageAccountForLogsName'), 'logs')]",
     "storageAccountForLogsNameNeedFix-false":"[parameters('newStorageAccountForLogsName')]",
-    "storageAccountSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-    "storageAccountForLogsSetupURL":"[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
-    "publicIPSetupURL":"[concat(parameters('baseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
-    "virtualNetworkSetupURL":"[concat(parameters('baseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
-    "nicPrimarySetupURL":"[concat(parameters('baseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
-    "nicSecondarySetupURL":"[concat(parameters('baseUrl'),'/nic-pipnone.json')]",
+    "storageAccountSetupURL":"[concat(parameters('artifactsBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
+    "storageAccountForLogsSetupURL":"[concat(parameters('artifactsBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
+    "publicIPSetupURL":"[concat(parameters('artifactsBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
+    "virtualNetworkSetupURL":"[concat(parameters('artifactsBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
+    "nicPrimarySetupURL":"[concat(parameters('artifactsBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
+    "nicSecondarySetupURL":"[concat(parameters('artifactsBaseUrl'),'/nic-pipnone.json')]",
 
     "customData": "[base64(concat('temp_license: ', variables('tempLicense'), '\n', 'default_admin_password: ', variables('sq'), replace(parameters('adminPassword'), variables('sq'), concat(variables('sq'), variables('sq'))), variables('sq'), '\n', parameters('customData')))]",
 
     "availabilitySetNewOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'existing', 'none')]",
     "availabilitySetExistingOrNone": "[replace(parameters('availabilitySetNewOrExistingOrNone'), 'new', 'existing')]",
 
-    "availabilitySetSetupURL":"[concat(parameters('baseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
+    "availabilitySetSetupURL":"[concat(parameters('artifactsBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
     "sq":"'",
     "osProfile":{
       "computerName":"[parameters('vmName')]",
@@ -348,7 +347,7 @@
       "adminPassword":"[parameters('adminPassword')]",
       "customData": "[variables('customData')]"
     },
-    "virtualMachineSetURL":"[concat(parameters('baseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
+    "virtualMachineSetURL":"[concat(parameters('artifactsBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
     {
