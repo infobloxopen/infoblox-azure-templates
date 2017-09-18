@@ -3,10 +3,12 @@
   "contentVersion":"1.0.0.0",
   "parameters":{
     "artifactsBaseUrl": {
-    "type": "string",
-    "metadata": {
-        "description": "Base URL for Marketplace."
-      }
+      "type": "string",
+      "metadata": {
+        "description": "The base URL for dependent assets",
+        "artifactsBaseUrl": ""
+      },
+      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/"
     },
     "location": {
       "type": "string",
