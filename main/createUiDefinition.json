@@ -122,13 +122,13 @@
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V825",
-          "defaultValue": "8.2.0",
+          "defaultValue": "8.2.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.2.0",
-                "value": "820.359118.0"
+                "label": "8.2.1",
+                "value": "821.359366.0"
               }
             ]
           },
@@ -158,13 +158,13 @@
           "name": "niosVersion-IB-V1425",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V1425",
-          "defaultValue": "8.2.0",
+          "defaultValue": "8.2.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.2.0",
-                "value": "820.359118.0"
+                "label": "8.2.1",
+                "value": "821.359366.0"
               }
             ]
           },
@@ -194,13 +194,13 @@
           "name": "niosVersion-IB-V2225",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V2225",
-          "defaultValue": "8.2.0",
+          "defaultValue": "8.2.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.2.0",
-                "value": "820.359118.0"
+                "label": "8.2.1",
+                "value": "821.359366.0"
               }
             ]
           },
