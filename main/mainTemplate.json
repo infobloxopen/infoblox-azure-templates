@@ -67,7 +67,8 @@
         "latest",
         "800.343389.3",
         "810.352813.0",
-        "821.359366.0"
+        "821.359366.0",
+        "830.371835.0"
       ]
     },
     "adminPassword":{
@@ -298,7 +299,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vnios-te-v1420",
+    "imageOffer":"infoblox-vnios-te-v1420-preview",
     "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
     "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
     "imageSKUSoT-true": "vsot",
