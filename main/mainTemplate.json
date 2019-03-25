@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion":"1.0.0.0",
   "parameters":{
@@ -53,8 +53,11 @@
         "vnios-te-v2220",
         "IB-V2225",
         "vnios-cp-v800",
+        "nios-cp-v805",
         "vnios-cp-v1400",
-        "vnios-cp-v2200"
+        "nios-cp-v1405",
+        "vnios-cp-v2200",
+        "nios-cp-v2205"
       ]
     },
     "niosVersion":{
@@ -68,7 +71,8 @@
         "800.343389.3",
         "810.352813.0",
         "821.359366.0",
-        "830.371835.0"
+        "830.371835.0",
+        "840.381062.0"
       ]
     },
     "adminPassword":{
@@ -290,7 +294,8 @@
         "none",
         "TE",
         "CP",
-        "TE-SoT"
+        "TE-SoT",
+        "CP-SoT"
       ],
       "metadata":{
         "description":"Temporary license option."
@@ -308,6 +313,7 @@
     "tempLicense-TE": "vnios enterprise dns cloud rpz",
     "tempLicense-CP": "vnios enterprise dns cloud_api rpz",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud rpz')]",
+    "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
     "tempLicense-none": "",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
@@ -353,6 +359,19 @@
     "virtualMachineSetURL":"[concat(parameters('artifactsBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
+    {
+      "name": "pid-6296147f-669c-41b4-adfa-c20bdaf32742",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    },
     {
       "name":"SettingUpStorageAccount",
       "type":"Microsoft.Resources/deployments",
