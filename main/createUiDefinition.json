@@ -40,20 +40,20 @@
               "value": "vnios-cp-v800"
             },
             {
-              "label": "CP-V1400",
-              "value": "vnios-cp-v1400"
-            },
-            {
-              "label": "CP-V2200",
-              "value": "vnios-cp-v2200"
-            },
-            {
               "label": "CP-V805",
               "value": "nios-cp-v805"
             },
             {
+              "label": "CP-V1400",
+              "value": "vnios-cp-v1400"
+            },
+            {
               "label": "CP-V1405",
               "value": "nios-cp-v1405"
+            },
+            {
+              "label": "CP-V2200",
+              "value": "vnios-cp-v2200"
             },
             {
               "label": "CP-V2205",
