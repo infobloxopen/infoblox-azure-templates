@@ -53,11 +53,11 @@
         "vnios-te-v2220",
         "IB-V2225",
         "vnios-cp-v800",
-        "nios-cp-v805",
+        "vnios-cp-v805",
         "vnios-cp-v1400",
-        "nios-cp-v1405",
+        "vnios-cp-v1405",
         "vnios-cp-v2200",
-        "nios-cp-v2205"
+        "vnios-cp-v2205"
       ]
     },
     "niosVersion":{
