@@ -500,13 +500,11 @@
           "label": "Virtual machine size for CP-V805",
           "toolTip": "Select the size of VM for CP-V805",
           "recommendedSizes": [
-            "Standard_DS2",
-            "Standard_DS2_v2"
+            "Standard_DS11_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS2",
-              "Standard_DS2_v2"
+              "Standard_DS11_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v805')]",
@@ -536,13 +534,11 @@
           "label": "Virtual machine size for CP-V1405",
           "toolTip": "Select the size of VM for CP-V1405",
           "recommendedSizes": [
-            "Standard_DS3",
-            "Standard_DS3_v2"
+            "Standard_DS12_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS3",
-              "Standard_DS3_v2"
+              "Standard_DS12_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v1405')]",
@@ -572,13 +568,11 @@
           "label": "Virtual machine size for CP-V2205",
           "toolTip": "Select the size of VM for CP-V2205",
           "recommendedSizes": [
-            "Standard_DS3",
-            "Standard_DS3_v2"
+            "Standard_DS13_v2"
           ],
           "constraints": {
             "allowedSizes": [
-              "Standard_DS3",
-              "Standard_DS3_v2"
+              "Standard_DS13_v2"
             ]
           },
           "visible": "[equals(basics('niosModel'), 'vnios-cp-v2205')]",
