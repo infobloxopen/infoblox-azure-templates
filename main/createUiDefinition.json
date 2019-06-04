@@ -1,5 +1,4 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "handler": "Microsoft.Compute.MultiVm",
   "version": "0.1.2-preview",
   "parameters": {
@@ -135,7 +134,7 @@
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V825",
-          "defaultValue": "8.4.0",
+          "defaultValue": "8.4.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
@@ -148,8 +147,8 @@
                 "value": "830.371835.0"
               },
               {
-                "label": "8.4.0",
-                "value": "840.381062.3"
+                "label": "8.4.2",
+                "value": "842.383580.0"
               }
             ]
           },
@@ -179,7 +178,7 @@
           "name": "niosVersion-IB-V1425",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V1425",
-          "defaultValue": "8.4.0",
+          "defaultValue": "8.4.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
@@ -192,8 +191,8 @@
                 "value": "830.371835.0"
               },
               {
-                "label": "8.4.0",
-                "value": "840.381062.3"
+                "label": "8.4.2",
+                "value": "842.383580.0"
               }
             ]
           },
@@ -223,7 +222,7 @@
           "name": "niosVersion-IB-V2225",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V2225",
-          "defaultValue": "8.4.0",
+          "defaultValue": "8.4.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
@@ -236,8 +235,8 @@
                 "value": "830.371835.0"
               },
               {
-                "label": "8.4.0",
-                "value": "840.381062.3"
+                "label": "8.4.2",
+                "value": "842.383580.0"
               }
             ]
           },
@@ -275,13 +274,13 @@
           "name": "niosVersion-CP-V805",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V805",
-          "defaultValue": "8.4.0",
+          "defaultValue": "8.4.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.4.0",
-                "value": "840.381062.3"
+                "label": "8.4.2",
+                "value": "842.383580.0"
               }
             ]
           },
@@ -319,13 +318,13 @@
           "name": "niosVersion-CP-V1405",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V1405",
-          "defaultValue": "8.4.0",
+          "defaultValue": "8.4.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.4.0",
-                "value": "840.381062.3"
+                "label": "8.4.2",
+                "value": "842.383580.0"
               }
             ]
           },
@@ -363,13 +362,13 @@
           "name": "niosVersion-CP-V2205",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2205",
-          "defaultValue": "8.4.0",
+          "defaultValue": "8.4.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.4.0",
-                "value": "840.381062.3"
+                "label": "8.4.2",
+                "value": "842.383580.0"
               }
             ]
           },
