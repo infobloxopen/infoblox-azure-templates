@@ -41,7 +41,7 @@
     },
     "niosModel":{
       "type":"string",
-      "defaultValue":"IB-V1425",
+      "defaultValue":"vnios-te-v2220",
       "metadata":{
         "description":"niosModel."
       },
@@ -303,7 +303,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-IB-V1425",
+    "imageOffer":"infoblox-vnios-te-v2220",
     "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
     "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
     "imageSKUSoT-true": "vsot",
