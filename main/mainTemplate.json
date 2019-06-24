@@ -41,7 +41,7 @@
     },
     "niosModel":{
       "type":"string",
-      "defaultValue":"vnios-te-v2220",
+      "defaultValue":"CP-V1405",
       "metadata":{
         "description":"niosModel."
       },
@@ -303,7 +303,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vnios-te-v2220",
+    "imageOffer":"infoblox-CP-V1405",
     "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
     "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
     "imageSKUSoT-true": "vsot",
