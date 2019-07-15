@@ -36,24 +36,12 @@
               "value": "IB-V2225"
             },
             {
-              "label": "CP-V800",
-              "value": "vnios-cp-v800"
-            },
-            {
               "label": "CP-V805",
               "value": "cp-v805"
             },
             {
-              "label": "CP-V1400",
-              "value": "vnios-cp-v1400"
-            },
-            {
               "label": "CP-V1405",
               "value": "cp-v1405"
-            },
-            {
-              "label": "CP-V2200",
-              "value": "vnios-cp-v2200"
             },
             {
               "label": "CP-V2205",
@@ -243,34 +231,6 @@
           "visible": "[equals(basics('niosModel'), 'IB-V2225')]"
         },
         {
-          "name": "niosVersion-vnios-cp-v800",
-          "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for CP-V800",
-          "defaultValue": "8.3.0",
-          "toolTip": "Select the version of NIOS to load",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "8.0.0",
-                "value": "800.343389.3"
-              },
-              {
-                "label": "8.1.0",
-                "value": "810.352813.0"
-              },
-              {
-                "label": "8.2.1",
-                "value": "821.359366.0"
-              },
-              {
-                "label": "8.3.0",
-                "value": "830.371835.0"
-              }
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v800')]"
-        },
-        {
           "name": "niosVersion-CP-V805",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V805",
@@ -287,34 +247,6 @@
           "visible": "[equals(basics('niosModel'), 'cp-v805')]"
         },
         {
-          "name": "niosVersion-vnios-cp-v1400",
-          "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for CP-V1400",
-          "defaultValue": "8.3.0",
-          "toolTip": "Select the version of NIOS to load",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "8.0.0",
-                "value": "800.343389.3"
-              },
-              {
-                "label": "8.1.0",
-                "value": "810.352813.0"
-              },
-              {
-                "label": "8.2.1",
-                "value": "821.359366.0"
-              },
-              {
-                "label": "8.3.0",
-                "value": "830.371835.0"
-              }
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]"
-        },
-        {
           "name": "niosVersion-CP-V1405",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V1405",
@@ -329,34 +261,6 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'cp-v1405')]"
-        },
-        {
-          "name": "niosVersion-vnios-cp-v2200",
-          "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for CP-V2200",
-          "defaultValue": "8.3.0",
-          "toolTip": "Select the version of NIOS to load",
-          "constraints": {
-            "allowedValues": [
-              {
-                "label": "8.0.0",
-                "value": "800.343389.3"
-              },
-              {
-                "label": "8.1.0",
-                "value": "810.352813.0"
-              },
-              {
-                "label": "8.2.1",
-                "value": "821.359366.0"
-              },
-              {
-                "label": "8.3.0",
-                "value": "830.371835.0"
-              }
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]"
         },
         {
           "name": "niosVersion-CP-V2205",
@@ -477,24 +381,6 @@
           "osPlatform": "Linux"
         },
         {
-          "name": "vmSize-vnios-cp-v800",
-          "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for CP-V800",
-          "toolTip": "Select the size of VM for CP-V800",
-          "recommendedSizes": [
-            "Standard_DS2",
-            "Standard_DS2_v2"
-          ],
-          "constraints": {
-            "allowedSizes": [
-              "Standard_DS2",
-              "Standard_DS2_v2"
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v800')]",
-          "osPlatform": "Linux"
-        },
-        {
           "name": "vmSize-CP-V805",
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for CP-V805",
@@ -511,24 +397,6 @@
           "osPlatform": "Linux"
         },
         {
-          "name": "vmSize-vnios-cp-v1400",
-          "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for CP-V1400",
-          "toolTip": "Select the size of VM for CP-V1400",
-          "recommendedSizes": [
-            "Standard_DS3",
-            "Standard_DS3_v2"
-          ],
-          "constraints": {
-            "allowedSizes": [
-              "Standard_DS3",
-              "Standard_DS3_v2"
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v1400')]",
-          "osPlatform": "Linux"
-        },
-        {
           "name": "vmSize-CP-V1405",
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for CP-V1405",
@@ -542,24 +410,6 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'cp-v1405')]",
-          "osPlatform": "Linux"
-        },
-        {
-          "name": "vmSize-vnios-cp-v2200",
-          "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for CP-V2200",
-          "toolTip": "Select the size of VM for CP-V2200",
-          "recommendedSizes": [
-            "Standard_DS3",
-            "Standard_DS3_v2"
-          ],
-          "constraints": {
-            "allowedSizes": [
-              "Standard_DS3",
-              "Standard_DS3_v2"
-            ]
-          },
-          "visible": "[equals(basics('niosModel'), 'vnios-cp-v2200')]",
           "osPlatform": "Linux"
         },
         {
@@ -708,26 +558,6 @@
               "visible": "[or(equals(basics('niosModel'), 'vnios-te-v820'), equals(basics('niosModel'), 'vnios-te-v1420'), equals(basics('niosModel'), 'vnios-te-v2220'))]"
             },
             {
-              "name": "licenses2",
-              "type": "Microsoft.Common.OptionsGroup",
-              "label": "Install temporary licenses",
-              "defaultValue": "yes",
-              "toolTip": "Select yes to install automatically temporary licenses vNIOS, Grid, DNS, RPZ and Cloud(CP). Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
-              "constraints": {
-                "allowedValues": [
-                  {
-                    "label": "yes",
-                    "value": "CP"
-                  },
-                  {
-                    "label": "no",
-                    "value": "none"
-                  }
-                ]
-              },
-              "visible": "[or(equals(basics('niosModel'), 'vnios-cp-v800'), equals(basics('niosModel'), 'vnios-cp-v1400'), equals(basics('niosModel'), 'vnios-cp-v2200'))]"
-            },
-            {
               "name": "licenses3",
               "type": "Microsoft.Common.OptionsGroup",
               "label": "Install temporary licenses",
@@ -800,9 +630,9 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "location": "[location()]",
-      "vmSize": "[coalesce(steps('vmSettings').vmSize-vnios-te-v820,steps('vmSettings').vmSize-vnios-te-v1420,steps('vmSettings').vmSize-vnios-te-v2220,steps('vmSettings').vmSize-vnios-cp-v800,steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-vnios-cp-v1400,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-vnios-cp-v2200,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225)]",
+      "vmSize": "[coalesce(steps('vmSettings').vmSize-vnios-te-v820,steps('vmSettings').vmSize-vnios-te-v1420,steps('vmSettings').vmSize-vnios-te-v2220,steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225)]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-vnios-cp-v800, steps('vmSettings').niosVersion-CP-V805,steps('vmSettings').niosVersion-vnios-cp-v1400, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-vnios-cp-v2200,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225)]",
+      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-vnios-te-v820,steps('vmSettings').niosVersion-vnios-te-v1420,steps('vmSettings').niosVersion-vnios-te-v2220,steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225)]",
       "adminPassword": "[basics('passwordSection').adminPassword]",
 
       "virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
@@ -834,7 +664,7 @@
       "publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
 
       "availabilitySetNewOrExistingOrNone": "none",
-      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses1, steps('vmSettings').licenseSection.licenses2, steps('vmSettings').licenseSection.licenses3, steps('vmSettings').licenseSection.licenses4)]",
+      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses1,steps('vmSettings').licenseSection.licenses3, steps('vmSettings').licenseSection.licenses4)]",
 
       "customData": "[coalesce(steps('vmSettings').enhancedOptionsSection.customData, '')]"
     }
