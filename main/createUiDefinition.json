@@ -41,7 +41,7 @@
             },
             {
               "label": "CP-V805",
-              "value": "CP-V805"
+              "value": "cp-v805"
             },
             {
               "label": "CP-V1400",
@@ -49,7 +49,7 @@
             },
             {
               "label": "CP-V1405",
-              "value": "CP-V1405"
+              "value": "cp-v1405"
             },
             {
               "label": "CP-V2200",
@@ -57,7 +57,7 @@
             },
             {
               "label": "CP-V2205",
-              "value": "CP-V2205"
+              "value": "cp-v2205"
             }
           ]
         },
@@ -284,7 +284,7 @@
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'CP-V805')]"
+          "visible": "[equals(basics('niosModel'), 'cp-v805')]"
         },
         {
           "name": "niosVersion-vnios-cp-v1400",
@@ -328,7 +328,7 @@
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'CP-V1405')]"
+          "visible": "[equals(basics('niosModel'), 'cp-v1405')]"
         },
         {
           "name": "niosVersion-vnios-cp-v2200",
@@ -372,7 +372,7 @@
               }
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'CP-V2205')]"
+          "visible": "[equals(basics('niosModel'), 'cp-v2205')]"
         },
         {
           "name": "vmSize-vnios-te-v820",
@@ -507,7 +507,7 @@
               "Standard_DS11_v2"
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'CP-V805')]",
+          "visible": "[equals(basics('niosModel'), 'cp-v805')]",
           "osPlatform": "Linux"
         },
         {
@@ -541,7 +541,7 @@
               "Standard_DS12_v2"
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'CP-V1405')]",
+          "visible": "[equals(basics('niosModel'), 'cp-v1405')]",
           "osPlatform": "Linux"
         },
         {
@@ -575,7 +575,7 @@
               "Standard_DS13_v2"
             ]
           },
-          "visible": "[equals(basics('niosModel'), 'CP-V2205')]",
+          "visible": "[equals(basics('niosModel'), 'cp-v2205')]",
           "osPlatform": "Linux"
         },
         {
@@ -765,7 +765,7 @@
                   }
                 ]
               },
-              "visible": "[or(equals(basics('niosModel'), 'CP-V805'), equals(basics('niosModel'), 'CP-V1405'), equals(basics('niosModel'), 'CP-V2205'))]"
+              "visible": "[or(equals(basics('niosModel'), 'cp-v805'), equals(basics('niosModel'), 'cp-v1405'), equals(basics('niosModel'), 'cp-v2205'))]"
             }
           ],
           "visible": true

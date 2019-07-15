@@ -41,7 +41,7 @@
     },
     "niosModel":{
       "type":"string",
-      "defaultValue":"CP-V1405",
+      "defaultValue":"cp-v1405",
       "metadata":{
         "description":"niosModel."
       },
@@ -52,11 +52,11 @@
         "vnios-te-v2220",
         "IB-V2225",
         "vnios-cp-v800",
-        "CP-V805",
+        "cp-v805",
         "vnios-cp-v1400",
-        "CP-V1405",
+        "cp-v1405",
         "vnios-cp-v2200",
-        "CP-V2205"
+        "cp-v2205"
       ]
     },
     "niosVersion":{
@@ -303,7 +303,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-CP-V1405",
+    "imageOffer":"infoblox-cp-v1405",
     "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
     "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
     "imageSKUSoT-true": "vsot",
