@@ -46,16 +46,11 @@
         "description":"niosModel."
       },
       "allowedValues":[
-        "vnios-te-v820",
         "IB-V825",
         "IB-V1425",
-        "vnios-te-v2220",
         "IB-V2225",
-        "vnios-cp-v800",
         "cp-v805",
-        "vnios-cp-v1400",
         "cp-v1405",
-        "vnios-cp-v2200",
         "cp-v2205"
       ]
     },
@@ -67,10 +62,6 @@
       },
       "allowedValues":[
         "latest",
-        "800.343389.3",
-        "810.352813.0",
-        "821.359366.0",
-        "830.371835.0",
         "842.383580.0"
       ]
     },
