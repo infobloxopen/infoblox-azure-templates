@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "Microsoft.Compute.MultiVm",
   "version": "0.1.2-preview",
   "parameters": {
@@ -325,7 +326,7 @@
             "addressPrefixSize": "/16"
           },
           "constraints": {
-            "minAddressPrefixSize": "/28"
+            "minAddressPrefixSize": "/29"
           },
           "options": {
             "hideExisting": false
