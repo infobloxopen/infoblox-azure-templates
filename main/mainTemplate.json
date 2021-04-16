@@ -62,7 +62,7 @@
       },
       "allowedValues":[
         "latest",
-        "843.383835.0"
+        "860.412613.0"
       ]
     },
     "adminPassword":{
@@ -294,7 +294,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-cp-v1405",
+    "imageOffer":"infoblox-vm-appliances-860",
     "imageSKU": "[variables(concat('imageSKUSoT-', variables('imageSKUSoT')))]",
     "imageSKUSoT": "[contains(parameters('niosModel'), 'IB-V')]",
     "imageSKUSoT-true": "vsot",
@@ -349,19 +349,6 @@
     "virtualMachineSetURL":"[concat(parameters('artifactsBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
-    {
-      "name": "pid-6296147f-669c-41b4-adfa-c20bdaf32742",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-02-01",
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": []
-        }
-      }
-    },
     {
       "name":"SettingUpStorageAccount",
       "type":"Microsoft.Resources/deployments",
