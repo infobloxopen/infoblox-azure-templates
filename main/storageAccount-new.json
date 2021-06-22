@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -22,29 +22,24 @@
       },
       "defaultValue": "Premium_LRS"
     },
-    "storageAccountExistingRG": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "Description": "Resource Group Name of the existing Storage Account"
-      }
-    }
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[concat(parameters('storageAccountName'))]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2021-01-01",
       "location": "[parameters('location')]",
+      "sku":{
+        "name": "[parameters('storageAccountType')]"
+      },
       "properties": {
-        "accountType": "[parameters('storageAccountType')]"
       }
     }
   ],
   "outputs": {
     "endpointURL": {
       "type": "string",
-      "value": "[reference(parameters('StorageAccountName'), '2015-06-15').primaryEndpoints.blob]"
+      "value": "[reference(parameters('StorageAccountName'), '2021-01-01').primaryEndpoints.blob]"
     }
   }
 }

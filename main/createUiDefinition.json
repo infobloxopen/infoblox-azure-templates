@@ -47,7 +47,7 @@
         "toolTip": "The name of the new NIOS vm.",
         "constraints": {
           "required": true,
-          "regex": "^(([0-9a-zA-Z][0-9a-zA-Z-.]{0,63}[0-9a-zA-Z])|[0-9a-zA-Z])$",
+          "regex": "^(([0-9a-zA-Z][0-9a-zA-Z-.]{0,63}[0-9a-zA-Z])|[0-9a-zA-Z]).{1,64}$",
           "validationMessage": "The length must be between 1 and 64 characters. The first and the last characters must be letters or numbers. The remaining characters must be letters, numbers, periods or dashes."
         }
       },
@@ -66,8 +66,8 @@
           "toolTip": "Password for the 'admin' user",
           "constraints": {
             "required": true,
-            "regex": "^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\\d\\W])|(?=.*\\W)(?=.*\\d))|(?=.*\\W)(?=.*[A-Z])(?=.*\\d)).{6,64}$",
-            "validationMessage": "The password must be between 6 and 64 characters long, and contain characters from at least 3 of the following groups: uppercase characters, lowercase characters, numbers, and special characters."
+            "regex": "^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\\d\\W])|(?=.*\\W)(?=.*\\d))|(?=.*\\W)(?=.*[A-Z])(?=.*\\d)).{12,64}$",
+            "validationMessage": "The password must be between 12 and 64 characters long, and contain characters from at least 3 of the following groups: uppercase characters, lowercase characters, numbers, and special characters."
           },
           "options": {
             "hideConfirmation": false
@@ -319,8 +319,7 @@
             "subnets": "Subnets"
           },
           "toolTip": {
-            "virtualNetwork": "",
-            "subnets": ""
+            "virtualNetwork": "Only virtual networks in the currently selected subscription and location are listed. If you choose to create a new virtual network, it will be created in the same subscription, location, and resource group as the storage account."
           },
           "defaultValue": {
             "addressPrefixSize": "/16"
@@ -365,11 +364,11 @@
             "domainNameLabel": "Public DNS name"
           },
           "toolTip": {
-            "publicIpAddress": "",
-            "domainNameLabel": ""
+            "publicIpAddress": "Use a public IP address if you want to communicate with the virtual machine from outside the virtual network.",
+            "domainNameLabel": "An \"A record\" that starts with the specified label and resolves to this public IP address will be registered with the Azure-provided DNS servers. Example: mylabel.westus.cloudapp.azure.com."
           },
           "defaultValue": {
-            "publicIpAddressName": ""
+            "domainNameLabel": "mydomain"
           },
           "constraints": {
             "required": {
