@@ -490,7 +490,7 @@
           "uri":"[variables('storageAccountForLogsSetupURL')]",
           "contentVersion":"1.0.0.0"
         },
-        "parameters":"[if(equals(parameters('storageAccountNewOrExisting'), 'new'), variables('storageAccountForLogsNewParams'), variables('storageAccountForLogsExistingParams'))]"
+        "parameters":"[if(equals(parameters('storageAccountForLogsNewOrExisting'), 'new'), variables('storageAccountForLogsNewParams'), variables('storageAccountForLogsExistingParams'))]"
       }
     },
     {
