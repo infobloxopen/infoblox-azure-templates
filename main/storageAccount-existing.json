@@ -1,26 +1,12 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": {
-      "type": "string"
-    },
     "storageAccountName": {
       "type": "string",
       "metadata": {
         "Description": "The name of the new storage account created to store the VMs disks"
       }
-    },
-    "storageAccountType": {
-      "type": "string",
-      "allowedValues": [
-        "Premium_LRS",
-        "Standard_LRS"
-      ],
-      "metadata": {
-        "Description": "The type of the Storage Account created"
-      },
-      "defaultValue": "Premium_LRS"
     },
     "storageAccountExistingRG": {
       "type": "string",
@@ -35,7 +21,7 @@
   "outputs": {
     "endpointURL": {
       "type": "string",
-      "value": "[reference(resourceId(parameters('storageAccountExistingRG'), 'Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')), '2015-06-15').primaryEndpoints.blob]"
+      "value": "[reference(resourceId(parameters('storageAccountExistingRG'), 'Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')), '2021-01-01').primaryEndpoints.blob]"
     }
   }
 }
