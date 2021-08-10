@@ -26,6 +26,24 @@
     "diagnosticsProfile": {
       "type": "object"
     },
+    "availabilitySet": {
+      "type": "object"
+    },
+    "is_avset": {
+      "type": "string"
+    }
+  },
+  "variables":{
+    "properties_default":{
+      "hardwareProfile":"[parameters('hardwareProfile')]",
+      "osProfile":"[parameters('osProfile')]",
+      "storageProfile":"[parameters('storageProfile')]",
+      "networkProfile":"[parameters('networkProfile')]",
+      "diagnosticsProfile":"[parameters('diagnosticsProfile')]"
+    },
+    "property_avset":{
+      "availabilitySet":"[parameters('availabilitySet')]"
+    }
   },
   "resources": [
     {
@@ -34,13 +52,7 @@
       "name":"[parameters('vmName')]",
       "location": "[parameters('location')]",
       "plan": "[parameters('plan')]",
-      "properties":{
-        "hardwareProfile":"[parameters('hardwareProfile')]",
-        "osProfile":"[parameters('osProfile')]",
-        "storageProfile":"[parameters('storageProfile')]",
-        "networkProfile":"[parameters('networkProfile')]",
-        "diagnosticsProfile":"[parameters('diagnosticsProfile')]"
-      }
+      "properties":"[if(equals(parameters('is_avset'), 'false'), variables('properties_default'), union(variables('properties_default'),variables('property_avset')))]"
     }
   ],
   "outputs": {}

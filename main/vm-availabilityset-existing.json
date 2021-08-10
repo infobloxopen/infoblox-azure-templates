@@ -1,51 +1,59 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string"
-        },
-        "vmName": {
-            "type": "string"
-        },
-        "plan": {
-            "type": "object"
-        },
-        "hardwareProfile": {
-            "type": "object"
-        },
-        "osProfile": {
-            "type": "object"
-        },
-        "storageProfile": {
-            "type": "object"
-        },
-        "networkProfile": {
-            "type": "object"
-        },
-        "diagnosticsProfile": {
-            "type": "object"
-        },
-        "availabilitySet": {
-            "type": "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "apiVersion":"2020-12-01",
-            "type":"Microsoft.Compute/virtualMachines",
-            "name":"[parameters('vmName')]",
-            "location": "[parameters('location')]",
-            "plan": "[parameters('plan')]",
-            "properties":{
-                "hardwareProfile":"[parameters('hardwareProfile')]",
-                "osProfile":"[parameters('osProfile')]",
-                "storageProfile":"[parameters('storageProfile')]",
-                "networkProfile":"[parameters('networkProfile')]",
-                "diagnosticsProfile":"[parameters('diagnosticsProfile')]",
-                "availabilitySet":"[parameters('availabilitySet')]"
-            }
-        }
-    ],
-    "outputs": {}
+    "vmName": {
+      "type": "string"
+    },
+    "plan": {
+      "type": "object"
+    },
+    "hardwareProfile": {
+      "type": "object"
+    },
+    "osProfile": {
+      "type": "object"
+    },
+    "storageProfile": {
+      "type": "object"
+    },
+    "networkProfile": {
+      "type": "object"
+    },
+    "diagnosticsProfile": {
+      "type": "object"
+    },
+    "availabilitySet": {
+      "type": "object"
+    },
+    "is_avset": {
+      "type": "string"
+    }
+  },
+  "variables":{
+    "properties_default":{
+      "hardwareProfile":"[parameters('hardwareProfile')]",
+      "osProfile":"[parameters('osProfile')]",
+      "storageProfile":"[parameters('storageProfile')]",
+      "networkProfile":"[parameters('networkProfile')]",
+      "diagnosticsProfile":"[parameters('diagnosticsProfile')]"
+    },
+    "property_avset":{
+      "availabilitySet":"[parameters('availabilitySet')]"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion":"2020-12-01",
+      "type":"Microsoft.Compute/virtualMachines",
+      "name":"[parameters('vmName')]",
+      "location": "[parameters('location')]",
+      "plan": "[parameters('plan')]",
+      "properties":"[if(equals(parameters('is_avset'), 'false'), variables('properties_default'), union(variables('properties_default'),variables('property_avset')))]"
+    }
+  ],
+  "outputs": {}
 }
