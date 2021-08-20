@@ -468,6 +468,19 @@
   },
   "resources":[
     {
+      "name": "pid-2dff6f71-ec4a-458a-86ba-a664cae1d62a-partnercenter",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    },
+    {
       "name":"SettingUpStorageAccount",
       "type":"Microsoft.Resources/deployments",
       "apiVersion":"2020-06-01",
@@ -768,6 +781,14 @@
                 "enabled": "true",
                 "storageUri": "[reference('SettingUpStorageAccountForLogs').outputs.endpointURL.value]"
               }
+            }
+          },
+          "is_avset": {
+            "value": "[if(equals(parameters('availabilitySetNewOrExistingOrNone'), 'none'), 'false', 'true')]"
+          },
+          "availabilitySet": {
+            "value": {
+              "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
             }
           }
         }
