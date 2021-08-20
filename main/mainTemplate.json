@@ -62,7 +62,7 @@
       },
       "allowedValues":[
         "latest",
-        "860.412613.0"
+        "853.417434.0"
       ]
     },
     "adminPassword":{
@@ -137,40 +137,6 @@
       "type":"string",
       "metadata":{
         "description":"Subnet 2 Starting IP Address"
-      }
-    },
-    "newStorageAccountName":{
-      "type":"string",
-      "metadata":{
-        "description":"Unique Name for Storage Account where the Virtual Machine's disks will be placed."
-      }
-    },
-    "storageAccountType":{
-      "type":"string",
-      "defaultValue":"Premium_LRS",
-      "allowedValues":[
-        "Premium_LRS"
-      ],
-      "metadata":{
-        "description":"The type of storage account created."
-      }
-    },
-    "storageAccountNewOrExisting":{
-      "type":"string",
-      "defaultValue":"new",
-      "allowedValues":[
-        "new",
-        "existing"
-      ],
-      "metadata":{
-        "description":"Identifies whether to use new or existing Storage Account"
-      }
-    },
-    "storageAccountExistingRG":{
-      "type":"string",
-      "defaultValue":"",
-      "metadata":{
-        "description":"Resource Group containing existing storage account"
       }
     },
     "newStorageAccountForLogsName":{
@@ -294,7 +260,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vm-appliances-860",
+    "imageOffer":"infoblox-vm-appliances-853",
     "imageSKU": "[if(contains(parameters('niosModel'), 'IB-V'), variables('imageSKUSoT-true'), variables('imageSKUSoT-false'))]",
     "imageSKUSoT-true": "vsot",
     "imageSKUSoT-false": "[parameters('niosModel')]",
@@ -303,7 +269,7 @@
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
-    "vmStorageAccountContainerName":"disks",
+    "osDiskType":"Premium_LRS",
 
     "vnetResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('vnet-new'), variables('vnet-existing'))]",
     "vnet-new":"[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
@@ -402,27 +368,7 @@
     "storageAccountForLogsName": "[if(parameters('storageAccountForLogsNeedFix'), variables('storageAccountForLogsNameNeedFix-true'), variables('storageAccountForLogsNameNeedFix-false'))]",
     "storageAccountForLogsNameNeedFix-true":"[concat(parameters('newStorageAccountForLogsName'), 'logs')]",
     "storageAccountForLogsNameNeedFix-false":"[parameters('newStorageAccountForLogsName')]",
-    "storageAccountSetupURL":"[concat(parameters('artifactsBaseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
     "storageAccountForLogsSetupURL":"[concat(parameters('artifactsBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
-    "storageAccountNewParams":{
-      "location": {
-        "value": "[parameters('location')]"
-      },
-      "storageAccountType":{
-        "value":"[parameters('storageAccountType')]"
-      },
-      "storageAccountName":{
-        "value":"[parameters('newStorageAccountName')]"
-      }
-    },
-    "storageAccountExistingParams":{
-      "storageAccountName":{
-        "value":"[parameters('newStorageAccountName')]"
-      },
-      "storageAccountExistingRG":{
-        "value":"[parameters('storageAccountExistingRG')]"
-      }
-    },
     "storageAccountForLogsNewParams":{
       "location": {
         "value": "[parameters('location')]"
@@ -468,7 +414,7 @@
   },
   "resources":[
     {
-      "name": "pid-2dff6f71-ec4a-458a-86ba-a664cae1d62a-partnercenter",
+      "name": "pid-cc3ae5fe-b402-4145-8477-7db743da838e-partnercenter",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
       "properties": {
@@ -478,19 +424,6 @@
           "contentVersion": "1.0.0.0",
           "resources": []
         }
-      }
-    },
-    {
-      "name":"SettingUpStorageAccount",
-      "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
-      "properties":{
-        "mode":"Incremental",
-        "templateLink":{
-          "uri":"[variables('storageAccountSetupURL')]",
-          "contentVersion":"1.0.0.0"
-        },
-        "parameters":"[if(equals(parameters('storageAccountNewOrExisting'), 'new'), variables('storageAccountNewParams'), variables('storageAccountExistingParams'))]"
       }
     },
     {
@@ -709,7 +642,6 @@
       "type":"Microsoft.Resources/deployments",
       "apiVersion":"2020-06-01",
       "dependsOn":[
-        "[resourceId('Microsoft.Resources/deployments/', 'SettingUpStorageAccount')]",
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]",
@@ -753,11 +685,11 @@
               },
               "osDisk":{
                 "name":"[variables('OSDiskName')]",
-                "vhd":{
-                  "uri":"[concat(reference('SettingUpStorageAccount').outputs.endpointURL.value, variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'), '.vhd')]"
-                },
                 "caching":"ReadOnly",
-                "createOption":"FromImage"
+                "createOption":"FromImage",
+                "managedDisk": {
+                  "storageAccountType": "[variables('osDiskType')]"
+                }
               }
             }
           },
