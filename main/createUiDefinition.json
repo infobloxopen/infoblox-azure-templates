@@ -91,13 +91,13 @@
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V825",
-          "defaultValue": "8.6.0",
+          "defaultValue": "8.5.3",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.0",
-                "value": "860.412613.0"
+                "label": "8.5.3",
+                "value": "853.417434.0"
               }
             ]
           },
@@ -107,13 +107,13 @@
           "name": "niosVersion-IB-V1425",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V1425",
-          "defaultValue": "8.6.0",
+          "defaultValue": "8.5.3",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.0",
-                "value": "860.412613.0"
+                "label": "8.5.3",
+                "value": "853.417434.0"
               }
             ]
           },
@@ -123,13 +123,13 @@
           "name": "niosVersion-IB-V2225",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for TE-V2225",
-          "defaultValue": "8.6.0",
+          "defaultValue": "8.5.3",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.0",
-                "value": "860.412613.0"
+                "label": "8.5.3",
+                "value": "853.417434.0"
               }
             ]
           },
@@ -139,13 +139,13 @@
           "name": "niosVersion-CP-V805",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V805",
-          "defaultValue": "8.6.0",
+          "defaultValue": "8.5.3",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.0",
-                "value": "860.412613.0"
+                "label": "8.5.3",
+                "value": "853.417434.0"
               }
             ]
           },
@@ -155,13 +155,13 @@
           "name": "niosVersion-CP-V1405",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V1405",
-          "defaultValue": "8.6.0",
+          "defaultValue": "8.5.3",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.0",
-                "value": "860.412613.0"
+                "label": "8.5.3",
+                "value": "853.417434.0"
               }
             ]
           },
@@ -171,13 +171,13 @@
           "name": "niosVersion-CP-V2205",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2205",
-          "defaultValue": "8.6.0",
+          "defaultValue": "8.5.3",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.0",
-                "value": "860.412613.0"
+                "label": "8.5.3",
+                "value": "853.417434.0"
               }
             ]
           },
@@ -278,22 +278,6 @@
           },
           "visible": "[equals(basics('niosModel'), 'cp-v2205')]",
           "osPlatform": "Linux"
-        },
-        {
-          "name": "storageAccount",
-          "type": "Microsoft.Storage.StorageAccountSelector",
-          "label": "Storage account",
-          "toolTip": "Storage account for the NIOS disk, must be a premium type",
-          "defaultValue": {
-            "type": "Premium_LRS"
-          },
-          "constraints": {
-            "allowedTypes": ["Premium_LRS"]
-          },
-          "options": {
-            "hideExisting": false
-          },
-          "visible": true
         },
         {
           "name": "storageAccountForLogs",
@@ -477,11 +461,6 @@
       "subnet2Prefix": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.addressPrefix]",
       "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
       "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
-
-      "newStorageAccountName": "[steps('vmSettings').storageAccount.name]",
-      "storageAccountType": "[steps('vmSettings').storageAccount.type]",
-      "storageAccountNewOrExisting": "[steps('vmSettings').storageAccount.newOrExisting]",
-      "storageAccountExistingRG": "[steps('vmSettings').storageAccount.resourceGroup]",
 
       "newStorageAccountForLogsName": "[steps('vmSettings').storageAccountForLogs.name]",
       "storageAccountForLogsType": "[steps('vmSettings').storageAccountForLogs.type]",
