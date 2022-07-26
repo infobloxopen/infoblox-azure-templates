@@ -8,6 +8,9 @@
         "dataDiskName": {
             "type": "string"
         },
+        "vmDataDiskType": {
+            "type": "string"
+        },
         "vmDataDiskSize": {
             "type": "int"
         }
@@ -20,7 +23,7 @@
             "name": "[parameters('dataDiskName')]",
             "location": "[parameters('location')]",
             "sku": {
-                "name": "Standard_LRS"
+                "name": "[parameters('vmDataDiskType')]"
             },
             "properties": {
                 "creationData": {
