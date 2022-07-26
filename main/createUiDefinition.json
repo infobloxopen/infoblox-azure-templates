@@ -391,14 +391,35 @@
           "osPlatform": "Linux"
         },
         {
+          "name": "vmDataDiskType",
+          "type": "Microsoft.Common.DropDown",
+          "label": "Data Disk Type for TE-V5005",
+          "defaultValue": "Standard LRS",
+          "toolTip": "Select the data disk type for IB-V5005",
+          "constraints": {
+              "allowedValues": [
+                  {
+                      "label": "Standard LRS",
+                      "value": "Standard_LRS"
+                  },
+                  {
+                      "label": "Premium LRS",
+                      "value": "Premium_LRS"
+                  }
+              ],
+              "required": true
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V5005')]"
+        },
+        {
           "name": "vmDataDiskSize",
           "type": "Microsoft.Common.TextBox",
-          "label": "Virtual machine size for TE-V5005",
-          "toolTip": "Select the size of Data Disk for IB-V5005. Minimum allowed size is 250GB",
+          "label": "Data Disk Size for TE-V5005",
+          "toolTip": "Select the size of Data Disk for IB-V5005. Minimum allowed size is 250GiB",
           "constraints": {
             "required": true,
-            "regex": "^[2-9][5-9][0-9]*$",
-            "validationMessage": "The size must be in numbers and minimum allowed size is 250GB"
+            "regex": "^([1-9][0-9]{3,}|25[0-9]|2[6-9][0-9]|[3-9][0-9][0-9])$",
+            "validationMessage": "The size must be in numbers and minimum allowed size is 250GiB"
           },
           "visible": "[equals(basics('niosModel'), 'IB-V5005')]"
         },
@@ -585,13 +606,13 @@
       "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
       "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
 
-      "vmDataDiskSize": "[steps('vmSettings').vmDataDiskSize]",
+      "vmDataDiskType": "[steps('vmSettings').vmDataDiskType]",
+      "vmDataDiskSize": "[int(steps('vmSettings').vmDataDiskSize)]",
 
       "newStorageAccountForLogsName": "[steps('vmSettings').storageAccountForLogs.name]",
       "storageAccountForLogsType": "[steps('vmSettings').storageAccountForLogs.type]",
       "storageAccountForLogsNewOrExisting": "[steps('vmSettings').storageAccountForLogs.newOrExisting]",
       "storageAccountForLogsExistingRG": "[steps('vmSettings').storageAccountForLogs.resourceGroup]",
-      "storageAccountForLogsNeedFix": "[and(equals(steps('vmSettings').storageAccount.name, steps('vmSettings').storageAccountForLogs.name), equals(steps('vmSettings').storageAccountForLogs.newOrExisting, 'new'))]",
       "publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
       "publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
       "publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
