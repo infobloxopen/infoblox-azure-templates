@@ -8,7 +8,7 @@
         "artifactsBaseUrl": "/",
         "description": "The base URL for dependent assets"
       },
-      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/"
+      "defaultValue": "https://raw.githubusercontent.com/nsharda-infoblox/infoblox-azure-templates/master/main/"
     },
     "location": {
       "type": "string",
