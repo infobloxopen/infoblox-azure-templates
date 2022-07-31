@@ -463,7 +463,7 @@
   },
   "resources":[
     {
-      "name": "pid-cc3ae5fe-b402-4145-8477-7db743da838e-partnercenter",
+      "name": "pid-94cb7ed8-1560-4c55-92cc-2c5621f58dfc-partnercenter",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2021-04-01",
       "properties": {
