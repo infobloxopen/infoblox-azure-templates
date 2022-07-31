@@ -283,9 +283,9 @@
   "variables":{
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vm-appliances-862",
-    "imageSKU": "[if(contains(parameters('niosModel'), 'IB-V'), variables('imageSKUSoT-true'), variables('imageSKUSoT-false'))]",
+    "imageSKU": "[if(contains(parameters('niosModel'), 'IB-V'), if(contains(parameters('niosModel'), 'IB-V5005'), variables('imageSKUSoT-false'), variables('imageSKUSoT-true')), variables('imageSKUSoT-false'))]",
     "imageSKUSoT-true": "vsot",
-    "imageSKUSoT-false": "[parameters('niosModel')]",
+    "imageSKUSoT-false": "[toLower(parameters('niosModel'))]",
     "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), variables('tempLicense-CP-SoT')))]",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud rpz')]",
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
