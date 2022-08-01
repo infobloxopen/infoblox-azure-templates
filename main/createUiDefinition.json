@@ -8,32 +8,32 @@
         "name": "niosModel",
         "type": "Microsoft.Common.DropDown",
         "label": "NIOS model",
-        "defaultValue": "TE-V1425",
+        "defaultValue": "IB-V1425",
         "toolTip": "Select the NIOS model to load on the new VM",
         "constraints": {
           "allowedValues": [
             {
-              "label": "TE-V825",
+              "label": "IB-V825",
               "value": "IB-V825"
             },
             {
-              "label": "TE-V1425",
+              "label": "IB-V1425",
               "value": "IB-V1425"
             },
             {
-              "label": "TE-V2225",
+              "label": "IB-V2225",
               "value": "IB-V2225"
             },
             {
-              "label": "TE-V4015",
+              "label": "IB-V4015",
               "value": "IB-V4015"
             },
             {
-              "label": "TE-V4025",
+              "label": "IB-V4025",
               "value": "IB-V4025"
             },
             {
-              "label": "TE-V5005",
+              "label": "IB-V5005",
               "value": "IB-V5005"
             },
             {
@@ -102,7 +102,7 @@
         {
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V825",
+          "label": "NIOS version for IB-V825",
           "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -118,7 +118,7 @@
         {
           "name": "niosVersion-IB-V1425",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V1425",
+          "label": "NIOS version for IB-V1425",
           "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -134,7 +134,7 @@
         {
           "name": "niosVersion-IB-V2225",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V2225",
+          "label": "NIOS version for IB-V2225",
           "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -150,7 +150,7 @@
         {
           "name": "niosVersion-IB-V4015",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V4015",
+          "label": "NIOS version for IB-V4015",
           "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -166,7 +166,7 @@
         {
           "name": "niosVersion-IB-V4025",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V4025",
+          "label": "NIOS version for IB-V4025",
           "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -182,7 +182,7 @@
         {
           "name": "niosVersion-IB-V5005",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V5005",
+          "label": "NIOS version for IB-V5005",
           "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
@@ -246,8 +246,8 @@
         {
           "name": "vmSize-IB-V825",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V825",
-          "toolTip": "Select the size of VM for TE-V825",
+          "label": "Virtual machine size for IB-V825",
+          "toolTip": "Select the size of VM for IB-V825",
           "recommendedSizes": [
             "Standard_DS11_v2"
           ],
@@ -262,8 +262,8 @@
         {
           "name": "vmSize-IB-V1425",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V1425",
-          "toolTip": "Select the size of VM for TE-V1425",
+          "label": "Virtual machine size for IB-V1425",
+          "toolTip": "Select the size of VM for IB-V1425",
           "recommendedSizes": [
             "Standard_DS12_v2"
           ],
@@ -278,8 +278,8 @@
         {
           "name": "vmSize-IB-V2225",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V2225",
-          "toolTip": "Select the size of VM for TE-V2225",
+          "label": "Virtual machine size for IB-V2225",
+          "toolTip": "Select the size of VM for IB-V2225",
           "recommendedSizes": [
             "Standard_DS13_v2"
           ],
@@ -294,8 +294,8 @@
         {
           "name": "vmSize-IB-V4015",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V4015",
-          "toolTip": "Select the size of VM for TE-V4015",
+          "label": "Virtual machine size for IB-V4015",
+          "toolTip": "Select the size of VM for IB-V4015",
           "recommendedSizes": [
             "Standard_DS14_v2"
           ],
@@ -310,7 +310,7 @@
         {
           "name": "vmSize-IB-V4025",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V4025",
+          "label": "Virtual machine size for IB-V4025",
           "toolTip": "Select the size of VM for IB-V4025",
           "recommendedSizes": [
             "Standard_DS14_v2"
@@ -326,7 +326,7 @@
         {
           "name": "vmSize-IB-V5005",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V5005",
+          "label": "Virtual machine size for IB-V5005",
           "toolTip": "Select the size of VM for IB-V5005",
           "recommendedSizes": [
             "Standard_DS14_v2"
@@ -393,7 +393,7 @@
         {
           "name": "vmDataDiskType",
           "type": "Microsoft.Common.DropDown",
-          "label": "Data Disk Type for TE-V5005",
+          "label": "Data Disk Type for IB-V5005",
           "defaultValue": "Standard LRS",
           "toolTip": "Select the data disk type for IB-V5005",
           "constraints": {
@@ -414,7 +414,7 @@
         {
           "name": "vmDataDiskSize",
           "type": "Microsoft.Common.TextBox",
-          "label": "Data Disk Size for TE-V5005",
+          "label": "Data Disk Size for IB-V5005",
           "toolTip": "Select the size of Data Disk for IB-V5005. Minimum allowed size is 250GB",
           "constraints": {
             "required": true,

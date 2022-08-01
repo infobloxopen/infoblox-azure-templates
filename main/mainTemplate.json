@@ -8,7 +8,7 @@
         "artifactsBaseUrl": "/",
         "description": "The base URL for dependent assets"
       },
-      "defaultValue": "https://raw.githubusercontent.com/nsharda-infoblox/infoblox-azure-templates/master/main/"
+      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/"
     },
     "location": {
       "type": "string",
@@ -450,7 +450,6 @@
         "value":"[parameters('availabilitySetName')]"
       }
     },
-
     "availabilitySetSetupURL":"[concat(parameters('artifactsBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
     "sq":"'",
     "osProfile":{
@@ -459,7 +458,7 @@
       "adminPassword":"[parameters('adminPassword')]",
       "customData": "[variables('customData')]"
     },
-    "virtualMachineSetURL":"[concat(parameters('artifactsBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
+    "virtualMachineSetURL":"[uri(parameters('artifactsBaseUrl'),concat('vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json'))]"
   },
   "resources":[
     {
