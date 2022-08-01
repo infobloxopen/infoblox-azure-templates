@@ -459,7 +459,7 @@
       "adminPassword":"[parameters('adminPassword')]",
       "customData": "[variables('customData')]"
     },
-    "virtualMachineSetURL":"[uri(parameters('artifactsBaseUrl'),concat('vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json'))]"
+    "virtualMachineSetURL":"[concat(parameters('artifactsBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
     {
