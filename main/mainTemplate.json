@@ -196,14 +196,14 @@
         "Premium_LRS"
       ],
       "metadata": {
-        "description": "Data Disk Type for TE-V5005"
+        "description": "Data Disk Type for IB-V5005"
       }
     },
     "vmDataDiskSize": {
       "type":"int",
       "defaultValue": 250,
       "metadata": {
-        "description":"Data Disk Size for TE-V5005"
+        "description":"Data Disk Size for IB-V5005"
       }
     },
     "publicIPAddressName":{
@@ -293,11 +293,12 @@
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
     "osDiskType":"Premium_LRS",
 
-    "vnetResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('vnet-new'), variables('vnet-existing'))]",
-    "vnet-new":"[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "vnet-existing":"[resourceId(parameters('virtualNetworkExistingRGName'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "subnet1ResourceId":"[concat(variables('vnetResourceId'),'/subnets/',parameters('subnet1Name'))]",
-    "subnet2ResourceId":"[concat(variables('vnetResourceId'),'/subnets/',parameters('subnet2Name'))]",
+    "subnet1-existing": "[resourceId(parameters('virtualNetworkExistingRGName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",
+    "subnet2-existing": "[resourceId(parameters('virtualNetworkExistingRGName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet2Name'))]",
+    "subnet1-new": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",
+    "subnet2-new": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet2Name'))]",
+    "subnet1ResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('subnet1-new'), variables('subnet1-existing'))]",
+    "subnet2ResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('subnet2-new'), variables('subnet2-existing'))]",
     "nsgName": "[concat(parameters('vmName'),'-securityGroup')]",
     "vnetNewParams":{
       "location": {
