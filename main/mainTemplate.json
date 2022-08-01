@@ -328,7 +328,7 @@
     "publicIp-new": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]",
     "publicIp-existing": "[resourceId(parameters('publicIPExistingRGName'),concat('Microsoft.Network','/','publicIPAddresses'),parameters('publicIPAddressName'))]",
     "publicIPAddressType":"Dynamic",
-    "publicIPSetupURL":"[uri(parameters('artifactsBaseUrl'),concat('publicip-',parameters('publicIPNewOrExistingOrNone'),'.json'))]",
+    "publicIPSetupURL":"[concat(parameters('artifactsBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
     "publicIPNewParams":{
       "location": {
         "value": "[parameters('location')]"
@@ -344,11 +344,11 @@
       }
     },
 
-    "virtualNetworkSetupURL":"[uri(parameters('artifactsBaseUrl'),concat('vnet-',parameters('vnetNewOrExisting'),'.json'))]",
+    "virtualNetworkSetupURL":"[concat(parameters('artifactsBaseUrl'),'/vnet-',parameters('vnetNewOrExisting'),'.json')]",
     "nicPrimaryName": "[concat(parameters('vmName'),'-lan1')]",
     "nicSecondaryName": "[concat(parameters('vmName'),'-mgmt')]",
-    "nicPrimarySetupURL":"[uri(parameters('artifactsBaseUrl'),concat('nic-pip',variables('publicIPExistingOrNone'),'.json'))]",
-    "nicSecondarySetupURL":"[uri(parameters('artifactsBaseUrl'),concat('nic-pipnone.json'))]",
+    "nicPrimarySetupURL":"[concat(parameters('artifactsBaseUrl'),'/nic-pip',variables('publicIPExistingOrNone'),'.json')]",
+    "nicSecondarySetupURL":"[concat(parameters('artifactsBaseUrl'),'/nic-pipnone.json')]",
     "nicprimaryNoneParams":{
       "location": {
         "value": "[parameters('location')]"
@@ -389,7 +389,7 @@
 
     "dataDiskName": "[concat(parameters('vmName'),'-datadisk1')]",
     "dataDiskNewOrNone": "[if(equals(parameters('niosModel'), 'IB-V5005'), 'new', 'none')]",
-    "dataDiskSetupURL":"[uri(parameters('artifactsBaseUrl'),concat('data-disk-',variables('dataDiskNewOrNone'),'.json'))]",
+    "dataDiskSetupURL": "[concat(parameters('artifactsBaseUrl'),'/data-disk-',variables('dataDiskNewOrNone'),'.json')]",
     "dataDiskArray": [
                 {
                   "lun": 0,
@@ -417,7 +417,7 @@
     "storageAccountForLogsName": "[if(parameters('storageAccountForLogsNeedFix'), variables('storageAccountForLogsNameNeedFix-true'), variables('storageAccountForLogsNameNeedFix-false'))]",
     "storageAccountForLogsNameNeedFix-true":"[concat(parameters('newStorageAccountForLogsName'), 'logs')]",
     "storageAccountForLogsNameNeedFix-false":"[parameters('newStorageAccountForLogsName')]",
-    "storageAccountForLogsSetupURL":"[uri(parameters('artifactsBaseUrl'),concat('storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json'))]",
+    "storageAccountForLogsSetupURL":"[concat(parameters('artifactsBaseUrl'),'/storageAccount-',parameters('storageAccountForLogsNewOrExisting'),'.json')]",
     "storageAccountForLogsNewParams":{
       "location": {
         "value": "[parameters('location')]"
@@ -451,7 +451,7 @@
       }
     },
 
-    "availabilitySetSetupURL":"[uri(parameters('artifactsBaseUrl'),concat('availabilityset-',variables('availabilitySetNewOrNone'),'.json'))]",
+    "availabilitySetSetupURL":"[concat(parameters('artifactsBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
     "sq":"'",
     "osProfile":{
       "computerName":"[parameters('vmName')]",
@@ -459,7 +459,7 @@
       "adminPassword":"[parameters('adminPassword')]",
       "customData": "[variables('customData')]"
     },
-    "virtualMachineSetURL":"[uri(parameters('artifactsBaseUrl'),concat('vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json'))]"
+    "virtualMachineSetURL":"[concat(parameters('artifactsBaseUrl'),'/vm-availabilityset-', variables('availabilitySetExistingOrNone'),'.json')]"
   },
   "resources":[
     {
