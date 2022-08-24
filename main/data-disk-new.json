@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "dataDiskName": {
+            "type": "string"
+        },
+        "vmDataDiskType": {
+            "type": "string"
+        },
+        "vmDataDiskSize": {
+            "type": "int"
+        }
+
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Compute/disks",
+            "apiVersion": "2021-12-01",
+            "name": "[parameters('dataDiskName')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('vmDataDiskType')]"
+            },
+            "properties": {
+                "creationData": {
+                    "createOption": "Empty"
+                },
+                "diskSizeGB": "[parameters('vmDataDiskSize')]"
+            }
+        }
+    ],
+    "outputs": {}
+}

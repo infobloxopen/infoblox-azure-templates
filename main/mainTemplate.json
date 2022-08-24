@@ -36,7 +36,8 @@
         "Standard_DS3_v2",
         "Standard_DS11_v2",
         "Standard_DS12_v2",
-        "Standard_DS13_v2"
+        "Standard_DS13_v2",
+        "Standard_DS14_v2"
       ]
     },
     "niosModel":{
@@ -49,6 +50,9 @@
         "IB-V825",
         "IB-V1425",
         "IB-V2225",
+        "IB-V4015",
+        "IB-V4025",
+        "IB-V5005",
         "cp-v805",
         "cp-v1405",
         "cp-v2205"
@@ -62,7 +66,7 @@
       },
       "allowedValues":[
         "latest",
-        "853.417434.0"
+        "862.49947.0"
       ]
     },
     "adminPassword":{
@@ -184,6 +188,24 @@
         "description":"Resource Group containing existing storage account for boot diagnostics"
       }
     },
+    "vmDataDiskType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Data Disk Type for IB-V5005"
+      }
+    },
+    "vmDataDiskSize": {
+      "type":"int",
+      "defaultValue": 250,
+      "metadata": {
+        "description":"Data Disk Size for IB-V5005"
+      }
+    },
     "publicIPAddressName":{
       "type":"string",
       "defaultValue":"",
@@ -260,10 +282,10 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vm-appliances-853",
-    "imageSKU": "[if(contains(parameters('niosModel'), 'IB-V'), variables('imageSKUSoT-true'), variables('imageSKUSoT-false'))]",
+    "imageOffer":"infoblox-vm-appliances-862",
+    "imageSKU": "[if(contains(parameters('niosModel'), 'IB-V'), if(contains(parameters('niosModel'), 'IB-V5005'), variables('imageSKUSoT-false'), variables('imageSKUSoT-true')), variables('imageSKUSoT-false'))]",
     "imageSKUSoT-true": "vsot",
-    "imageSKUSoT-false": "[parameters('niosModel')]",
+    "imageSKUSoT-false": "[toLower(parameters('niosModel'))]",
     "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), variables('tempLicense-CP-SoT')))]",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud rpz')]",
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
@@ -271,11 +293,12 @@
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
     "osDiskType":"Premium_LRS",
 
-    "vnetResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('vnet-new'), variables('vnet-existing'))]",
-    "vnet-new":"[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "vnet-existing":"[resourceId(parameters('virtualNetworkExistingRGName'),'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
-    "subnet1ResourceId":"[concat(variables('vnetResourceId'),'/subnets/',parameters('subnet1Name'))]",
-    "subnet2ResourceId":"[concat(variables('vnetResourceId'),'/subnets/',parameters('subnet2Name'))]",
+    "subnet1-existing": "[resourceId(parameters('virtualNetworkExistingRGName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",
+    "subnet2-existing": "[resourceId(parameters('virtualNetworkExistingRGName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet2Name'))]",
+    "subnet1-new": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",
+    "subnet2-new": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet2Name'))]",
+    "subnet1ResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('subnet1-new'), variables('subnet1-existing'))]",
+    "subnet2ResourceId":"[if(equals(parameters('vnetNewOrExisting'), 'new'), variables('subnet2-new'), variables('subnet2-existing'))]",
     "nsgName": "[concat(parameters('vmName'),'-securityGroup')]",
     "vnetNewParams":{
       "location": {
@@ -365,6 +388,33 @@
       }
     },
 
+    "dataDiskName": "[concat(parameters('vmName'),'-datadisk1')]",
+    "dataDiskNewOrNone": "[if(equals(parameters('niosModel'), 'IB-V5005'), 'new', 'none')]",
+    "dataDiskSetupURL": "[concat(parameters('artifactsBaseUrl'),'/data-disk-',variables('dataDiskNewOrNone'),'.json')]",
+    "dataDiskArray": [
+                {
+                  "lun": 0,
+                  "createOption": "attach",
+                  "managedDisk": {
+                    "id": "[resourceId('Microsoft.Compute/disks', variables('dataDiskName'))]"
+                  }
+                }
+              ],
+      "dataDiskParams": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "dataDiskName": {
+            "value": "[variables('dataDiskName')]"
+          },
+          "vmDataDiskType": {
+            "value": "[parameters('vmDataDiskType')]"
+          },
+          "vmDataDiskSize": {
+            "value": "[int(parameters('vmDataDiskSize'))]"
+          }
+        },
+              
     "storageAccountForLogsName": "[if(parameters('storageAccountForLogsNeedFix'), variables('storageAccountForLogsNameNeedFix-true'), variables('storageAccountForLogsNameNeedFix-false'))]",
     "storageAccountForLogsNameNeedFix-true":"[concat(parameters('newStorageAccountForLogsName'), 'logs')]",
     "storageAccountForLogsNameNeedFix-false":"[parameters('newStorageAccountForLogsName')]",
@@ -401,7 +451,6 @@
         "value":"[parameters('availabilitySetName')]"
       }
     },
-
     "availabilitySetSetupURL":"[concat(parameters('artifactsBaseUrl'),'/availabilityset-',variables('availabilitySetNewOrNone'),'.json')]",
     "sq":"'",
     "osProfile":{
@@ -414,9 +463,9 @@
   },
   "resources":[
     {
-      "name": "pid-cc3ae5fe-b402-4145-8477-7db743da838e-partnercenter",
+      "name": "pid-94cb7ed8-1560-4c55-92cc-2c5621f58dfc-partnercenter",
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -429,7 +478,7 @@
     {
       "name":"SettingUpStorageAccountForLogs",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -440,7 +489,7 @@
       }
     },
     {
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-04-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('nsgName')]",
       "location": "[parameters('location')]",
@@ -550,7 +599,7 @@
     {
       "name":"SettingUpVirtualNetwork",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -563,7 +612,7 @@
     {
       "name":"SettingUpPrimaryNic",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "dependsOn":[
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpPublicIP')]",
@@ -581,7 +630,7 @@
     {
       "name":"SettingUpSecondaryNic",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "dependsOn":[
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpVirtualNetwork')]",
         "[resourceId('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
@@ -614,7 +663,7 @@
     {
       "name":"SettingUpPublicIP",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -625,9 +674,22 @@
       }
     },
     {
+      "name": "SettingUpDataDisk",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2021-04-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "contentVersion":"1.0.0.0",
+          "uri": "[variables('dataDiskSetupURL')]"
+        },
+        "parameters": "[if(contains(variables('dataDiskNewOrNone'), 'new'), variables('dataDiskParams'), json('null') )]"
+      }
+    },
+    {
       "name":"SettingUpAvailabilitySet",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "properties":{
         "mode":"Incremental",
         "templateLink":{
@@ -640,12 +702,13 @@
     {
       "name":"SettingUpVirtualMachine",
       "type":"Microsoft.Resources/deployments",
-      "apiVersion":"2020-06-01",
+      "apiVersion":"2021-04-01",
       "dependsOn":[
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpStorageAccountForLogs')]",
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpPrimaryNic')]",
         "[resourceId('Microsoft.Resources/deployments/', 'SettingUpSecondaryNic')]",
-        "[resourceId('Microsoft.Resources/deployments/', 'SettingUpAvailabilitySet')]"
+        "[resourceId('Microsoft.Resources/deployments/', 'SettingUpAvailabilitySet')]",
+        "[resourceId('Microsoft.Resources/deployments', 'SettingUpDataDisk')]"
       ],
       "properties":{
         "mode":"Incremental",
@@ -690,7 +753,8 @@
                 "managedDisk": {
                   "storageAccountType": "[variables('osDiskType')]"
                 }
-              }
+              },
+              "dataDisks": "[if(contains(variables('dataDiskNewOrNone'), 'new'), variables('dataDiskArray'), json('[]') )]"
             }
           },
           "networkProfile": {

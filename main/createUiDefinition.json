@@ -8,21 +8,33 @@
         "name": "niosModel",
         "type": "Microsoft.Common.DropDown",
         "label": "NIOS model",
-        "defaultValue": "TE-V1425",
+        "defaultValue": "IB-V1425",
         "toolTip": "Select the NIOS model to load on the new VM",
         "constraints": {
           "allowedValues": [
             {
-              "label": "TE-V825",
+              "label": "IB-V825",
               "value": "IB-V825"
             },
             {
-              "label": "TE-V1425",
+              "label": "IB-V1425",
               "value": "IB-V1425"
             },
             {
-              "label": "TE-V2225",
+              "label": "IB-V2225",
               "value": "IB-V2225"
+            },
+            {
+              "label": "IB-V4015",
+              "value": "IB-V4015"
+            },
+            {
+              "label": "IB-V4025",
+              "value": "IB-V4025"
+            },
+            {
+              "label": "IB-V5005",
+              "value": "IB-V5005"
             },
             {
               "label": "CP-V805",
@@ -90,14 +102,14 @@
         {
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V825",
-          "defaultValue": "8.5.3",
+          "label": "NIOS version for IB-V825",
+          "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.5.3",
-                "value": "853.417434.0"
+                "label": "8.6.2",
+                "value": "862.49947.0"
               }
             ]
           },
@@ -106,14 +118,14 @@
         {
           "name": "niosVersion-IB-V1425",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V1425",
-          "defaultValue": "8.5.3",
+          "label": "NIOS version for IB-V1425",
+          "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.5.3",
-                "value": "853.417434.0"
+                "label": "8.6.2",
+                "value": "862.49947.0"
               }
             ]
           },
@@ -122,30 +134,78 @@
         {
           "name": "niosVersion-IB-V2225",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for TE-V2225",
-          "defaultValue": "8.5.3",
+          "label": "NIOS version for IB-V2225",
+          "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.5.3",
-                "value": "853.417434.0"
+                "label": "8.6.2",
+                "value": "862.49947.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V2225')]"
         },
         {
-          "name": "niosVersion-CP-V805",
+          "name": "niosVersion-IB-V4015",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for CP-V805",
-          "defaultValue": "8.5.3",
+          "label": "NIOS version for IB-V4015",
+          "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.5.3",
-                "value": "853.417434.0"
+                "label": "8.6.2",
+                "value": "862.49947.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V4015')]"
+        },
+        {
+          "name": "niosVersion-IB-V4025",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V4025",
+          "defaultValue": "8.6.2",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "8.6.2",
+                "value": "862.49947.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V4025')]"
+        },
+        {
+          "name": "niosVersion-IB-V5005",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V5005",
+          "defaultValue": "8.6.2",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "8.6.2",
+                "value": "862.49947.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V5005')]"
+        },
+        {
+          "name": "niosVersion-CP-V805",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for CP-V805",
+          "defaultValue": "8.6.2",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "8.6.2",
+                "value": "862.49947.0"
               }
             ]
           },
@@ -160,8 +220,8 @@
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.5.3",
-                "value": "853.417434.0"
+                "label": "8.6.2",
+                "value": "862.49947.0"
               }
             ]
           },
@@ -171,13 +231,13 @@
           "name": "niosVersion-CP-V2205",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2205",
-          "defaultValue": "8.5.3",
+          "defaultValue": "8.6.2",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.5.3",
-                "value": "853.417434.0"
+                "label": "8.6.2",
+                "value": "862.49947.0"
               }
             ]
           },
@@ -186,8 +246,8 @@
         {
           "name": "vmSize-IB-V825",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V825",
-          "toolTip": "Select the size of VM for TE-V825",
+          "label": "Virtual machine size for IB-V825",
+          "toolTip": "Select the size of VM for IB-V825",
           "recommendedSizes": [
             "Standard_DS11_v2"
           ],
@@ -202,8 +262,8 @@
         {
           "name": "vmSize-IB-V1425",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V1425",
-          "toolTip": "Select the size of VM for TE-V1425",
+          "label": "Virtual machine size for IB-V1425",
+          "toolTip": "Select the size of VM for IB-V1425",
           "recommendedSizes": [
             "Standard_DS12_v2"
           ],
@@ -218,8 +278,8 @@
         {
           "name": "vmSize-IB-V2225",
           "type": "Microsoft.Compute.SizeSelector",
-          "label": "Virtual machine size for TE-V2225",
-          "toolTip": "Select the size of VM for TE-V2225",
+          "label": "Virtual machine size for IB-V2225",
+          "toolTip": "Select the size of VM for IB-V2225",
           "recommendedSizes": [
             "Standard_DS13_v2"
           ],
@@ -229,6 +289,57 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V2225')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-IB-V4015",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V4015",
+          "toolTip": "Select the size of VM for IB-V4015",
+          "recommendedSizes": [
+            "Standard_DS14_v2"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS14_v2"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V4015')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-IB-V4025",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V4025",
+          "toolTip": "Select the size of VM for IB-V4025",
+          "recommendedSizes": [
+            "Standard_DS14_v2"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS14_v2"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V4025')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-IB-V5005",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V5005",
+          "toolTip": "Select the size of VM for IB-V5005",
+          "recommendedSizes": [
+            "Standard_DS14_v2"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_DS11_v2",
+              "Standard_DS12_v2",
+              "Standard_DS13_v2",
+              "Standard_DS14_v2"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V5005')]",
           "osPlatform": "Linux"
         },
         {
@@ -278,6 +389,39 @@
           },
           "visible": "[equals(basics('niosModel'), 'cp-v2205')]",
           "osPlatform": "Linux"
+        },
+        {
+          "name": "vmDataDiskType",
+          "type": "Microsoft.Common.DropDown",
+          "label": "Data Disk Type for IB-V5005",
+          "defaultValue": "Standard LRS",
+          "toolTip": "Select the data disk type for IB-V5005",
+          "constraints": {
+              "allowedValues": [
+                  {
+                      "label": "Standard LRS",
+                      "value": "Standard_LRS"
+                  },
+                  {
+                      "label": "Premium LRS",
+                      "value": "Premium_LRS"
+                  }
+              ],
+              "required": true
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V5005')]"
+        },
+        {
+          "name": "vmDataDiskSize",
+          "type": "Microsoft.Common.TextBox",
+          "label": "Data Disk Size for IB-V5005",
+          "toolTip": "Select the size of Data Disk for IB-V5005. Minimum allowed size is 250GB",
+          "constraints": {
+            "required": true,
+            "regex": "^([1-9][0-9]{3,}|25[0-9]|2[6-9][0-9]|[3-9][0-9][0-9])$",
+            "validationMessage": "The size must be in numbers and minimum allowed size is 250GB"
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V5005')]"
         },
         {
           "name": "storageAccountForLogs",
@@ -389,7 +533,7 @@
                   }
                 ]
               },
-              "visible": "[or(equals(basics('niosModel'), 'IB-V825'), equals(basics('niosModel'), 'IB-V1425'), equals(basics('niosModel'), 'IB-V2225'))]"
+              "visible": "[or(equals(basics('niosModel'), 'IB-V825'), equals(basics('niosModel'), 'IB-V1425'), equals(basics('niosModel'), 'IB-V2225'), equals(basics('niosModel'), 'IB-V4015'), equals(basics('niosModel'), 'IB-V4025'), equals(basics('niosModel'), 'IB-V5005'))]"
             },
             {
               "name": "licenses4",
@@ -444,9 +588,9 @@
     "outputs": {
       "vmName": "[basics('vmName')]",
       "location": "[location()]",
-      "vmSize": "[coalesce(steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225)]",
+      "vmSize": "[coalesce(steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225,steps('vmSettings').vmSize-IB-V4015,steps('vmSettings').vmSize-IB-V4025,steps('vmSettings').vmSize-IB-V5005)]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225)]",
+      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225,steps('vmSettings').niosVersion-IB-V4015,steps('vmSettings').niosVersion-IB-V4025,steps('vmSettings').niosVersion-IB-V5005)]",
       "adminPassword": "[basics('passwordSection').adminPassword]",
 
       "virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
@@ -462,11 +606,13 @@
       "subnet2Name": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.name]",
       "subnet2StartAddress": "[steps('vmSettings').niosNetwork.subnets.subnetMgmt.startAddress]",
 
+      "vmDataDiskType": "[steps('vmSettings').vmDataDiskType]",
+      "vmDataDiskSize": "[int(steps('vmSettings').vmDataDiskSize)]",
+
       "newStorageAccountForLogsName": "[steps('vmSettings').storageAccountForLogs.name]",
       "storageAccountForLogsType": "[steps('vmSettings').storageAccountForLogs.type]",
       "storageAccountForLogsNewOrExisting": "[steps('vmSettings').storageAccountForLogs.newOrExisting]",
       "storageAccountForLogsExistingRG": "[steps('vmSettings').storageAccountForLogs.resourceGroup]",
-      "storageAccountForLogsNeedFix": "[and(equals(steps('vmSettings').storageAccount.name, steps('vmSettings').storageAccountForLogs.name), equals(steps('vmSettings').storageAccountForLogs.newOrExisting, 'new'))]",
       "publicIPAddressName": "[steps('vmSettings').dnsAndPublicIP.name]",
       "publicIPDnsName": "[steps('vmSettings').dnsAndPublicIP.domainNameLabel]",
       "publicIPNewOrExistingOrNone": "[steps('vmSettings').dnsAndPublicIP.newOrExistingOrNone]",
