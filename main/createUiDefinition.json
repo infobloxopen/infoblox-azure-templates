@@ -103,13 +103,13 @@
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V825",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -119,13 +119,13 @@
           "name": "niosVersion-IB-V1425",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V1425",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -135,13 +135,13 @@
           "name": "niosVersion-IB-V2225",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V2225",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -151,13 +151,13 @@
           "name": "niosVersion-IB-V4015",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V4015",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -167,13 +167,13 @@
           "name": "niosVersion-IB-V4025",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V4025",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -183,13 +183,13 @@
           "name": "niosVersion-IB-V5005",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V5005",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -199,13 +199,13 @@
           "name": "niosVersion-CP-V805",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V805",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -215,13 +215,13 @@
           "name": "niosVersion-CP-V1405",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V1405",
-          "defaultValue": "8.5.3",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },
@@ -231,13 +231,13 @@
           "name": "niosVersion-CP-V2205",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2205",
-          "defaultValue": "8.6.2",
+          "defaultValue": "9.0.0",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.2",
-                "value": "862.49947.0"
+                "label": "9.0.0",
+                "value": "900.48842.0"
               }
             ]
           },

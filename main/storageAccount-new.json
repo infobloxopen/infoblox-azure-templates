@@ -27,7 +27,7 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[concat(parameters('storageAccountName'))]",
-      "apiVersion": "2021-01-01",
+      "apiVersion": "2022-09-01",
       "location": "[parameters('location')]",
       "sku":{
         "name": "[parameters('storageAccountType')]"

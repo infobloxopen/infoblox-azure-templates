@@ -30,10 +30,6 @@
         "description":"Size of the Virtual Machine."
       },
       "allowedValues":[
-        "Standard_DS2",
-        "Standard_DS2_v2",
-        "Standard_DS3",
-        "Standard_DS3_v2",
         "Standard_DS11_v2",
         "Standard_DS12_v2",
         "Standard_DS13_v2",
@@ -66,7 +62,7 @@
       },
       "allowedValues":[
         "latest",
-        "862.49947.0"
+        "900.48842.0"
       ]
     },
     "adminPassword":{
@@ -270,8 +266,6 @@
       "defaultValue":"none",
       "allowedValues":[
         "none",
-        "TE",
-        "CP",
         "TE-SoT",
         "CP-SoT"
       ],
@@ -282,10 +276,8 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vm-appliances-862",
-    "imageSKU": "[if(contains(parameters('niosModel'), 'IB-V'), if(contains(parameters('niosModel'), 'IB-V5005'), variables('imageSKUSoT-false'), variables('imageSKUSoT-true')), variables('imageSKUSoT-false'))]",
-    "imageSKUSoT-true": "vsot",
-    "imageSKUSoT-false": "[toLower(parameters('niosModel'))]",
+    "imageOffer":"infoblox-vm-appliances-900",
+    "imageSKU": "vsot",
     "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), variables('tempLicense-CP-SoT')))]",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud rpz')]",
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
@@ -463,7 +455,7 @@
   },
   "resources":[
     {
-      "name": "pid-94cb7ed8-1560-4c55-92cc-2c5621f58dfc-partnercenter",
+      "name": "pid-bc00eb33-9c2f-46d0-a294-06f73147069f-partnercenter",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2021-04-01",
       "properties": {
