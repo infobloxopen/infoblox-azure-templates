@@ -278,7 +278,7 @@
     "imageOffer":"infoblox-vm-appliances-900",
     "imageSKU": "vsot",
     "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), variables('tempLicense-CP-SoT')))]",
-    "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'),' enterprise dns cloud rpz')]",
+    "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), if(equals(parameters('niosModel'), 'IB-V5005'), ' enterprise', ' enterprise dns cloud rpz'))]",
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
