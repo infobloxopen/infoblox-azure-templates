@@ -394,14 +394,10 @@
           "name": "vmDataDiskType",
           "type": "Microsoft.Common.DropDown",
           "label": "Data Disk Type for IB-V5005",
-          "defaultValue": "Standard LRS",
+          "defaultValue": "Premium LRS",
           "toolTip": "Select the data disk type for IB-V5005",
           "constraints": {
               "allowedValues": [
-                  {
-                      "label": "Standard LRS",
-                      "value": "Standard_LRS"
-                  },
                   {
                       "label": "Premium LRS",
                       "value": "Premium_LRS"
