@@ -21,7 +21,7 @@
   "outputs": {
     "endpointURL": {
       "type": "string",
-      "value": "[reference(resourceId(parameters('storageAccountExistingRG'), 'Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')), '2021-01-01').primaryEndpoints.blob]"
+      "value": "[reference(resourceId(parameters('storageAccountExistingRG'), 'Microsoft.Storage/storageAccounts/', parameters('StorageAccountName')), '2022-09-01').primaryEndpoints.blob]"
     }
   }
 }
