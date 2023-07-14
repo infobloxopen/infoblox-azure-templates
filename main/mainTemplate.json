@@ -17,6 +17,13 @@
         "description": "Location of resources."
       }
     },
+    "zone": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Availability Zone for Virtual Machine"
+      }
+    },
     "vmName":{
       "type":"string",
       "defaultValue":"CSR",
@@ -62,7 +69,7 @@
       },
       "allowedValues":[
         "latest",
-        "900.48842.0"
+        "863.51135.0"
       ]
     },
     "adminPassword":{
@@ -275,7 +282,7 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vm-appliances-900",
+    "imageOffer":"infoblox-vm-appliances-863",
     "imageSKU": "vsot",
     "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), variables('tempLicense-CP-SoT')))]",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), if(equals(parameters('niosModel'), 'IB-V5005'), ' enterprise', ' enterprise dns cloud rpz'))]",
@@ -319,7 +326,8 @@
     "publicIpResourceId": "[if(equals(parameters('publicIPNewOrExistingOrNone'), 'none'), '', if(equals(parameters('publicIPNewOrExistingOrNone'), 'new'), variables('publicIp-new'), variables('publicIp-existing')))]",
     "publicIp-new": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]",
     "publicIp-existing": "[resourceId(parameters('publicIPExistingRGName'),concat('Microsoft.Network','/','publicIPAddresses'),parameters('publicIPAddressName'))]",
-    "publicIPAddressType":"Dynamic",
+    "publicIPAddressType": "[if(empty(parameters('zone')), 'Dynamic', 'Static')]",
+    "publicIp-sku": "[if(empty(parameters('zone')), 'Basic', 'Standard')]",
     "publicIPSetupURL":"[concat(parameters('artifactsBaseUrl'),'/publicip-',parameters('publicIPNewOrExistingOrNone'),'.json')]",
     "publicIPNewParams":{
       "location": {
@@ -333,6 +341,9 @@
       },
       "dnsPrefix":{
         "value":"[parameters('publicIPDnsName')]"
+      },
+      "publicIp-sku": {
+        "value": "[variables('publicIp-sku')]"
       }
     },
 
@@ -395,6 +406,9 @@
           "location": {
             "value": "[parameters('location')]"
           },
+          "zone": {
+            "value": "[parameters('zone')]"
+          },
           "dataDiskName": {
             "value": "[variables('dataDiskName')]"
           },
@@ -454,7 +468,7 @@
   },
   "resources":[
     {
-      "name": "pid-bc00eb33-9c2f-46d0-a294-06f73147069f-partnercenter",
+      "name": "pid-2be14079-e0be-4176-afe8-94b39bd49f26-partnercenter",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2021-04-01",
       "properties": {
@@ -480,7 +494,7 @@
       }
     },
     {
-      "apiVersion": "2021-04-01",
+      "apiVersion": "2022-07-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[variables('nsgName')]",
       "location": "[parameters('location')]",
@@ -713,6 +727,9 @@
           },
           "location": {
             "value": "[parameters('location')]"
+          },
+          "zone": {
+            "value": "[parameters('zone')]"
           },
           "plan": {
             "value" : {
