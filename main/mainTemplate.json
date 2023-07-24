@@ -273,7 +273,8 @@
       "allowedValues":[
         "none",
         "TE-SoT",
-        "CP-SoT"
+        "CP-SoT",
+        "ND-SoT"
       ],
       "metadata":{
         "description":"Temporary license option."
@@ -283,10 +284,11 @@
   "variables":{
     "imagePublisher":"infoblox",
     "imageOffer":"infoblox-vm-appliances-863",
-    "imageSKU": "vsot",
-    "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), variables('tempLicense-CP-SoT')))]",
+    "imageSKU": "[if(contains(parameters('niosModel'), 'ND-V'), 'vsot-ni', 'vsot')]",
+    "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), if(equals(parameters('tempLicenseOption'), 'ND-SoT'), variables('tempLicense-ND-SoT'), variables('tempLicense-CP-SoT'))))]",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), if(equals(parameters('niosModel'), 'IB-V5005'), ' enterprise', ' enterprise dns cloud rpz'))]",
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
+    "tempLicense-ND-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
     "osDiskType":"Premium_LRS",
