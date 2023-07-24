@@ -8,7 +8,7 @@
         "artifactsBaseUrl": "/",
         "description": "The base URL for dependent assets"
       },
-      "defaultValue": "https://raw.githubusercontent.com/infobloxopen/infoblox-azure-templates/master/main/"
+      "defaultValue": "https://raw.githubusercontent.com/nsharda-infoblox/infoblox-azure-templates/863-template/main/"
     },
     "location": {
       "type": "string",
@@ -40,7 +40,8 @@
         "Standard_DS11_v2",
         "Standard_DS12_v2",
         "Standard_DS13_v2",
-        "Standard_DS14_v2"
+        "Standard_DS14_v2",
+        "Standard_DS15_v2"
       ]
     },
     "niosModel":{
@@ -58,7 +59,11 @@
         "IB-V5005",
         "cp-v805",
         "cp-v1405",
-        "cp-v2205"
+        "cp-v2205",
+        "ND-V805",
+        "ND-V1405",
+        "ND-V2205",
+        "ND-V4005"
       ]
     },
     "niosVersion":{
