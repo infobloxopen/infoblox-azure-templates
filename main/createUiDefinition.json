@@ -777,9 +777,9 @@
       "vmName": "[basics('vmName')]",
       "location": "[location()]",
       "zone": "[basics('Zone')]",
-      "vmSize": "[coalesce(steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225,steps('vmSettings').vmSize-IB-V4015,steps('vmSettings').vmSize-IB-V4025,steps('vmSettings').vmSize-IB-V5005),steps('vmSettings').vmSize-ND-V805),steps('vmSettings').vmSize-ND-V1405),steps('vmSettings').vmSize-ND-V2205),steps('vmSettings').vmSize-ND-V4005)]",
+      "vmSize": "[coalesce(steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225,steps('vmSettings').vmSize-IB-V4015,steps('vmSettings').vmSize-IB-V4025,steps('vmSettings').vmSize-IB-V5005,steps('vmSettings').vmSize-ND-V805,steps('vmSettings').vmSize-ND-V1405,steps('vmSettings').vmSize-ND-V2205,steps('vmSettings').vmSize-ND-V4005)]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225,steps('vmSettings').niosVersion-IB-V4015,steps('vmSettings').niosVersion-IB-V4025,steps('vmSettings').niosVersion-IB-V5005)]",
+      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225,steps('vmSettings').niosVersion-IB-V4015,steps('vmSettings').niosVersion-IB-V4025,steps('vmSettings').niosVersion-IB-V5005,steps('vmSettings').niosVersion-ND-V805, steps('vmSettings').niosVersion-ND-V1405, steps('vmSettings').niosVersion-ND-V2205, steps('vmSettings').niosVersion-ND-V4005)]",
       "adminPassword": "[basics('passwordSection').adminPassword]",
 
       "virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
@@ -808,7 +808,7 @@
       "publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
 
       "availabilitySetNewOrExistingOrNone": "none",
-      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses3, steps('vmSettings').licenseSection.licenses4), steps('vmSettings').licenseSection.licenses5)]",
+      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses3, steps('vmSettings').licenseSection.licenses4, steps('vmSettings').licenseSection.licenses5)]",
 
       "customData": "[coalesce(steps('vmSettings').enhancedOptionsSection.customData, '')]"
     }
