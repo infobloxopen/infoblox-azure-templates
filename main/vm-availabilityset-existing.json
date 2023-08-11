@@ -5,6 +5,9 @@
     "location": {
       "type": "string"
     },
+    "zone": {
+      "type": "string"
+    },
     "vmName": {
       "type": "string"
     },
