@@ -45,12 +45,28 @@
               "value": "IB-V825"
             },
             {
+              "label": "IB-V926",
+              "value": "IB-V926"
+            },
+            {
               "label": "IB-V1425",
               "value": "IB-V1425"
             },
             {
+              "label": "IB-V1516",
+              "value": "IB-V1516"
+            },
+            {
+              "label": "IB-V1526",
+              "value": "IB-V1526"
+            },
+            {
               "label": "IB-V2225",
               "value": "IB-V2225"
+            },
+            {
+              "label": "IB-V2326",
+              "value": "IB-V2326"
             },
             {
               "label": "IB-V4015",
@@ -59,6 +75,10 @@
             {
               "label": "IB-V4025",
               "value": "IB-V4025"
+            },
+            {
+              "label": "IB-V4126",
+              "value": "IB-V4126"
             },
             {
               "label": "IB-V5005",
@@ -81,16 +101,32 @@
               "value": "ND-V805"
             },
             {
+              "label": "ND-V906",
+              "value": "ND-V906"
+            },
+            {
               "label": "ND-V1405",
               "value": "ND-V1405"
+            },
+            {
+              "label": "ND-V1606",
+              "value": "ND-V1606"
             },
             {
               "label": "ND-V2205",
               "value": "ND-V2205"
             },
             {
+              "label": "ND-V2306",
+              "value": "ND-V2306"
+            },
+            {
               "label": "ND-V4005",
               "value": "ND-V4005"
+            },
+            {
+              "label": "ND-V4106",
+              "value": "ND-V4106"
             }
           ]
         },
@@ -147,61 +183,125 @@
           "name": "niosVersion-IB-V825",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V825",
-          "defaultValue": "8.6.3",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V825')]"
         },
         {
-          "name": "niosVersion-IB-V1425",
+          "name": "niosVersion-IB-V926",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for IB-V1425",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for IB-V926",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V926')]"
+        },
+        {
+          "name": "niosVersion-IB-V1425",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V1425",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V1425')]"
         },
-        {
-          "name": "niosVersion-IB-V2225",
+		{
+          "name": "niosVersion-IB-V1516",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for IB-V2225",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for IB-V1516",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V1516')]"
+        },
+        {
+          "name": "niosVersion-IB-V1526",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V1526",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V1526')]"
+        },
+        {
+          "name": "niosVersion-IB-V2225",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V2225",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V2225')]"
         },
         {
-          "name": "niosVersion-IB-V4015",
+          "name": "niosVersion-IB-V2326",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for IB-V4015",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for IB-V2326",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V2326')]"
+        },
+        {
+          "name": "niosVersion-IB-V4015",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V4015",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
@@ -211,29 +311,45 @@
           "name": "niosVersion-IB-V4025",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for IB-V4025",
-          "defaultValue": "8.6.3",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V4025')]"
         },
         {
-          "name": "niosVersion-IB-V5005",
+          "name": "niosVersion-IB-V4126",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for IB-V5005",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for IB-V4126",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V4126')]"
+        },
+        {
+          "name": "niosVersion-IB-V5005",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for IB-V5005",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
@@ -243,13 +359,13 @@
           "name": "niosVersion-CP-V805",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V805",
-          "defaultValue": "8.6.3",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
@@ -259,13 +375,13 @@
           "name": "niosVersion-CP-V1405",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V1405",
-          "defaultValue": "8.6.3",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
@@ -275,13 +391,13 @@
           "name": "niosVersion-CP-V2205",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for CP-V2205",
-          "defaultValue": "8.6.3",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
@@ -291,61 +407,125 @@
           "name": "niosVersion-ND-V805",
           "type": "Microsoft.Common.DropDown",
           "label": "NIOS version for ND-V805",
-          "defaultValue": "8.6.3",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'ND-V805')]"
         },
         {
-          "name": "niosVersion-ND-V1405",
+          "name": "niosVersion-ND-V906",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for ND-V1405",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for ND-V906",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V906')]"
+        },
+        {
+          "name": "niosVersion-ND-V1405",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for ND-V1405",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'ND-V1405')]"
         },
         {
-          "name": "niosVersion-ND-V2205",
+          "name": "niosVersion-ND-V1606",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for ND-V2205",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for ND-V1606",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V1606')]"
+        },
+        {
+          "name": "niosVersion-ND-V2205",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for ND-V2205",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
           "visible": "[equals(basics('niosModel'), 'ND-V2205')]"
         },
         {
-          "name": "niosVersion-ND-V4005",
+          "name": "niosVersion-ND-V2306",
           "type": "Microsoft.Common.DropDown",
-          "label": "NIOS version for ND-V4005",
-          "defaultValue": "8.6.3",
+          "label": "NIOS version for ND-V2306",
+          "defaultValue": "9.0.1",
           "toolTip": "Select the version of NIOS to load",
           "constraints": {
             "allowedValues": [
               {
-                "label": "8.6.3",
-                "value": "863.51135.0"
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V2306')]"
+        },
+        {
+          "name": "niosVersion-ND-V4106",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for ND-V4106",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
+              }
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V4106')]"
+        },
+        {
+          "name": "niosVersion-ND-V4005",
+          "type": "Microsoft.Common.DropDown",
+          "label": "NIOS version for ND-V4005",
+          "defaultValue": "9.0.1",
+          "toolTip": "Select the version of NIOS to load",
+          "constraints": {
+            "allowedValues": [
+              {
+                "label": "9.0.1",
+                "value": "901.49999.0"
               }
             ]
           },
@@ -368,6 +548,22 @@
           "osPlatform": "Linux"
         },
         {
+          "name": "vmSize-IB-V926",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V926",
+          "toolTip": "Select the size of VM for IB-V926",
+          "recommendedSizes": [
+            "Standard_E4s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E4s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V926')]",
+          "osPlatform": "Linux"
+        },
+        {
           "name": "vmSize-IB-V1425",
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for IB-V1425",
@@ -384,6 +580,38 @@
           "osPlatform": "Linux"
         },
         {
+          "name": "vmSize-IB-V1516",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V1516",
+          "toolTip": "Select the size of VM for IB-V1516",
+          "recommendedSizes": [
+            "Standard_E8s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E8s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V1516')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-IB-V1526",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V1526",
+          "toolTip": "Select the size of VM for IB-V1526",
+          "recommendedSizes": [
+            "Standard_E16s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E16s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V1526')]",
+          "osPlatform": "Linux"
+        },
+        {
           "name": "vmSize-IB-V2225",
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for IB-V2225",
@@ -397,6 +625,22 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V2225')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-IB-V2326",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V2326",
+          "toolTip": "Select the size of VM for IB-V2326",
+          "recommendedSizes": [
+            "Standard_E20s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E20s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V2326')]",
           "osPlatform": "Linux"
         },
         {
@@ -429,6 +673,22 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'IB-V4025')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-IB-V4126",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for IB-V4126",
+          "toolTip": "Select the size of VM for IB-V4126",
+          "recommendedSizes": [
+            "Standard_E32s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E32s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'IB-V4126')]",
           "osPlatform": "Linux"
         },
         {
@@ -515,6 +775,22 @@
           "osPlatform": "Linux"
         },
         {
+          "name": "vmSize-ND-V906",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for ND-V906",
+          "toolTip": "Select the size of VM for ND-V906",
+          "recommendedSizes": [
+            "Standard_E4s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E4s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V906')]",
+          "osPlatform": "Linux"
+        },
+        {
           "name": "vmSize-ND-V1405",
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for ND-V1405",
@@ -528,6 +804,22 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'ND-V1405')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-ND-V1606",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for ND-V1606",
+          "toolTip": "Select the size of VM for ND-V1606",
+          "recommendedSizes": [
+            "Standard_E8s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E8s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V1606')]",
           "osPlatform": "Linux"
         },
         {
@@ -547,6 +839,22 @@
           "osPlatform": "Linux"
         },
         {
+          "name": "vmSize-ND-V2306",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for ND-V2306",
+          "toolTip": "Select the size of VM for ND-V2306",
+          "recommendedSizes": [
+            "Standard_E20s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E20s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V2306')]",
+          "osPlatform": "Linux"
+        },
+        {
           "name": "vmSize-ND-V4005",
           "type": "Microsoft.Compute.SizeSelector",
           "label": "Virtual machine size for ND-V4005",
@@ -560,6 +868,22 @@
             ]
           },
           "visible": "[equals(basics('niosModel'), 'ND-V4005')]",
+          "osPlatform": "Linux"
+        },
+        {
+          "name": "vmSize-ND-V4106",
+          "type": "Microsoft.Compute.SizeSelector",
+          "label": "Virtual machine size for ND-V4106",
+          "toolTip": "Select the size of VM for ND-V4106",
+          "recommendedSizes": [
+            "Standard_E32s_v3"
+          ],
+          "constraints": {
+            "allowedSizes": [
+              "Standard_E32s_v3"
+            ]
+          },
+          "visible": "[equals(basics('niosModel'), 'ND-V4106')]",
           "osPlatform": "Linux"
         },
         {
@@ -742,6 +1066,46 @@
                 ]
               },
               "visible": "[or(equals(basics('niosModel'), 'ND-V805'), equals(basics('niosModel'), 'ND-V1405'), equals(basics('niosModel'), 'ND-V2205'), equals(basics('niosModel'), 'ND-V4005'))]"
+            },
+            {
+              "name": "licenses6",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary licenses",
+              "defaultValue": "yes",
+              "toolTip": "Select yes to install automatically temporary licenses NIOS, Grid, DNS, RPZ and Cloud. Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "TE-GSoT"
+                  },
+                  {
+                    "label": "no",
+                    "value": "none"
+                  }
+                ]
+              },
+              "visible": "[or(equals(basics('niosModel'), 'IB-V926'), equals(basics('niosModel'), 'IB-V1516'), equals(basics('niosModel'), 'IB-V1526'), equals(basics('niosModel'), 'IB-V2326'), equals(basics('niosModel'), 'IB-V4126'))]"
+            },
+            {
+              "name": "licenses7",
+              "type": "Microsoft.Common.OptionsGroup",
+              "label": "Install temporary licenses",
+              "defaultValue": "yes",
+              "toolTip": "Select yes to install automatically temporary licenses NIOS, Grid, DNS, RPZ and Cloud(CP). Validity of license is 60 days. Will add 5 min extra time on the VM Creation",
+              "constraints": {
+                "allowedValues": [
+                  {
+                    "label": "yes",
+                    "value": "ND-GSoT"
+                  },
+                  {
+                    "label": "no",
+                    "value": "none"
+                  }
+                ]
+              },
+              "visible": "[or(equals(basics('niosModel'), 'ND-V906'), equals(basics('niosModel'), 'ND-V1606'), equals(basics('niosModel'), 'ND-V2306'), equals(basics('niosModel'), 'ND-V4106'))]"
             }
           ],
           "visible": true
@@ -777,9 +1141,9 @@
       "vmName": "[basics('vmName')]",
       "location": "[location()]",
       "zone": "[basics('Zone')]",
-      "vmSize": "[coalesce(steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V2225,steps('vmSettings').vmSize-IB-V4015,steps('vmSettings').vmSize-IB-V4025,steps('vmSettings').vmSize-IB-V5005,steps('vmSettings').vmSize-ND-V805,steps('vmSettings').vmSize-ND-V1405,steps('vmSettings').vmSize-ND-V2205,steps('vmSettings').vmSize-ND-V4005)]",
+      "vmSize": "[coalesce(steps('vmSettings').vmSize-CP-V805,steps('vmSettings').vmSize-CP-V1405,steps('vmSettings').vmSize-CP-V2205,steps('vmSettings').vmSize-IB-V825,steps('vmSettings').vmSize-IB-V926,steps('vmSettings').vmSize-IB-V1425,steps('vmSettings').vmSize-IB-V1516,steps('vmSettings').vmSize-IB-V1526,steps('vmSettings').vmSize-IB-V2225,steps('vmSettings').vmSize-IB-V2326,steps('vmSettings').vmSize-IB-V4015,steps('vmSettings').vmSize-IB-V4025,steps('vmSettings').vmSize-IB-V4126,steps('vmSettings').vmSize-IB-V5005,steps('vmSettings').vmSize-ND-V805,steps('vmSettings').vmSize-ND-V906,steps('vmSettings').vmSize-ND-V1405,steps('vmSettings').vmSize-ND-V1606,steps('vmSettings').vmSize-ND-V2205,steps('vmSettings').vmSize-ND-V2306,steps('vmSettings').vmSize-ND-V4005,steps('vmSettings').vmSize-ND-V4106)]",
       "niosModel": "[basics('niosModel')]",
-      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V2225,steps('vmSettings').niosVersion-IB-V4015,steps('vmSettings').niosVersion-IB-V4025,steps('vmSettings').niosVersion-IB-V5005,steps('vmSettings').niosVersion-ND-V805, steps('vmSettings').niosVersion-ND-V1405, steps('vmSettings').niosVersion-ND-V2205, steps('vmSettings').niosVersion-ND-V4005)]",
+      "niosVersion":  "[coalesce(steps('vmSettings').niosVersion-CP-V805, steps('vmSettings').niosVersion-CP-V1405,steps('vmSettings').niosVersion-CP-V2205,steps('vmSettings').niosVersion-IB-V825,steps('vmSettings').niosVersion-IB-V926,steps('vmSettings').niosVersion-IB-V1425,steps('vmSettings').niosVersion-IB-V1516,steps('vmSettings').niosVersion-IB-V1526,steps('vmSettings').niosVersion-IB-V2225,steps('vmSettings').niosVersion-IB-V2326,steps('vmSettings').niosVersion-IB-V4015,steps('vmSettings').niosVersion-IB-V4025,steps('vmSettings').niosVersion-IB-V4126,steps('vmSettings').niosVersion-IB-V5005,steps('vmSettings').niosVersion-ND-V805,steps('vmSettings').niosVersion-ND-V906, steps('vmSettings').niosVersion-ND-V1405,steps('vmSettings').niosVersion-ND-V1606,steps('vmSettings').niosVersion-ND-V2205,steps('vmSettings').niosVersion-ND-V2306,steps('vmSettings').niosVersion-ND-V4005,steps('vmSettings').niosVersion-ND-V4106)]",
       "adminPassword": "[basics('passwordSection').adminPassword]",
 
       "virtualNetworkName": "[steps('vmSettings').niosNetwork.name]",
@@ -808,7 +1172,7 @@
       "publicIPExistingRGName": "[steps('vmSettings').dnsAndPublicIP.resourceGroup]",
 
       "availabilitySetNewOrExistingOrNone": "none",
-      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses3, steps('vmSettings').licenseSection.licenses4, steps('vmSettings').licenseSection.licenses5)]",
+      "tempLicenseOption": "[coalesce(steps('vmSettings').licenseSection.licenses3, steps('vmSettings').licenseSection.licenses4, steps('vmSettings').licenseSection.licenses5, steps('vmSettings').licenseSection.licenses6, steps('vmSettings').licenseSection.licenses7)]",
 
       "customData": "[coalesce(steps('vmSettings').enhancedOptionsSection.customData, '')]"
     }

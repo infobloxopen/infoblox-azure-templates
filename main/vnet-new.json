@@ -22,7 +22,7 @@
     },
     "subnet2Prefix": {
       "type": "string"
-    },
+    }
   },
   "resources": [
         {
