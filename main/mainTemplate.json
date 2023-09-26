@@ -41,7 +41,12 @@
         "Standard_DS12_v2",
         "Standard_DS13_v2",
         "Standard_DS14_v2",
-        "Standard_DS15_v2"
+        "Standard_DS15_v2",
+        "Standard_E4s_v3",
+        "Standard_E8s_v3",
+        "Standard_E16s_v3",
+        "Standard_E20s_v3",
+        "Standard_E32s_v3"
       ]
     },
     "niosModel":{
@@ -52,18 +57,27 @@
       },
       "allowedValues":[
         "IB-V825",
+        "IB-V926",
         "IB-V1425",
+        "IB-V1516",
+        "IB-V1526",
         "IB-V2225",
+        "IB-V2326",
         "IB-V4015",
         "IB-V4025",
+        "IB-V4126",
         "IB-V5005",
         "cp-v805",
         "cp-v1405",
         "cp-v2205",
         "ND-V805",
+        "ND-V906",
         "ND-V1405",
+        "ND-V1606",
         "ND-V2205",
-        "ND-V4005"
+        "ND-V2306",
+        "ND-V4005",
+        "ND-V4106"
       ]
     },
     "niosVersion":{
@@ -74,7 +88,7 @@
       },
       "allowedValues":[
         "latest",
-        "863.51135.0"
+        "901.49999.0"
       ]
     },
     "adminPassword":{
@@ -279,7 +293,9 @@
         "none",
         "TE-SoT",
         "CP-SoT",
-        "ND-SoT"
+        "ND-SoT",
+        "TE-GSoT",
+        "ND-GSoT"
       ],
       "metadata":{
         "description":"Temporary license option."
@@ -288,16 +304,17 @@
   },
   "variables":{
     "imagePublisher":"infoblox",
-    "imageOffer":"infoblox-vm-appliances-863",
-    "imageSKU": "[if(contains(parameters('niosModel'), 'ND-V'), 'vsot-ni', 'vsot')]",
-    "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), if(equals(parameters('tempLicenseOption'), 'ND-SoT'), variables('tempLicense-ND-SoT'), variables('tempLicense-CP-SoT'))))]",
+    "imageOffer":"infoblox-vm-appliances-901",
+    "imageSKU": "[if(and(startsWith(parameters('niosModel'), 'IB-V'),endsWith(parameters('niosModel'), '6')), 'vgsot', if(and(startsWith(parameters('niosModel'), 'IB-V'),endsWith(parameters('niosModel'), '5')), 'vsot', if(and(startsWith(parameters('niosModel'), 'ND-V'), endsWith(parameters('niosModel'), '6')), 'vgsot-ni', if(and(startsWith(parameters('niosModel'), 'ND-V'),endsWith(parameters('niosModel'), '5')), 'vsot-ni', if(startsWith(parameters('niosModel'), 'cp-v'), 'vsot', '')))))]",
+    "tempLicense": "[if(equals(parameters('tempLicenseOption'), 'none'), '', if(equals(parameters('tempLicenseOption'), 'TE-SoT'), variables('tempLicense-TE-SoT'), if(equals(parameters('tempLicenseOption'), 'ND-SoT'), variables('tempLicense-ND-SoT'), if(equals(parameters('tempLicenseOption'), 'TE-GSoT'), variables('tempLicense-TE-GSoT'), if(equals(parameters('tempLicenseOption'), 'ND-GSoT'), variables('tempLicense-ND-GSoT'), variables('tempLicense-CP-SoT'))))))]",
     "tempLicense-TE-SoT": "[concat('nios ', parameters('niosModel'), if(equals(parameters('niosModel'), 'IB-V5005'), ' enterprise', ' enterprise dns cloud rpz'))]",
     "tempLicense-CP-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud_api rpz')]",
     "tempLicense-ND-SoT": "[concat('nios ', parameters('niosModel'), ' enterprise')]",
+    "tempLicense-TE-GSoT": "[concat('nios ', parameters('niosModel'), ' enterprise dns cloud rpz')]",
+    "tempLicense-ND-GSoT": "[concat('nios ', parameters('niosModel'), ' enterprise')]",
     "version": "[parameters('niosVersion')]",
     "OSDiskName":"[concat(parameters('vmName'), uniqueString(resourceGroup().id))]",
     "osDiskType":"Premium_LRS",
-
     "subnet1-existing": "[resourceId(parameters('virtualNetworkExistingRGName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",
     "subnet2-existing": "[resourceId(parameters('virtualNetworkExistingRGName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet2Name'))]",
     "subnet1-new": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",
@@ -475,7 +492,7 @@
   },
   "resources":[
     {
-      "name": "pid-2be14079-e0be-4176-afe8-94b39bd49f26-partnercenter",
+      "name": "pid-d889d454-b77b-45d7-97be-196690ecb0f1-partnercenter",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2021-04-01",
       "properties": {
